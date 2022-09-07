@@ -1,0 +1,83 @@
+.container-cadastro {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../img/FundoTreco.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.paperStyle-cadastro {
+  padding: 33px;
+  margin: 35vw;
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px !important;
+}
+
+.img-cadastro{
+  width: 180px;
+  height: 180px;
+  margin-top: -45px;
+}
+
+.box-cadastro {
+  margin-top: 5px;
+}
+
+.button{
+  height: 32px;
+  color: white !important;
+  font-weight: bold !important;
+  background: linear-gradient(
+    90deg,
+    rgba(119, 169, 109, 1) 0%,
+    rgba(94, 145, 46, 1) 100%
+  );
+}
+
+.button:hover {
+  background: linear-gradient(
+    90deg,
+    rgb(82, 144, 68) 0%,
+    rgb(88, 116, 61) 100%
+  );
+  transition: 0.3s ease-out !important;
+}
+
+.box-info {
+  margin-top: 25px;
+}
+
+.botao-checar {
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: end !important;
+}
+
+.loginText:hover {
+  color: green;
+  transition: 250ms ease-out;
+}
+
+/* Estilizar o AutoFill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: black;
+  -webkit-box-shadow: 0 0 0px 1000px #DCE8DC inset;
+  transition: background-color 5000s ease-in-out 0s;
+}

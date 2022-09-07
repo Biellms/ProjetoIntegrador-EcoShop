@@ -1,0 +1,72 @@
+.caixa {
+  background-image: url(https://i.imgur.com/Qm6Dlvm.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.caixa2 {
+  background-image: url(../../img/planodefundo2.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.caixa3 {
+  background-image: url(../../img/recyclable.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.titulo {
+  color: black !important;
+  font-weight: bold !important;
+  font-family: Segoe UI !important;
+}
+
+.botao {
+  border-color: black !important;
+  background-color: #dcddd9 !important;
+  color: black !important;
+  font-family: Segoe UI;
+}
+
+.botao:hover {
+  background-color: #A4D06B !important;
+}
+
+.postagens {
+  background-color: white;
+}
+
+p {
+  font-family: Segoe UI;
+  font-size: 18px;
+  font-weight: normal;
+  text-align: start;
+}
+
+.imagem2 {
+  margin-left: 80px;
+}
+
+.insta {
+  font-size: 60px !important;
+  color: rgb(207, 24, 137);
+}
+
+.insta:hover {
+  color: rgb(105, 17, 72) !important;
+  transition: 250ms ease-out !important;
+}
+
+.pint {
+  font-size: 60px !important;
+  color: rgb(207, 22, 22);
+}
+
+.pint:hover {
+  color: rgb(107, 15, 15) !important;
+  transition: 250ms ease-out !important;
+}

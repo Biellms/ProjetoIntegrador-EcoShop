@@ -1,0 +1,64 @@
+.container-equipe {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-bottom: 10vw;
+    margin-left: 10%;
+    margin-right: 10%;
+    grid-gap: 10vh;
+  }
+
+  .container-titulo-equipe {
+    display: flex;
+    justify-content: center;
+    padding: 2vw;
+  }
+
+  .titulo-equipe {
+    font-family: Segoe UI !important;
+    font-weight: bold !important;
+  }
+  
+  .cartao {
+    width: 280px;
+    border-radius: 10% !important;
+    box-shadow: 6px 5px 15px #888888 !important;
+  }
+  
+  .nome {
+    text-align: center;
+  }
+  
+  .texto-card {
+    text-align: center;
+  }
+  
+  .botao-card {
+    text-decoration: none;
+    justify-content: center;
+  }
+
+  .git {
+    font-size: 40px !important;
+    color: black;
+  }
+  
+  .git:hover {
+    color: rgb(98, 97, 97) !important;
+    transition: 250ms ease-out !important;
+  }
+  
+  .linkedin {
+    font-size: 40px !important;
+    color: rgb(26, 94, 221);
+  }
+  
+  .linkedin:hover {
+    color: rgb(7, 33, 75) !important;
+    transition: 250ms ease-out !important;
+  }
+  
+  

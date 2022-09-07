@@ -1,0 +1,41 @@
+.text-decorator-none {
+  text-decoration: none;
+  font-family: Segoe UI;
+  color: rgba(0, 0, 0, 0.911);
+  font-size: 13px;
+}
+
+.text-decorator-none:hover {
+  color: rgb(105, 104, 104);
+  transition: 0.3s ease-out;
+}
+
+.footer-container {
+  background-color: #dce8dc;
+  box-shadow: 0 0 20px rgb(82, 81, 81);
+}
+
+.titulo-footer {
+  font-family: Segoe UI;
+  color: black;
+  font-size: 20px;
+}
+
+.titulo2-footer {
+  font-family: Segoe UI !important;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.texto-footer a {
+  font-family: Segoe UI;
+  text-decoration: none;
+  color: black;
+  font-size: 13px;
+}
+
+.texto-footer a:hover {
+  color: rgb(105, 104, 104);
+  transition: 0.3s ease-out;
+}

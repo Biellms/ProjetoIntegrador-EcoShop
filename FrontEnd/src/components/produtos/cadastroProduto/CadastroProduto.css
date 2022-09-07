@@ -1,0 +1,50 @@
+.box-atualizar-produto{
+    border-radius: 15px;
+    border-color: rgb(192, 189, 189) !important;
+    box-shadow: 6px 5px 15px #1f1e1e !important;
+}
+
+.text{
+    font-weight: bold !important;
+    font-style: italic;
+    color: #629D27 !important;
+}
+
+.btnFinalizar{
+    height: 32px;
+    color: white !important;
+    font-weight: bold !important;
+    background: linear-gradient(
+    90deg,
+    rgba(119, 169, 109, 1) 0%,
+    rgba(94, 145, 46, 1) 100%
+  );
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: #629D27 !important;
+}
+
+.MuiInputLabel-animated {
+  transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  color: #629D27;
+}
+
+.MuiInput-underline:after {
+  border-bottom: 2px solid #629D27 !important;
+}
+
+/* Estilizar o AutoFill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: black;
+  -webkit-box-shadow: 0 0 0px 1000px #DCE8DC inset;
+  transition: background-color 5000s ease-in-out 0s;
+}

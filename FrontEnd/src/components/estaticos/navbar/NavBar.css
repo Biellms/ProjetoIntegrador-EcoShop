@@ -1,0 +1,32 @@
+.text-decorator-none {
+  text-decoration: none;
+}
+
+.appbar {
+  background-color: #dce8dc;
+  height: 2cm;
+  justify-content: space-around;
+  box-shadow: 0 0 15px rgb(128, 127, 127);
+}
+
+.pointer {
+  cursor: pointer;
+  color: black;
+  margin-right: 300px;
+}
+
+.txtmenu {
+  font-family: Segoe UI !important;
+  color: black !important;
+  text-decoration: none !important;
+  list-style: none !important;
+}
+
+.txtmenu:hover {
+  color: rgb(105, 104, 104) !important;
+  transition: 0.3s ease-out !important;
+}
+
+a {
+  margin-right: 10px;
+}

@@ -1,0 +1,16 @@
+.card-deletar {
+    background-color: #ffffff !important;
+    border-color: rgb(192, 189, 189) !important;
+    box-shadow: 6px 5px 15px #424242 !important;
+    height: 4cm !important;
+}
+
+.botao-sim {
+    background-color: #629D27 !important;
+    font-weight: bold !important;
+}
+
+.botao-nao {
+    background-color: #9d2727 !important;
+    font-weight: bold !important;
+  }

@@ -1,0 +1,66 @@
+
+.center{
+    text-align: center !important;
+    margin-left: 25vw !important;
+    margin-right: 25vw !important;
+}
+
+
+.imgtreco{
+    width: 250px;
+    height: 250px;
+    margin-top: 1cm;
+    border-radius: 50%;
+    background: radial-gradient(#DCE8DC, #BAE3CA);
+}
+
+.box{
+    display: flex;
+    margin-top: 80px;
+}
+
+.quemSomos{
+    text-align: center;
+    color: #5B865E !important;
+    font-family: Segoe UI !important;
+    margin-top: 17px !important;
+    margin-left: 16px !important;
+    font-size: 30px !important;
+    font-weight: bold !important;
+}
+
+.text-sobre {
+    text-align: justify;
+    margin-left: 0.5cm;
+    margin-top: 45px;
+    margin-bottom: 35px;
+    margin-right: 0.2cm;
+    color: black !important;
+    font-family: Segoe UI !important;
+    font-size: 20px;
+}
+
+.ods11{
+    text-align: center !important;
+    color: #5B865E !important;
+    font-family: Segoe UI !important;
+    margin-top: 20px !important;
+    margin-left: 17px !important;
+    font-size: 30px !important;
+    font-weight: bold !important;
+}
+
+.text2{
+    text-align: justify;
+    margin-left: 0.5cm;
+    margin-top: 30px;
+    margin-bottom: 20px !important;
+    margin-right: 0.5cm;
+    color: black !important;
+    font-family: Segoe UI !important;
+    font-size: 20px;
+}
+
+.boxText{
+    margin-bottom: 90px;
+}
