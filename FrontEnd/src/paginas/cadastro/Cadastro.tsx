@@ -1,12 +1,11 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { Grid, Box, Typography, TextField,  styled, Paper } from '@material-ui/core';
+import { Grid, Box, Typography, TextField, Button, styled, Paper } from '@material-ui/core';
 import { Link, useHistory } from 'react-router-dom';
 import './Cadastro.css';
 import User from '../../models/User';
 import { cadastroUsuario } from '../../service/Service';
 import { toast } from 'react-toastify';
 import Checkbox from '@mui/material/Checkbox';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -102,82 +101,44 @@ function Cadastro() {
     }
 
     return (
-        <html lang="pt-bt">
-        <head>
-            <meta charSet="UTF-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Login</title>
-            <link
-                rel="stylesheet"
-                href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-                integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-                crossOrigin="anonymous"
-            />
-            <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
-            <script
-                src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
-            ></script>
-            <script
-                src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
-            ></script>
-            <script src="sweetalert2.min.js"></script>
-            <link rel="stylesheet" href="sweetalert2.min.css"></link>
-        </head>
-        <body>
-            <Container fluid>
-                <Row>
-                    <Col md={5} className='primeira-coluna'>
-                        <div className='informacoes-cadastro'>
-                            <h1>Logue-se e navege !</h1>
-                            <p>Se não tiver um login, por favor faça o cadastro</p>
+        <Box className='container-cadastro'>
+            <Paper elevation={16} className='paperStyle-cadastro'>
+                <form onSubmit={onSubmit}>
 
-                            <div className='espacamento'>
-                                <Link to='/cadastro'> <Button className='botao-cadastro' variant="outline-light">Cadastro</Button> </Link>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col md={7} className='segunda-coluna'>
-                        <div>
-                            <Form onSubmit={onSubmit} className='formulario'>
+                    <Box className='box-cadastro'>
+                        <Typography variant='h5' align='center' className='loginText'>Cadastro</Typography>
+                        <CssTextField value={user.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='nome' label='Nome' variant='outlined' name='nome'
+                            margin='normal' fullWidth />
+                        <CssTextField value={user.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usario' label='Usuário' variant='outlined' name='usuario'
+                            margin='normal' fullWidth />
+                        <CssTextField value={user.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='Senha' variant='outlined' name='senha' type='password'
+                            margin='normal' fullWidth />
+                        <CssTextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id='confirmarsenha' label='Confirmar Senha' variant='outlined'
+                            type='password' name='confirmarsenha' margin='normal' fullWidth />
+                    </Box>
+                    <Box className='botao-checar'>
+                        <Typography >
+                            <Checkbox {...label} defaultChecked color="success" />
+                            Ao clicar em cadastrar, você concorda com nossos
+                            Termos e Politica de Dados.
+                        </Typography>
+                    </Box>
+                    <Box className='box-info'>
 
-                                <div className='teste'>
-                                    <h1 className='titulo-principal'> Entre com a sua conta</h1>
-                                    <div className='espacamento-coluna'>
-                                        <Form.Group className="mb-3" controlId="formBasicText">
-                                            <Form.Label className='texto-formulario' id='usuario'>Seu usuário</Form.Label>
-                                            <Form.Control className='texto-input' name='usuario' id='usuario' type="text" placeholder="Digite o usuário cadastrado:" />
-                                            <div className='texto-formulario2'>
-                                                <Form.Text className="color">
-                                                    Digite o usuário corretamente, para não ter erros!
-                                                </Form.Text>
-                                            </div>
-                                        </Form.Group>
-
-                                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                                            <Form.Label className='texto-formulario'>Sua senha</Form.Label>
-                                            <Form.Control id='senha' className='texto-input'  name='senha'  type="password" placeholder="Digite a senha cadastrada:" />
-                                            <div className='texto-formulario2'>
-                                                <Form.Text className="color">
-                                                    Digite a senha corretamente, para não ter erros!
-                                                </Form.Text>
-                                            </div>
-                                        </Form.Group>
-                                        <div className='alinhamento-botao'>
-                                            <Button className='botao' variant="primary" type="submit">
-                                                Logar
-                                            </Button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </Form>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
-        </body>
-    </html >
+                        <Box marginTop={3} textAlign='center'>
+                            <Button type='submit' className='button' variant="contained" fullWidth>
+                                Cadastrar
+                            </Button>
+                        </Box>
+                    </Box>
+                </form>
+                <Box display='flex' justifyContent='end' marginTop={5}>
+                    <Link to='/login' className='text-decorator-none'>
+                        <Typography variant='subtitle1' gutterBottom align='center' className='loginText' >Login</Typography>
+                    </Link>
+                </Box>
+            </Paper>
+        </Box>
     );
 }
 
