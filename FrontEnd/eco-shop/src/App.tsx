@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/navbar/Navbar';
+import { Navbar } from './components/navbar/Navbar';
 import { Cadastro } from './paginas/cadastro/Cadastro';
 import { Carrinho } from './paginas/carrinho/Carrinho';
 import { Equipe } from './paginas/equipe/Equipe';

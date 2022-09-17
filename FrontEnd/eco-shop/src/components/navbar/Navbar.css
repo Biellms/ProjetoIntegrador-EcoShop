@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Roboto:wght@300;400&display=swap');
+
+header {
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    background: rgb(213, 247, 166);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.638);
+    flex-grow: 1;
+}
+
+
+.header-logo {
+    font-family: 'Paytone One', sans-serif;
+}
+
+.header-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 25px;
+}
+
+@media screen and (min-width: 767px) {
+    .header-menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .header-info {
+        display: none;
+    }
+}
