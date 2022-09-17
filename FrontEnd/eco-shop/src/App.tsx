@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Navbar from './components/navbar/Navbar';
 import { Cadastro } from './paginas/cadastro/Cadastro';
 import { Carrinho } from './paginas/carrinho/Carrinho';
 import { Equipe } from './paginas/equipe/Equipe';
@@ -10,12 +11,7 @@ import { Sobre } from './paginas/sobre/Sobre';
 function App() {
   return (
     <> 
-      <Home/>
-      <Login/>
-      <Cadastro/>
-      <Equipe/>
-      <Sobre/>
-      <Carrinho/>
+      <Navbar/>
     </>
   );
 }
