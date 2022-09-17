@@ -36,7 +36,7 @@ export function Navbar() {
           onClick={handleMenuNav}
           color="default"
         >
-          <MenuIcon />
+          <MenuIcon fontSize='large'/>
         </IconButton>
         <Menu
           id="menu-appbar"
@@ -75,19 +75,19 @@ export function Navbar() {
           onClick={handleMenuUser}
           color="default"
         >
-        <AccountCircle />
+        <AccountCircle fontSize='large'/>
         </IconButton>
         <Menu
           id="menu-appbar"
           anchorEl={anchorEl}
           anchorOrigin={{
             vertical: "bottom",
-            horizontal: "left"
+            horizontal: "right"
           }}
           keepMounted
           transformOrigin={{
             vertical: "top",
-            horizontal: "left"
+            horizontal: "right"
           }}
           open={Boolean(anchorEl)}
           onClose={handleCloseUser}
