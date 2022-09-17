@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Cadastro } from './paginas/cadastro/Cadastro';
+import { Carrinho } from './paginas/carrinho/Carrinho';
 import { Equipe } from './paginas/equipe/Equipe';
 import { Home } from './paginas/home/Home';
 import { Login } from './paginas/login/Login';
@@ -14,6 +15,7 @@ function App() {
       <Cadastro/>
       <Equipe/>
       <Sobre/>
+      <Carrinho/>
     </>
   );
 }
