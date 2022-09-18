@@ -16,9 +16,6 @@ export function Home() {
                 <div>
                     <h1>INFORMAÇÃO 3</h1>
                 </div>
-                <div>
-                    <h1>INFORMAÇÃO 4</h1>
-                </div>
             </section>
         </main>
     );

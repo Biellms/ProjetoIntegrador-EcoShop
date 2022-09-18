@@ -1,5 +1,8 @@
 import React from 'react';
 import './Footer.css'
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 export function Footer() {
     return (
@@ -8,6 +11,11 @@ export function Footer() {
                 <a href="https://github.com/Biellms/ProjetoIntegrador-EcoShop" target='_blank'>
                     <h2>EcoShop</h2>
                 </a>
+            </div>
+            <div className='footer-icons'>
+                <GitHubIcon className='icons'/>
+                <LinkedInIcon className='icons'/>
+                <InstagramIcon className='icons'/>
             </div>
         </footer>
     );
