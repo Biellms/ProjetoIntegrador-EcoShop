@@ -1,13 +1,14 @@
 import { AccountCircle } from '@mui/icons-material';
-import { IconButton, Menu, MenuItem } from '@mui/material';
+import { Badge, IconButton, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import * as React from 'react';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useState } from 'react';
 import './Navbar.css';
 
 export function Navbar() {
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleMenuNav = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -28,7 +29,7 @@ export function Navbar() {
   return (
     <header>
       <div className='header-menu'>
-      <IconButton
+        <IconButton
           size="large"
           aria-label="account of current user"
           aria-controls="menu-appbar"
@@ -59,14 +60,26 @@ export function Navbar() {
           <MenuItem onClick={handleCloseNav}>Sobre</MenuItem>
         </Menu>
       </div>
-      <div className='header-logo'><h2>EcoShop</h2></div>
-      <div className='header-info'>
-        <span>HOME</span>
-        <span>SOBRE</span>
-        <span>PRODUTOS</span>
-        <span>CARRINHO</span>
+      <div className='header-logo'>
+        <h2>EcoShop</h2>
       </div>
-      <div className='header-sair'>
+      <div className='header-nav'>
+        <h3 style={{cursor: 'pointer'}} >HOME</h3>
+        <h3 style={{cursor: 'pointer'}} >SOBRE</h3>
+        <h3 style={{cursor: 'pointer'}} >PRODUTOS</h3>
+      </div>
+      <div className='header-user'>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            color="default"
+          >
+          <Badge badgeContent={3} color='success'>
+            <ShoppingCartIcon fontSize='large'/>
+          </Badge>  
+          </IconButton>
         <IconButton
           size="large"
           aria-label="account of current user"

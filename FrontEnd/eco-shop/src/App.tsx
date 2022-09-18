@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { Footer } from './components/footer/Footer';
 import { Navbar } from './components/navbar/Navbar';
 import { Cadastro } from './paginas/cadastro/Cadastro';
 import { Carrinho } from './paginas/carrinho/Carrinho';
@@ -12,6 +13,8 @@ function App() {
   return (
     <> 
       <Navbar/>
+      <Home/>
+      <Footer/>
     </>
   );
 }

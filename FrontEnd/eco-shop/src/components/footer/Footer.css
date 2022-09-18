@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Roboto:wght@300;400&display=swap');
+
+footer {
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background: rgb(213, 247, 166);
+    font-family: 'Paytone One', sans-serif;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.638);
+}
+
+footer h2 {
+    color: black;    
+}

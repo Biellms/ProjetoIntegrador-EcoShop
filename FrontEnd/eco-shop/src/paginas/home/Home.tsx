@@ -3,8 +3,23 @@ import './Home.css';
 
 export function Home() {
     return (
-        <>
-            <h1>Home</h1>
-        </>
+        <main>
+            <section className='main-section-1'>
+                <div>
+                    <h1>INFORMAÇÃO 1</h1>
+                </div>
+                <div>
+                    <h1>INFORMAÇÃO 2</h1>
+                </div>
+            </section>
+            <section className='main-section-2'>
+                <div>
+                    <h1>INFORMAÇÃO 3</h1>
+                </div>
+                <div>
+                    <h1>INFORMAÇÃO 4</h1>
+                </div>
+            </section>
+        </main>
     );
 }
