@@ -6,9 +6,9 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: rgb(213, 247, 166);
+    background: rgb(224, 251, 185);
     font-family: 'Paytone One', sans-serif;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.638);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.350);
     gap: 10px;
 }
 

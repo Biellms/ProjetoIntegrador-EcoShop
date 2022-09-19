@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Paper, TextField } from '@mui/material';
 import './Cadastro.css'
+import { Link } from 'react-router-dom';
 
 export function Cadastro() {
     return (
@@ -22,8 +23,13 @@ export function Cadastro() {
                     </div>
                     <div className='login-card-form-button'>
                         <Button type='submit' variant="contained" className="form-button" fullWidth>
-                            Cadastrar
+                            Create Account
                         </Button>
+                    </div>
+                    <div className='cadastro-voltar'>
+                        <Link to='/login'>
+                            <b>Voltar</b>
+                        </Link>
                     </div>
                 </form>
             </Paper>

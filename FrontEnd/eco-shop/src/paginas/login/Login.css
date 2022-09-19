@@ -47,10 +47,14 @@
 }
 
 .login-card-form-button {
-    min-width: 200px;
+    min-width: 120px;
 }
 
-@media screen and (max-width: 768px){
+b {
+    color: black;
+}
+
+@media screen and (max-width: 425px){
     .login-card {
         border: none !important;
         box-shadow: none !important;

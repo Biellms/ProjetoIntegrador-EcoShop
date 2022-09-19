@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {/* <Navbar /> */}
+        <Navbar />
           <Routes>
             <Route path="/" element={ <Login />} />
             <Route path="/login" element={ <Login />} />
@@ -20,7 +20,7 @@ function App() {
             <Route path="/home" element={ <Home />} />
             <Route path="*" element={ <NotFound />} />
           </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </>
   );

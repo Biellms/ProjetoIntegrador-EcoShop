@@ -6,24 +6,17 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 export function PasswordField() {
 
     interface State {
-        amount: string;
         password: string;
-        weight: string;
-        weightRange: string;
         showPassword: boolean;
       }
 
-    const [values, setValues] = React.useState<State>({
-        amount: '',
+    const [values, setValues] = React.useState<State> ({
         password: '',
-        weight: '',
-        weightRange: '',
         showPassword: false,
       });
 
-    const handleChange =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({ ...values, [prop]: event.target.value });
+    const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValues({ ...values, [prop]: event.target.value });
     };
 
     const handleClickShowPassword = () => {
@@ -34,14 +27,16 @@ export function PasswordField() {
       };
 
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
+        event.preventDefault();
     };
 
     return (
         <FormControl variant="outlined" fullWidth >
-            <InputLabel htmlFor="outlined-adornment-password">Senha</InputLabel>
+            <InputLabel>Senha</InputLabel>
             <OutlinedInput
-                id="outlined-adornment-password"
+                id="senha"
+                label="senha"
+                name='senha'
                 type={values.showPassword ? 'text' : 'password'}
                 value={values.password}
                 onChange={handleChange('password')}
@@ -57,8 +52,6 @@ export function PasswordField() {
                         </IconButton>
                     </InputAdornment>
                 }
-                label="senha"
-                name='senha'
             />
         </FormControl>
     );

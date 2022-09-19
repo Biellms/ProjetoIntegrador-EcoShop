@@ -1,9 +1,10 @@
 import { AccountCircle } from '@mui/icons-material';
-import { Badge, IconButton, Menu, MenuItem } from '@mui/material';
+import { Badge, Divider, IconButton, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useState } from 'react';
 import './Navbar.css';
+import { Link } from 'react-router-dom';
 
 export function Navbar() {
 
@@ -64,9 +65,9 @@ export function Navbar() {
         <h2>EcoShop</h2>
       </div>
       <div className='header-nav'>
-        <h3 style={{cursor: 'pointer'}} >HOME</h3>
-        <h3 style={{cursor: 'pointer'}} >SOBRE</h3>
-        <h3 style={{cursor: 'pointer'}} >PRODUTOS</h3>
+        <h4 style={{cursor: 'pointer'}} >HOME</h4>
+        <h4 style={{cursor: 'pointer'}} >SOBRE</h4>
+        <h4 style={{cursor: 'pointer'}} >PRODUTOS</h4>
       </div>
       <div className='header-user'>
           <IconButton
@@ -105,9 +106,13 @@ export function Navbar() {
           open={Boolean(anchorEl)}
           onClose={handleCloseUser}
         >
-          <MenuItem onClick={handleCloseUser}>Seus Produtos</MenuItem>
-          <MenuItem onClick={handleCloseUser}>Cadastrar Produtos</MenuItem>
-          <MenuItem onClick={handleCloseUser}>Sair</MenuItem>
+          <MenuItem onClick={handleCloseUser} className='menu-item-text'>Olá, Usuário</MenuItem>
+          <Divider/>
+          <MenuItem onClick={handleCloseUser} className='menu-item-text'>Seus Produtos</MenuItem>
+          <MenuItem onClick={handleCloseUser} className='menu-item-text'>Cadastrar Produtos</MenuItem>
+          <Link to='/login'>
+          <MenuItem onClick={handleCloseUser} className='menu-item-text'>Sair</MenuItem>
+          </Link>
         </Menu>
       </div>
     </header>
