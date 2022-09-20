@@ -1,0 +1,16 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 82vh;
+    gap: 5px;
+}
+
+.h2 {
+    border-bottom: 1px solid;
+    padding: 5px;
+}
+
+.span {
+    font-size: 16px;
+}

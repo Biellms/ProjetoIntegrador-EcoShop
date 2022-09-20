@@ -6,6 +6,7 @@ import { Cadastro } from './pages/cadastro/Cadastro'
 import { Home } from './pages/home/Home'
 import { Navbar } from './components/navbar/Navbar'
 import { Footer } from './components/footer/Footer'
+import { NotFound } from './pages/404/404'
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
               handleRemoveCartTotal={handleRemoveCartTotal}
               handleRemoveAllCartTotal={handleRemoveAllCartTotal}
                 />} />
+            <Route path='*' element={ <NotFound /> } />
           </Routes>
         <Footer />
       </BrowserRouter>
