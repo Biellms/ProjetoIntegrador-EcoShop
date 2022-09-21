@@ -2,11 +2,14 @@ import { AccountCircle } from '@mui/icons-material';
 import { Badge, Divider, IconButton, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/providers/auth';
 
-export const Navbar = ({ cartTotal }) => {
+export const Navbar = () => {
+
+    const { total } = React.useContext(AuthContext)
 
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -81,7 +84,7 @@ export const Navbar = ({ cartTotal }) => {
                     aria-haspopup="true"
                     color="default"
                 >
-                    <Badge badgeContent={cartTotal} color='success'>
+                    <Badge badgeContent={total} color='success'>
                         <ShoppingCartIcon fontSize='large' />
                     </Badge>
                 </IconButton>
