@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext }  from "react";
 import { AuthContext } from "../../contexts/providers/auth";
 import './Home.css';
 
 export const Home = () => {
 
-    const { total, setTotal, removeTotal } = React.useContext(AuthContext)
+    const { total, setTotal, removeTotal } = useContext(AuthContext)
 
     return(
         <main>

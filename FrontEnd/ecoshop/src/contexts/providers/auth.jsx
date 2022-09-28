@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, createContext } from 'react'
 
-export const AuthContext = React.createContext({})
+export const AuthContext = createContext({})
 
 export const AuthProvider = (props) => {
 
     const [total, setTotal] = useState(0)
+    const user = {
+        name: 'Gabriel'
+    }
 
     function removeTotal() {
         if(total > 0) {
@@ -13,7 +16,7 @@ export const AuthProvider = (props) => {
     }
 
     return (
-        <AuthContext.Provider value={{total, setTotal, removeTotal}}>
+        <AuthContext.Provider value={{total, setTotal, removeTotal, user}}>
             {props.children}
         </AuthContext.Provider>
     );

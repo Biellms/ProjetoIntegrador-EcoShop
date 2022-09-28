@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import { CartContext, CartProvider } from './contexts/CartContext/Cartcontext'
 import { AuthProvider } from './contexts/providers/auth'
 import './main.css'
 
