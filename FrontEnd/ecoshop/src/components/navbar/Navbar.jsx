@@ -5,11 +5,11 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import React, { useContext, useState } from 'react';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../contexts/providers/auth';
+import { CartContext } from '../../contexts/providers/cartcontext';
 
 export const Navbar = () => {
 
-    const { total } = React.useContext(AuthContext)
+    const { total } = useContext(CartContext)
 
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
