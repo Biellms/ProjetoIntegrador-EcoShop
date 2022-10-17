@@ -42,3 +42,7 @@ header h2, h4 {
         display: none;
     }
 }
+
+.MuiTooltip-tooltip {
+    font-size: 15px !important;
+}
