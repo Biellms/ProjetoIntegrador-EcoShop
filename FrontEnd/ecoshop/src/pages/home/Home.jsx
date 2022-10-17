@@ -1,10 +1,10 @@
-import React, { useContext }  from "react";
-import { AuthContext } from "../../contexts/providers/auth";
+import React, { useContext } from "react";
+import { CartContext } from "../../contexts/providers/cartcontext";
 import './Home.css';
 
 export const Home = () => {
 
-    const { total, setTotal, removeTotal } = useContext(AuthContext)
+    const { total, setTotal, removeCarrinho } = useContext(CartContext)
 
     return(
         <main>
@@ -13,7 +13,7 @@ export const Home = () => {
                     <h1 onClick={() => setTotal(total + 1)}>Adicionar ao carrinho</h1>
                 </div>
                 <div>
-                    <h1 onClick={removeTotal}>Remover do carrinho</h1>
+                    <h1 onClick={removeCarrinho}>Remover do carrinho</h1>
                 </div>
             </section>
             <section className='main-section-2'>
