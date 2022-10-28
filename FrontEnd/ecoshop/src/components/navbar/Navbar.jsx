@@ -1,5 +1,5 @@
 import { AccountCircle } from '@mui/icons-material';
-import { Badge, Divider, IconButton, Menu, MenuItem } from '@mui/material';
+import { Badge, Divider, IconButton, Menu, MenuItem, Tooltip, Zoom } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import React, { useContext, useState } from 'react';
@@ -71,17 +71,19 @@ export const Navbar = () => {
                 <h4 >PRODUTOS</h4>
             </div>
             <div className='header-user'>
-                <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    color="default"
-                >
-                    <Badge badgeContent={total} color='success'>
-                        <ShoppingCartIcon fontSize='large' />
-                    </Badge>
-                </IconButton>
+                <Tooltip title='Carrinho' TransitionComponent={Zoom}>
+                    <IconButton
+                        size="large"
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        color="default"
+                    >
+                        <Badge badgeContent={total} color='success'>
+                            <ShoppingCartIcon fontSize='large' />
+                        </Badge>
+                    </IconButton>
+                </Tooltip>
                 <IconButton
                     size="large"
                     aria-label="account of current user"
@@ -101,7 +103,7 @@ export const Navbar = () => {
                     open={Boolean(anchorEl)}
                     onClose={handleCloseUser}
                 >
-                    <MenuItem onClick={handleCloseUser} className='menu-item-text'>Olá, Usuário</MenuItem>
+                    <MenuItem onClick={handleCloseUser} className='menu-item-text'>Usuário: {user.name}</MenuItem>
                     <Divider />
                     <MenuItem onClick={handleCloseUser} className='menu-item-text'>Seus Produtos</MenuItem>
                     <MenuItem onClick={handleCloseUser} className='menu-item-text'>Cadastrar Produtos</MenuItem>
