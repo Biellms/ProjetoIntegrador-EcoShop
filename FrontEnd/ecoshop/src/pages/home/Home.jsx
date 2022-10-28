@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../contexts/providers/cartcontext";
 import './Home.css';
+import './Media.css';
 
 export const Home = () => {
 

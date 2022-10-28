@@ -4,6 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import React, { useContext, useState } from 'react';
 import './Navbar.css';
+import './Media.css';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../contexts/providers/cartcontext';
 
