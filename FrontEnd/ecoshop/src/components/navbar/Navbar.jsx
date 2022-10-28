@@ -103,7 +103,7 @@ export const Navbar = () => {
                     open={Boolean(anchorEl)}
                     onClose={handleCloseUser}
                 >
-                    <MenuItem onClick={handleCloseUser} className='menu-item-text'>Usuário: {user.name}</MenuItem>
+                    <MenuItem onClick={handleCloseUser} className='menu-item-text'>Olá, Usuário</MenuItem>
                     <Divider />
                     <MenuItem onClick={handleCloseUser} className='menu-item-text'>Seus Produtos</MenuItem>
                     <MenuItem onClick={handleCloseUser} className='menu-item-text'>Cadastrar Produtos</MenuItem>

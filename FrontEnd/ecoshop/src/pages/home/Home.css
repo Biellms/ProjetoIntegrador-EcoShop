@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Roboto:wght@300;400&display=swap');
 
-.sectionHome {
+.section-home {
     width: 100%;
     height: 92vh;
     color: rgb(20, 20, 20);
@@ -13,8 +13,41 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.img-home {
-    height: 300px;
+.section-home-ecoshop {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.ecoshop-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.ecoshop-h1 {
+    font-size: 120px;
+    color: #97C160;
+}
+
+.ecoshop-h1-eco {
+    border-bottom: 5px solid #97C160;
+}
+
+.ecoshop-h1-shop {
+    color: #292729;
+}
+
+.ecoshop-img {
+    height: 150px;
+}
+
+.ecoshop-span {
+    font-size: 30px;
+    font-weight: bolder;
+    color: #292729;
 }
 
 .divHome {
@@ -57,24 +90,24 @@
     padding: 10px;
 }
 
-.sectionHome:nth-of-type(1){
-    background-image: url("../img/image1.jpg");
+.section-home:nth-of-type(1){
+    background-image: url("./img/image1.png");
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.sectionHome:nth-of-type(2){
+.section-home:nth-of-type(2){
     background-color: whitesmoke;
 }
 
-.sectionHome:nth-of-type(3){
-    background-image: url("../img/image2.jpg");
+.section-home:nth-of-type(3){
+    background-image: url("./img/image2.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.sectionHome:nth-of-type(4){
+.section-home:nth-of-type(4){
     background-color: whitesmoke;
 }
