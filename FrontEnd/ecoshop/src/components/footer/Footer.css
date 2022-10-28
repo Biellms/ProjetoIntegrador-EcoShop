@@ -8,7 +8,7 @@ footer {
     flex-direction: column;
     background: rgb(224, 251, 185);
     font-family: 'Paytone One', sans-serif;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.350);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.300);
     gap: 10px;
 }
 

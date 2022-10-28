@@ -46,15 +46,9 @@ export const Navbar = () => {
                 <Menu
                     id="menu-appbar"
                     anchorEl={anchorElNav}
-                    anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "left"
-                    }}
+                    anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                     keepMounted
-                    transformOrigin={{
-                        vertical: "top",
-                        horizontal: "left"
-                    }}
+                    transformOrigin={{ vertical: "top", horizontal: "left" }}
                     open={Boolean(anchorElNav)}
                     onClose={handleCloseNav}
                 >
@@ -101,15 +95,9 @@ export const Navbar = () => {
                 <Menu
                     id="menu-appbar"
                     anchorEl={anchorEl}
-                    anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "right"
-                    }}
+                    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
                     keepMounted
-                    transformOrigin={{
-                        vertical: "top",
-                        horizontal: "right"
-                    }}
+                    transformOrigin={{ vertical: "top", horizontal: "right" }}
                     open={Boolean(anchorEl)}
                     onClose={handleCloseUser}
                 >
