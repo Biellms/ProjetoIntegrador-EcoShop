@@ -4,3 +4,17 @@
     box-sizing: border-box;
     text-decoration: none;
 }
+
+body {
+    overflow: overlay;
+}
+
+::-webkit-scrollbar {
+    background: transparent;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lightgray;
+    border-radius: 5px;
+}

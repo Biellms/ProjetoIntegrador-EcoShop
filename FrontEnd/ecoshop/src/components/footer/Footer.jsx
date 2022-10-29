@@ -9,7 +9,10 @@ export const Footer = () => {
         <footer>
             <div className='footer-logo'>
                 <a href="https://github.com/Biellms/ProjetoIntegrador-EcoShop" target='_blank'>
-                    <h2>EcoShop</h2>
+                    <h2>
+                        <span className='ecoshop-header-eco'>Eco</span>
+                        <span className='ecoshop-header-shop'>Shop</span>    
+                    </h2>
                 </a>
             </div>
             <div className='footer-icons'>

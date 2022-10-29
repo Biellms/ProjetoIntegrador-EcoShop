@@ -1,0 +1,50 @@
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+
+    .ecoshop-h1 {
+        font-size: 100px;
+    }
+    
+    .ecoshop-img {
+        height: 100px;
+    }
+    
+    .ecoshop-span {
+        font-size: 25px;
+        font-weight: bolder;
+        color: #292729;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 551px){
+
+    .ecoshop-h1 {
+        font-size: 80px;
+    }
+    
+    .ecoshop-img {
+        height: 80px;
+    }
+    
+    .ecoshop-span {
+        font-size: 20px;
+        font-weight: bolder;
+        color: #292729;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    .ecoshop-h1 {
+        font-size: 50px;
+    }
+    
+    .ecoshop-img {
+        height: 50px;
+    }
+    
+    .ecoshop-span {
+        font-size: 15px;
+        font-weight: bolder;
+        color: #292729;
+    }
+}

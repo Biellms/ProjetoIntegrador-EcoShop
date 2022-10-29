@@ -4,6 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import React, { useContext, useState } from 'react';
 import './Navbar.css';
+import './Media.css';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../contexts/providers/cartcontext';
 
@@ -60,7 +61,10 @@ export const Navbar = () => {
             </div>
             <div className='header-logo'>
                 <Link to='/home'>
-                    <h2>EcoShop</h2>
+                    <h2>
+                    <span className='ecoshop-header-eco'>Eco</span>
+                    <span className='ecoshop-header-shop'>Shop</span>    
+                    </h2>
                 </Link>
             </div>
             <div className='header-nav'>
@@ -103,7 +107,7 @@ export const Navbar = () => {
                     open={Boolean(anchorEl)}
                     onClose={handleCloseUser}
                 >
-                    <MenuItem onClick={handleCloseUser} className='menu-item-text'>Usuário: {user.name}</MenuItem>
+                    <MenuItem onClick={handleCloseUser} className='menu-item-text'>Olá, Usuário</MenuItem>
                     <Divider />
                     <MenuItem onClick={handleCloseUser} className='menu-item-text'>Seus Produtos</MenuItem>
                     <MenuItem onClick={handleCloseUser} className='menu-item-text'>Cadastrar Produtos</MenuItem>
