@@ -61,7 +61,10 @@ export const Navbar = () => {
             </div>
             <div className='header-logo'>
                 <Link to='/home'>
-                    <h2>EcoShop</h2>
+                    <h2>
+                    <span className='ecoshop-header-eco'>Eco</span>
+                    <span className='ecoshop-header-shop'>Shop</span>    
+                    </h2>
                 </Link>
             </div>
             <div className='header-nav'>
