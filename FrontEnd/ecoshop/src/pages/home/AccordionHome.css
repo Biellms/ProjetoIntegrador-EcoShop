@@ -1,0 +1,9 @@
+.MuiAccordion-root {
+    box-shadow: none !important;
+}
+
+.home-p-accordion {
+    font-size: 15px;
+    text-align: justify;
+    line-height: 1.7em;
+}
