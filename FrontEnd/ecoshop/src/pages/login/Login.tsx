@@ -1,6 +1,10 @@
 import './Login.css'
 import { TextField, Paper, Button, styled  } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { ChangeEvent, useState, useEffect } from 'react';
+import UserLogin from '../../models/UserLogin';
+import useLocalStorage from 'react-use-localstorage';
+import { login } from '../../service/Service';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -24,6 +28,51 @@ const CssTextField = styled(TextField)({
 
 export const Login = () => {
 
+    let navigate = useNavigate();
+    const [token, setToken] = useLocalStorage('token');
+
+    const [userLogin, setUserLogin] = useState<UserLogin>({
+        id: 0,
+        nome: '',
+        usuario: '',
+        senha: '',
+        token: ''
+    })
+
+    // const [respUserLogin, setRespUserLogin] = useState<UserLogin>({
+    //     id: 0,
+    //     nome: '',
+    //     usuario: '',
+    //     senha: '',
+    //     token: ''
+    // })
+
+    function updatedModel(e: ChangeEvent<HTMLInputElement>) {
+
+        setUserLogin({
+            ...userLogin,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    useEffect(() => {
+        if(token != '') {
+            navigate('/home');
+        }
+    }, [token])
+
+    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+        e.preventDefault();
+
+        try {
+            await login(`/usuarios/logar`, userLogin, setToken)
+
+            alert('Usuário Logado com sucesso!')
+        } catch (error) {
+            alert('Dados inconsistêntes, por favor tente novamente!' + error)
+        }
+    }
+
     return(
         <div className='container'>
             <Paper elevation={12} className='login-card'>
@@ -38,21 +87,19 @@ export const Login = () => {
                     <h3>Sign In</h3>
                     <p>Logue para acessar</p>
                 </div>
-                <form className='login-card-form'>
+                <form onSubmit={onSubmit} className='login-card-form'>
                     <div className='login-card-form-input'>
                         <CssTextField id='usuario' label='Usuário' variant='outlined' name='usuario' fullWidth
-                            // value={userLogin.usuario}  onChange={(e) => updatedModel(e)}
+                            value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             />
                         <CssTextField id='senha' label='Senha' variant='outlined' name='senha' type='password' fullWidth
-                            // value={userLogin.senha}  onChange={(e) => updatedModel(e)}
+                            value={userLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             />
                     </div>
                     <div className='login-card-form-button'>
-                        {/* <Link to='/home'> */}
-                            <Button className='button-login' type='submit' variant="contained" fullWidth>
-                                Sign In
-                            </Button>
-                        {/* </Link> */}
+                        <Button className='button-login' type='submit' variant="contained" fullWidth>
+                            Sign In
+                        </Button>
                     </div>
                 </form>
                 <div>
