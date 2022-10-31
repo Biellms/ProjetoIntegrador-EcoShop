@@ -13,13 +13,22 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.button-sm {
+    color: #569854 !important;
+    border: 1px solid #569854 !important;
+}
+
+.button-sm:hover {
+    background-color: #5698541f !important;
+}
+
 /* SESSÃO 1 */
 .section-home:nth-of-type(1){
     background-image: url("./img/FundoHome2.png");
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 92vh;
 }
 
 .section-home-ecoshop {
@@ -66,7 +75,7 @@
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    min-height: 92vh;
+    min-height: 100vh;
     gap: 45px;
     border-top: 4px dashed #97C160 ;
 }
@@ -78,6 +87,7 @@
     flex-direction: column;
     gap: 20px;
     max-width: 700px;
+    width: 100%;
 }
 
 .home-span {
@@ -85,20 +95,10 @@
     transition: 0.3s;
 }
 
-/* .home-span:hover {
-    transition: 0.3s;
-    transform: scale(1.1);
-} */
-
 .home-h2 {
     font-weight: bolder;
     transition: 0.3s;
 }
-
-/* .home-h2:hover {
-    transition: 0.3s;
-    transform: scale(1.1);
-} */
 
 .home-p {
     font-size: 20px;
@@ -137,7 +137,7 @@
 .home-div2-box {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     gap: 20px;
     max-width: 700px;
@@ -161,6 +161,7 @@
     align-items: center;
     flex-direction: column;
     background-color: #FBF3E4;
+    min-height: 80vh;
 }
 
 .home-div3 {
@@ -175,12 +176,24 @@
 .home-div3-box {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     max-width: 700px;
-    gap: 10px;
 }
 
 .padding {
-    padding: 25px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* SESSÃO 4 */
+.section-home:nth-of-type(4){
+    background-image: url("./img/FundoHome2.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
 }
