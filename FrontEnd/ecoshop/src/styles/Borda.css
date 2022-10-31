@@ -1,0 +1,24 @@
+.borda-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.borda-line {
+    max-width: 250px;
+    width: 100%;
+    border: 1px solid #97C160;
+    background-color: #97C160;
+}
+
+.borda-squad {
+    height: 12px;
+    width: 12px;
+    transform: rotate(45deg);
+    background: #97C160;
+}
