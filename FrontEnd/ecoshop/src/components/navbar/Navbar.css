@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Roboto:wght@300;400&display=swap');
+
+header {
+    width: 100%;
+    min-height: 8vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    background: rgb(224, 251, 185);
+    font-family: 'Paytone One', sans-serif;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.300);
+    position: fixed;
+    z-index: 1;
+}
+
+header h2, h4 {
+    color: black;
+}
+
+.header-logo {
+    font-family: 'Paytone One', sans-serif;
+}
+
+.ecoshop-header-eco {
+    border-bottom: 3px solid #97C160;
+    color: #97C160;
+}
+
+.ecoshop-header-shop {
+    color: #292729;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.menu-item-text {
+    color: black !important;
+}
+
+.MuiTooltip-tooltip {
+    font-size: 15px !important;
+}

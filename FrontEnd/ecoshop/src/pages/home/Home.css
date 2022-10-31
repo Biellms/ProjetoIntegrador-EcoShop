@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Roboto:wght@300;400&display=swap');
+
+.section-home {
+    width: 100%;
+    color: rgb(20, 20, 20);
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    padding: 60px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.button-sm {
+    color: #569854 !important;
+    border: 1px solid #569854 !important;
+}
+
+.button-sm:hover {
+    background-color: #5698541f !important;
+}
+
+/* SESSÃO 1 */
+.section-home:nth-of-type(1){
+    background-image: url("../../../public/img/FundoHome2.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.section-home-ecoshop {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.ecoshop-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.ecoshop-h1 {
+    font-size: 120px;
+    color: #97C160;
+}
+
+.ecoshop-h1-eco {
+    border-bottom: 5px solid #97C160;
+}
+
+.ecoshop-h1-shop {
+    color: #292729;
+}
+
+.ecoshop-img {
+    height: 150px;
+}
+
+.ecoshop-span {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #292729;
+}
+
+/* SESSÃO 2 */
+.section-home:nth-of-type(2){
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    min-height: 92vh;
+    gap: 45px;
+    border-top: 4px dashed #97C160 ;
+}
+
+.home-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 700px;
+    width: 100%;
+}
+
+.home-span {
+    font-weight: bolder;
+    transition: 0.3s;
+}
+
+.home-h2 {
+    font-weight: bolder;
+    transition: 0.3s;
+}
+
+.home-p {
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.7em;
+}
+
+.home-box-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 25px;
+    width: 100%;
+    padding-right: 15px;
+}
+
+.button-comprar {
+    background-color: #09384F !important;
+}
+
+.button-vender {
+    background-color: #F2972D !important;
+}
+
+/* SESSÃO 2.1 */
+.home-div2 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+}
+
+.home-div2-box {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 700px;
+}
+
+.home-p2 {
+    font-size: 20px;
+    text-align: justify;
+    line-height: 1.7em;
+}
+
+.ecoshop-img-sessao2 {
+    height: 500px;
+}
+
+/* SESSÃO 3 */
+.section-home:nth-of-type(3){
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    background-color: #FBF3E4;
+    min-height: 80vh;
+}
+
+.home-div3 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+}
+
+.home-div3-box {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    max-width: 700px;
+}
+
+.padding {
+    padding-bottom: 25px;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* SESSÃO 4 */
+.section-home:nth-of-type(4){
+    background-image: url("../../../public/img/FundoHome2.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
