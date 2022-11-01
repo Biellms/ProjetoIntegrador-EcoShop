@@ -1,10 +1,9 @@
 import { Button, Paper, TextField, styled } from '@mui/material';
 import './Cadastro.css';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ChangeEvent, useEffect, useState } from 'react';
 import User from '../../model/User';
 import { cadastroUsuario } from '../../service/Service';
-import Swal from 'sweetalert2';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -64,18 +63,11 @@ export const Cadastro = () => {
         e.preventDefault()
         if (confirmarSenha == user.senha) {
             cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-            Swal.fire({
-                icon: 'success',
-                title: 'Boaaa...',
-                text: 'Usuário Logado com Sucesso!',
-              });
+            
+                alert('usuario cadastrado')
               navigate('/login')
         } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Erro ao Cadastrar',
-                text: 'Por favor, confira os dados inseridos!',
-              });
+            alert('Verifique os dados')
         }
     }
 
