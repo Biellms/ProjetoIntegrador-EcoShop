@@ -4,7 +4,14 @@ import './Comprar.css'
 export const Comprar = () => {
     return(
         <div className='container-comprar'>
-            <ListaProduto />
+            <div className='comprar-aside'>
+                <h3 className='aside-h3'>
+                    COMPRAR
+                </h3>
+            </div>
+            <div className='comprar-main'>
+                <ListaProduto />
+            </div>
         </div>
     );
 }

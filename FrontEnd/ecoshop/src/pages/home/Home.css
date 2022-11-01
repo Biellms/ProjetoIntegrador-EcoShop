@@ -118,10 +118,12 @@
 
 .button-comprar {
     background-color: #09384F !important;
+    height: 35px !important;
 }
 
 .button-vender {
     background-color: #F2972D !important;
+    height: 35px !important;
 }
 
 /* SESSÃO 2.1 */
