@@ -45,9 +45,9 @@ export const ListaUserProduto = () => {
 
     const listaProdutos = produto.filter(function (ele, pos) {
         if (ele.usuario?.id === id) {
-          return produto.indexOf(ele) === pos;
+            return produto.indexOf(ele) === pos;
         }
-      })
+    })
 
     return (
         <>
@@ -59,9 +59,14 @@ export const ListaUserProduto = () => {
                         </div>
                         <div className='card-body'>
                             <div className='card-body-info'>
-                                <span className='card-nome-produto'>
-                                    {post.nomeProduto}
-                                </span>
+                                <div className='card-body-info-vender'>
+                                    <span className='card-nome-produto'>
+                                        {post.nomeProduto}
+                                    </span>
+                                    <span className='card-nome-produto'>
+                                        $ {post.preco}
+                                    </span>
+                                </div>
                                 <span className='card-categoria text-color-verde-escuro'>
                                     {post.categoria?.nomeCategoria}
                                 </span>
@@ -71,9 +76,9 @@ export const ListaUserProduto = () => {
                                     {post.descricao}
                                 </p>
                             </div>
-                            <div className='div-button-valor'>
-                                <Button variant='outlined'>Add to card</Button>
-                                <span className='card-valor'>$ {post.preco}</span>
+                            <div className='div-button-valor-vender'>
+                                <Button variant='outlined'>Editar</Button>
+                                <Button variant='outlined'>Deletar</Button>
                             </div>
                         </div>
                     </div>

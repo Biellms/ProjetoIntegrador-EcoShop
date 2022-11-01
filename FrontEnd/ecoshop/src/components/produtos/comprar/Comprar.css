@@ -1,8 +1,9 @@
 .container-comprar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template: auto auto / 1fr 4fr;
+    grid-template-areas:
+        "a m";
+
     width: 100%;
     min-height: 92vh;
     padding-top: 12vh;
@@ -11,4 +12,29 @@
     padding-bottom: 50px;
     gap: 20px;
     background-color: whitesmoke;
+}
+
+.comprar-aside {
+    grid-area: a;
+    min-height: 81vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    border-right: 2px solid rgba(0, 0, 0, 0.449);
+}
+
+.comprar-main {
+    grid-area: m;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.aside-h3 {
+    font-family: 'Roboto', sans-serif;
 }

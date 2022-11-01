@@ -45,7 +45,9 @@
     gap: 5px;
 }
 
-.card-nome-produto {
+.card-body-info-vender {
+    display: flex;
+    justify-content: space-between;
     font-weight: bold;
     color: #484848;
 }
@@ -53,7 +55,6 @@
 .card-categoria {
     font-size: 15px;
     color: #569854;
-    /* font-weight: bold; */
 }
 
 .card-body p {
@@ -65,9 +66,9 @@
     text-align: justify;
 }
 
-.div-button-valor {
+.div-button-valor-vender {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
 }
