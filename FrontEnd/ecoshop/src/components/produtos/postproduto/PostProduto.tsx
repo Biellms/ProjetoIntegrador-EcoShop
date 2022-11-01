@@ -4,7 +4,7 @@ export const PostProduto = () => {
     return(
         <div className='container-post'>
             <span>
-               teste 
+               teste
             </span>
         </div>
     );

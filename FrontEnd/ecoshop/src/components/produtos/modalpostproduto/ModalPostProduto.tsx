@@ -11,7 +11,7 @@ export const ModalPostProduto = () => {
 
     return(
         <>
-            <Button onClick={handleOpen} variant="contained" className="button-vender">CADASTRAR PRODUTO</Button>
+            <Button onClick={handleOpen} variant="contained" className="button-vender">CADASTRAR</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
