@@ -1,6 +1,13 @@
 import './Login.css'
 import { TextField, Paper, Button, styled  } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2';
+import { useState, ChangeEvent, useEffect } from 'react';
+import { login } from '../../service/Service';
+import UserLogin from '../../model/UserLogin';
+import { addToken } from '../../store/tokens/actions';
+import { useDispatch } from 'react-redux';
+
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -24,6 +31,52 @@ const CssTextField = styled(TextField)({
 
 export const Login = () => {
 
+    const navigate = useNavigate();
+    // const dispatch = useDispatch();
+    const [token, setToken] = useState('');
+
+    const [userLogin, setUserLogin] = useState<UserLogin>({
+        id: 0,
+        usuario: '',
+        senha: '',
+        token: ''
+    })
+
+    function updatedModel(e: ChangeEvent<HTMLInputElement>) {
+        setUserLogin({
+            ...userLogin,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    useEffect(() => {
+        if (token != '') {
+            // dispatch(addToken(token))
+            // navigate('/home')
+        }
+    }, [token])
+
+    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+        e.preventDefault();
+
+        try {
+            await login('/usuarios/logar', userLogin, setToken)
+              Swal.fire({
+                icon: 'success',
+                title: 'Boaaa...',
+                text: 'Usuário Cadastrado com Sucesso!',
+              });
+              navigate('/home')
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro ao Logar',
+                text: 'Por favor, confira os dados inseridos!',
+              });
+        }
+    }
+
+
     return(
         <div className='container'>
             <Paper elevation={12} className='login-card'>
@@ -38,19 +91,17 @@ export const Login = () => {
                     <h3>Sign In</h3>
                     <p>Logue para acessar</p>
                 </div>
-                <form className='login-card-form'>
+                <form  onSubmit={onSubmit} className='login-card-form'>
                     <div className='login-card-form-input'>
-                        <CssTextField id='usuario' label='Usuário' variant='outlined' name='usuario' fullWidth
-                            // value={userLogin.usuario}  onChange={(e) => updatedModel(e)}
+                        <CssTextField value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='Usuário' variant='outlined' name='usuario' fullWidth
                             />
-                        <CssTextField id='senha' label='Senha' variant='outlined' name='senha' type='password' fullWidth
-                            // value={userLogin.senha}  onChange={(e) => updatedModel(e)}
+                        <CssTextField value={userLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='Senha' variant='outlined' name='senha' type='password' fullWidth
                             />
                     </div>
                     <div className='login-card-form-button'>
                         {/* <Link to='/home'> */}
                             <Button className='button-login' type='submit' variant="contained" fullWidth>
-                                Sign In
+                                Logar
                             </Button>
                         {/* </Link> */}
                     </div>
