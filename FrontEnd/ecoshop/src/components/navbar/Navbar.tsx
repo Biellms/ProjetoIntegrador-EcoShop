@@ -50,10 +50,14 @@ export const Navbar = () => {
                     open={Boolean(anchorElNav)}
                     onClose={handleCloseNav}
                 >
-                    <MenuItem onClick={handleCloseNav}>Home</MenuItem>
-                    <MenuItem onClick={handleCloseNav}>Comprar</MenuItem>
-                    <MenuItem onClick={handleCloseNav}>Carrinho</MenuItem>
-                    <MenuItem onClick={handleCloseNav}>Sobre</MenuItem>
+                    <Link to='/home'>
+                        <MenuItem onClick={handleCloseNav} className='menu-item-text'>Home</MenuItem>
+                    </Link>
+                    <Link to='/comprar'>
+                        <MenuItem onClick={handleCloseNav} className='menu-item-text'>Comprar</MenuItem>
+                    </Link>
+                    <MenuItem onClick={handleCloseNav} className='menu-item-text'>Carrinho</MenuItem>
+                    <MenuItem onClick={handleCloseNav} className='menu-item-text'>Sobre</MenuItem>
                 </Menu>
             </div>
             <div className='header-logo'>
@@ -68,7 +72,9 @@ export const Navbar = () => {
                 <Link to='/home'>
                     <h4 >HOME</h4>
                 </Link>
-                <h4 >COMPRAR</h4>
+                <Link to='/comprar'>
+                    <h4 >COMPRAR</h4>
+                </Link>
                 <h4 >SOBRE</h4>
             </div>
             <div className='header-user'>

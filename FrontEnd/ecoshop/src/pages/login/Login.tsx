@@ -1,9 +1,9 @@
 import './Login.css'
-import { TextField, Paper, Button, styled  } from '@mui/material'
-import { Link, useNavigate } from 'react-router-dom'
+import { TextField, Paper, Button, styled } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
 import { ChangeEvent, useState, useEffect } from 'react';
 import UserLogin from '../../models/UserLogin';
-import useLocalStorage from 'react-use-localstorage';
 import { login } from '../../service/Service';
 
 const CssTextField = styled(TextField)({
@@ -39,13 +39,13 @@ export const Login = () => {
         token: ''
     })
 
-    // const [respUserLogin, setRespUserLogin] = useState<UserLogin>({
-    //     id: 0,
-    //     nome: '',
-    //     usuario: '',
-    //     senha: '',
-    //     token: ''
-    // })
+    const [respUserLogin, setRespUserLogin] = useState<UserLogin>({
+        id: 0,
+        nome: '',
+        usuario: '',
+        senha: '',
+        token: ''
+    })
 
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
 
@@ -73,14 +73,14 @@ export const Login = () => {
         }
     }
 
-    return(
+    return (
         <div className='container'>
             <Paper elevation={12} className='login-card'>
                 <div className='login-card-logo'>
                     <h3>
                         <span className='ecoshop-header-eco'>ECO</span>
                         <span className='ecoshop-header-shop'>SHOP</span>
-                        <img src="./img/logoEcoshop.png" alt=""/>
+                        <img src="./img/logoEcoshop.png" alt="" />
                     </h3>
                 </div>
                 <div className='login-card-info'>
@@ -91,10 +91,10 @@ export const Login = () => {
                     <div className='login-card-form-input'>
                         <CssTextField id='usuario' label='Usuário' variant='outlined' name='usuario' fullWidth
                             value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-                            />
+                        />
                         <CssTextField id='senha' label='Senha' variant='outlined' name='senha' type='password' fullWidth
                             value={userLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-                            />
+                        />
                     </div>
                     <div className='login-card-form-button'>
                         <Button className='button-login' type='submit' variant="contained" fullWidth>
@@ -111,5 +111,5 @@ export const Login = () => {
                 </div>
             </Paper>
         </div>
-    );    
+    );
 }

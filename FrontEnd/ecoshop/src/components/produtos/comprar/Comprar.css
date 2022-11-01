@@ -1,8 +1,13 @@
 .container-comprar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     width: 100%;
     min-height: 92vh;
-    padding-top: 8vh;
+    padding-top: 12vh;
     padding-left: 50px;
     padding-right: 50px;
-    padding-bottom: 50px;   
+    padding-bottom: 50px;
+    gap: 20px;
 }
