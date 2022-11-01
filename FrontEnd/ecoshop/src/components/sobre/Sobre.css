@@ -67,8 +67,8 @@
 }
 
 .fundo-sessao{
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(212, 244, 235, 1) 40%, rgba(159, 215, 215, 1) 71%, rgba(137, 210, 196, 1) 100%);
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(204,252,189,1) 37%, rgba(201,236,180,1) 71%, rgba(158,214,143,1) 100%);
 }
 
 .objetivos h1 {
