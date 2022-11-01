@@ -34,10 +34,10 @@ export const Home = () => {
                         Onde, além de comprar, você também poderá vender seus produtos ecológios e sustentáveis!
                     </p>
                     <div className="home-box-button">
-                        <Link to='/home'>
+                        <Link to='/comprar'>
                             <Button variant="contained" className="button-comprar">COMPRAR</Button>
                         </Link>
-                        <Link to='/home'>
+                        <Link to='/vender'>
                             <Button variant="contained" className="button-vender">VENDER</Button>
                         </Link>
                     </div>

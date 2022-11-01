@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Roboto:wght@300;400&display=swap');
 
-.container {
-    min-height: 82vh;
+.container-login {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Roboto', sans-serif;
     padding: 30px;
+    background-image: url('../../../public/img/FundoHome1.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .login-card {
@@ -60,11 +65,4 @@
 
 .button-login:hover {
     background: #569854e0 !important;
-}
-
-@media screen and (max-width: 425px){
-    .login-card {
-        border: none !important;
-        box-shadow: none !important;
-    }
 }

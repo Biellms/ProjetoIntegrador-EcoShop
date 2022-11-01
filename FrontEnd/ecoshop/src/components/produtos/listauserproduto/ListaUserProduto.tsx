@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from '@mui/material';
-import './ListaProduto.css'
+import './ListaUserProduto.css'
 import Produto from '../../../models/Produto';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReduce';
 import { useNavigate } from 'react-router-dom';
 import { busca } from '../../../service/Service';
 
-export const ListaProduto = () => {
+export const ListaUserProduto = () => {
 
     const [produto, setProduto] = useState<Produto[]>([])
 
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
+    );
+
+    const id = useSelector<TokenState, TokenState["ids"]>(
+        (state) => state.ids
     );
 
     let navigate = useNavigate();
@@ -39,10 +43,16 @@ export const ListaProduto = () => {
 
     }, [produto.length])
 
+    const listaProdutos = produto.filter(function (ele, pos) {
+        if (ele.usuario?.id === id) {
+          return produto.indexOf(ele) === pos;
+        }
+      })
+
     return (
         <>
             {
-                produto.map(post => (
+                listaProdutos.map(post => (
                     <div className='card'>
                         <div className='card-img'>
                             <img src={post.imagem} alt="" />

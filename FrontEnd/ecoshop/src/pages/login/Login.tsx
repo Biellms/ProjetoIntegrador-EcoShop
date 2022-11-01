@@ -1,10 +1,13 @@
 import './Login.css'
 import { TextField, Paper, Button, styled } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import { ChangeEvent, useState, useEffect } from 'react';
 import UserLogin from '../../models/UserLogin';
 import { login } from '../../service/Service';
+import { useDispatch } from 'react-redux';
+import { addId, addName, addToken } from '../../store/tokens/actions';
+// import { TokenState } from '../../store/tokens/tokensReduce';
+// import { useSelector } from 'react-redux';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -29,7 +32,12 @@ const CssTextField = styled(TextField)({
 export const Login = () => {
 
     let navigate = useNavigate();
-    const [token, setToken] = useLocalStorage('token');
+    const dispatch = useDispatch();
+    // const [token, setToken] = useLocalStorage('token');
+
+    // const token = useSelector<TokenState, TokenState["tokens"]>(
+    //     (state) => state.tokens
+    // );
 
     const [userLogin, setUserLogin] = useState<UserLogin>({
         id: 0,
@@ -56,16 +64,19 @@ export const Login = () => {
     }
 
     useEffect(() => {
-        if(token != '') {
-            navigate('/home');
+        if (respUserLogin.token !== '') {
+            dispatch(addToken(respUserLogin.token))
+            dispatch(addId(respUserLogin.id))
+            dispatch(addName(respUserLogin.nome))
+            navigate('/home')
         }
-    }, [token])
+    }, [respUserLogin.token])
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
 
         try {
-            await login(`/usuarios/logar`, userLogin, setToken)
+            await login("/usuarios/logar", userLogin, setRespUserLogin)
 
             alert('Usuário Logado com sucesso!')
         } catch (error) {
@@ -74,7 +85,7 @@ export const Login = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='container-login'>
             <Paper elevation={12} className='login-card'>
                 <div className='login-card-logo'>
                     <h3>

@@ -72,7 +72,7 @@ export const Cadastro = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='container-login'>
             <Paper elevation={12} className='cadastro-card'>
                 <div className='login-card-logo'>
                     <h3>
