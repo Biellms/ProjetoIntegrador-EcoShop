@@ -1,0 +1,102 @@
+.section-home {
+    width: 100%;
+    color: rgb(20, 20, 20);
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    padding: 60px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.button-sm {
+    color: #569854 !important;
+    border: 1px solid #569854 !important;
+}
+
+.button-sm:hover {
+    background-color: #5698541f !important;
+}
+
+/* SESSÃO 1 */
+.section-home:nth-of-type(1) {
+    background-image: url("../../../public/img/FundoHome2.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.section-home-ecoshop {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.ecoshop-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.ecoshop-h1 {
+    font-size: 120px;
+    color: #97C160;
+}
+
+.ecoshop-h1-eco {
+    border-bottom: 5px solid #97C160;
+}
+
+.ecoshop-h1-shop {
+    color: #292729;
+}
+
+.ecoshop-img {
+    height: 150px;
+}
+
+.ecoshop-span {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #292729;
+}
+
+.fundo-sessao{
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(212, 244, 235, 1) 40%, rgba(159, 215, 215, 1) 71%, rgba(137, 210, 196, 1) 100%);
+}
+
+.objetivos h1 {
+    
+    text-align: center;
+    padding: 15px 0px;
+    text-transform: uppercase;
+}
+
+.lista-objetivos {
+    padding: 30px;
+}
+
+.lista-objetivos ul {
+    padding: 10px 40px;
+}
+
+.lista-objetivos li {
+    padding: 10px 0px;
+    font-size: 16px;
+}
+
+.subtitulo h2 {
+    text-align: center;
+}
+
+.cards {
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+}

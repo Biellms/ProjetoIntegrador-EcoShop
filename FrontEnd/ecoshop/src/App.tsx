@@ -9,6 +9,7 @@ import { Comprar } from './components/produtos/comprar/Comprar';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import { Vender } from './components/produtos/vender/Vender';
+import { Sobre } from './components/sobre/Sobre';
 function App() {
 
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/comprar' element={<Comprar />} />
             <Route path='/vender' element={<Vender />} />
+            <Route path='/sobre' element={<Sobre />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
           <Footer />
