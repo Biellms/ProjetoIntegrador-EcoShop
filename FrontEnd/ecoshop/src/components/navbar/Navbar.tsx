@@ -89,7 +89,9 @@ export const Navbar = () => {
                     <MenuItem onClick={handleCloseNav} className='menu-item-text'>Feed de Produtos</MenuItem>
                 </Link>
                 <MenuItem onClick={handleCloseNav} className='menu-item-text'>Carrinho</MenuItem>
-                <MenuItem onClick={handleCloseNav} className='menu-item-text'>Sobre</MenuItem>
+                <Link to='/sobre'>
+                    <MenuItem onClick={handleCloseNav} className='menu-item-text'>Sobre</MenuItem>
+                </Link>
             </Menu>
         </div>
         <div className='header-logo'>
