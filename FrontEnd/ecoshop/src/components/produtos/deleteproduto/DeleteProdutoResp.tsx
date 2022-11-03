@@ -105,8 +105,8 @@ export const DeleteProdutoResp = () => {
                         Categoria: {post?.categoria?.nomeCategoria}
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={sim}>Confirmar</Button>
+                <DialogActions className='button-deletar'>
+                    <Button variant='contained' onClick={sim}>Confirmar</Button>
                     <Button onClick={handleClose}>Voltar</Button>
                 </DialogActions>
             </Dialog>

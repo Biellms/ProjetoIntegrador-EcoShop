@@ -1,0 +1,8 @@
+.button-deletar {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 15px !important;
+    padding: 20px !important;
+}

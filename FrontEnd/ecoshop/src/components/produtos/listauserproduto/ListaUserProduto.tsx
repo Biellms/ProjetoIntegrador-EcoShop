@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import { busca } from '../../../service/Service';
 import { Link } from 'react-router-dom';
 import { DeleteProduto } from '../deleteproduto/DeleteProduto';
-import { ModalPutProduto } from '../modalpostproduto/ModalPutProduto';
 
 export const ListaUserProduto = () => {
 
@@ -80,10 +79,8 @@ export const ListaUserProduto = () => {
                                 </p>
                             </div>
                             <div className='div-button-valor-vender'>
-                                <Link to={`/editarProduto/${post.id}`} className='link-decorator'>
-                                    <ModalPutProduto/>
-                                </Link>
-                                <Link to={`/deletarProduto/${post.id}`} className='link-decorator'>
+                                    <Button variant='contained'>Editar</Button>
+                                <Link to={`/apiProduto/${post.id}`} className='link-decorator'>
                                     <DeleteProduto />
                                 </Link>
                             </div>

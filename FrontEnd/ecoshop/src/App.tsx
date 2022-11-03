@@ -27,11 +27,9 @@ function App() {
             <Route path='/sobre' element={<Sobre />} />
             <Route path='/comprar' element={<Comprar />} />
             <Route path='/vender' element={<Vender />} />
-            <Route path='/deletarProduto/:id' element={ <Vender />} />
+            <Route path='/apiProduto/:id' element={ <Vender />} />
             <Route path='/venderResp' element={<VenderResp />} />
-            <Route path='/deletarProdutoResp/:id' element={ <VenderResp />} />
-            <Route path='/editarProduto/:id' element={ <Vender />} />
-            <Route path='/editarProdutoResp/:id' element={ <VenderResp />} />
+            <Route path='/apiProdutoResp/:id' element={ <VenderResp />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
           <Footer />

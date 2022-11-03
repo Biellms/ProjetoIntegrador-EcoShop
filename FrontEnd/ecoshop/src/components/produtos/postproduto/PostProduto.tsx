@@ -78,6 +78,7 @@ export const PostProduto = () => {
         descricao: '',
         preco: 0,
         imagem: '',
+        categoria: null,
         usuario: user
     })
 
@@ -128,7 +129,6 @@ export const PostProduto = () => {
             })
 
             alert('Produto atualizado com sucesso')
-            navigate('/VenderResp')
         } else {
             post(`/produtos`, produto, setProduto, {
                 headers: {
@@ -136,7 +136,7 @@ export const PostProduto = () => {
                 }
             })
 
-            alert('Produto cadastrado com sucesso')
+            alert('Produto Cadastrado com sucesso')
         }
         navigate('/VenderResp')
     }

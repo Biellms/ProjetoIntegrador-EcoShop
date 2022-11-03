@@ -1,9 +1,10 @@
-import { ListaUserProduto } from '../listauserproduto/ListaUserProduto';
 import { ModalPostProduto } from '../modalpostproduto/ModalPostProduto';
-import CachedIcon from '@mui/icons-material/Cached';
 import './Vender.css'
+import { ListaUserProduto } from '../listauserproduto/ListaUserProduto';
+
 
 export const Vender = () => {
+
     return (
         <div className='container-vender'>
             <div className='vender-aside'>
@@ -13,7 +14,7 @@ export const Vender = () => {
                 <ModalPostProduto />
             </div>
             <div className='vender-main'>
-                <ListaUserProduto />
+                <ListaUserProduto/>
             </div>
         </div>
     );

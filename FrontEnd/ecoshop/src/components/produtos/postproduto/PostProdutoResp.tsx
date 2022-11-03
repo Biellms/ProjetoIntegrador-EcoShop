@@ -128,7 +128,6 @@ export const PostProdutoResp = () => {
             })
 
             alert('Produto atualizado com sucesso')
-            navigate('/Vender')
         } else {
             post(`/produtos`, produto, setProduto, {
                 headers: {
