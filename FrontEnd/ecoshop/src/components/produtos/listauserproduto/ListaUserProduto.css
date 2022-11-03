@@ -91,3 +91,9 @@
 .card:hover .card-img img {
     transform: scale(1.2) rotate(5deg);
 }
+
+
+.link-decorator:hover {
+    background: none !important;
+    transform: none !important;
+}

@@ -38,3 +38,26 @@
 .aside-h3 {
     font-family: 'Roboto', sans-serif;
 }
+
+@media screen and (max-width: 768px) and (min-width: 551px){
+
+    .container-comprar {
+        grid-template-areas:
+            "m m";
+    }
+
+    .comprar-aside {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .container-comprar {
+        grid-template-areas:
+            "m m";
+    }
+
+    .comprar-aside {
+        display: none;
+    }
+}

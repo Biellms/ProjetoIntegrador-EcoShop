@@ -98,6 +98,7 @@
 .home-h2 {
     font-weight: bolder;
     transition: 0.3s;
+    text-align: center;
 }
 
 .home-p {
@@ -173,6 +174,7 @@
     flex-direction: row;
     gap: 20px;
     width: 100%;
+    text-align: center;
 }
 
 .home-div3-box {

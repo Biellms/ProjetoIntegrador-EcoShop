@@ -1,5 +1,6 @@
 import { ListaProduto } from '../listaproduto/ListaProduto';
 import './Comprar.css'
+// import './MediaComprar.css'
 
 export const Comprar = () => {
     return(

@@ -7,10 +7,11 @@ import { TokenState } from '../../../store/tokens/tokensReduce';
 import { useNavigate } from 'react-router-dom';
 import { busca } from '../../../service/Service';
 import { Link } from 'react-router-dom';
-import { DeleteProduto } from '../deleteproduto/DeleteProduto';
+import { DeleteProdutoResp } from '../deleteproduto/DeleteProdutoResp';
 import { ModalPutProduto } from '../modalpostproduto/ModalPutProduto';
+import { ModalPutProdutoResp } from '../modalpostproduto/ModalPutProdutoResp';
 
-export const ListaUserProduto = () => {
+export const ListaUserProdutoResp = () => {
 
     const [produto, setProduto] = useState<Produto[]>([])
 
@@ -80,11 +81,11 @@ export const ListaUserProduto = () => {
                                 </p>
                             </div>
                             <div className='div-button-valor-vender'>
-                                <Link to={`/editarProduto/${post.id}`} className='link-decorator'>
-                                    <ModalPutProduto/>
+                                <Link to={`/editarProdutoResp/${post.id}`} className='link-decorator'>
+                                    <ModalPutProdutoResp />
                                 </Link>
-                                <Link to={`/deletarProduto/${post.id}`} className='link-decorator'>
-                                    <DeleteProduto />
+                                <Link to={`/deletarProdutoResp/${post.id}`} className='link-decorator'>
+                                    <DeleteProdutoResp />
                                 </Link>
                             </div>
                         </div>

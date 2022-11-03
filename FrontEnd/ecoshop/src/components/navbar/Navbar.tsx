@@ -145,9 +145,11 @@ export const Navbar = () => {
                 <MenuItem onClick={handleCloseUser} className='menu-item-text'>{name}</MenuItem>
                 <Divider />
                 <Link to='/vender'>
-                    <MenuItem onClick={handleCloseUser} className='menu-item-text'>Seus Produtos</MenuItem>
+                    <MenuItem onClick={handleCloseUser} className='menu-item-text'>Meus Produtos</MenuItem>
                 </Link>
-                <MenuItem onClick={handleCloseUser} className='menu-item-text'>Cadastrar Produtos</MenuItem>
+                <Link to='/vender'>
+                    <MenuItem onClick={handleCloseUser} className='menu-item-text'>Cadastrar Produtos</MenuItem>
+                </Link>
                 <Link to='/login'>
                     <MenuItem onClick={handleGoLogout} className='menu-item-text'>Sair</MenuItem>
                 </Link>

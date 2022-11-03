@@ -30,6 +30,14 @@
         font-weight: bolder;
         color: #292729;
     }
+
+    .home-div2 {
+        flex-wrap: wrap;
+    }
+
+    .ecoshop-img-sessao2 {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 550px) {
@@ -46,5 +54,13 @@
         font-size: 15px;
         font-weight: bolder;
         color: #292729;
+    }
+
+    .home-div2 {
+        flex-wrap: wrap;
+    }
+
+    .ecoshop-img-sessao2 {
+        display: none;
     }
 }

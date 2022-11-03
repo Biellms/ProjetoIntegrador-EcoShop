@@ -35,3 +35,25 @@
     gap: 20px;
 }
 
+@media screen and (max-width: 768px) and (min-width: 551px){
+
+    .container-vender {
+        grid-template-areas:
+            "m m";
+    }
+
+    .vender-aside {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .container-vender {
+        grid-template-areas:
+            "m m";
+    }
+
+    .vender-aside {
+        display: none;
+    }
+}

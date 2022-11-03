@@ -2,10 +2,28 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { AccordionHome } from "../../components/styles/according/AccordionHome";
 import { Borda } from "../../components/styles/border/Borda";
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokens/tokensReduce';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import './Media.css';
 
 export const Home = () => {
+
+    let navigate = useNavigate();
+
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    );
+
+    useEffect(() => {
+        if (token == "") {
+            
+            alert('Você precisa estar logado!')
+            navigate('/login')
+        }
+    }, [token])
 
     return (
         <>

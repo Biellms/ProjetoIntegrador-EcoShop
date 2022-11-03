@@ -11,20 +11,17 @@ import { addId, addName, addToken } from '../../store/tokens/actions';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
-        color: '#70A25C',
+        color: '#97C160',
     },
     '& .MuiInput-underline:after': {
         borderBottomColor: 'black',
     },
-    '& .MuiInputBase-input': {
-        color: '#70A25C',
-    },
     '& .MuiOutlinedInput-root': {
         '&:hover fieldset': {
-            borderColor: '#70A25C',
+            borderColor: '#97C160',
         },
         '&.Mui-focused fieldset': {
-            borderColor: '#70A25C',
+            borderColor: '#97C160',
         },
     },
 });
@@ -33,11 +30,6 @@ export const Login = () => {
 
     let navigate = useNavigate();
     const dispatch = useDispatch();
-    // const [token, setToken] = useLocalStorage('token');
-
-    // const token = useSelector<TokenState, TokenState["tokens"]>(
-    //     (state) => state.tokens
-    // );
 
     const [userLogin, setUserLogin] = useState<UserLogin>({
         id: 0,

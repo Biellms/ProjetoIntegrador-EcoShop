@@ -9,6 +9,8 @@ import { Comprar } from './components/produtos/comprar/Comprar';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import { Vender } from './components/produtos/vender/Vender';
+import { VenderResp } from './components/produtos/vender/VenderResp';
+
 function App() {
 
   return (
@@ -23,6 +25,11 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/comprar' element={<Comprar />} />
             <Route path='/vender' element={<Vender />} />
+            <Route path='/deletarProduto/:id' element={ <Vender />} />
+            <Route path='/venderResp' element={<VenderResp />} />
+            <Route path='/deletarProdutoResp/:id' element={ <VenderResp />} />
+            <Route path='/editarProduto/:id' element={ <Vender />} />
+            <Route path='/editarProdutoResp/:id' element={ <VenderResp />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
           <Footer />

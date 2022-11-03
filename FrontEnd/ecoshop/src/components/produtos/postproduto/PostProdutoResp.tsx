@@ -26,7 +26,7 @@ const CssTextField = styled(TextField)({
     },
 });
 
-export const PostProduto = () => {
+export const PostProdutoResp = () => {
 
     const handleClose = () => setOpen(true);
     const [open, setOpen] = useState(false);
@@ -45,7 +45,7 @@ export const PostProduto = () => {
     useEffect(() => {
         if (open) {
 
-            navigate('/VenderResp')
+            navigate('/Vender')
         }
     }, [open])
 
@@ -128,7 +128,7 @@ export const PostProduto = () => {
             })
 
             alert('Produto atualizado com sucesso')
-            navigate('/VenderResp')
+            navigate('/Vender')
         } else {
             post(`/produtos`, produto, setProduto, {
                 headers: {
@@ -138,7 +138,7 @@ export const PostProduto = () => {
 
             alert('Produto cadastrado com sucesso')
         }
-        navigate('/VenderResp')
+        navigate('/Vender')
     }
 
     return (
