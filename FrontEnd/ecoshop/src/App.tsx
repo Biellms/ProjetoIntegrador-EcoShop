@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import { Vender } from './components/produtos/vender/Vender';
 import { VenderResp } from './components/produtos/vender/VenderResp';
+import { Sobre } from './components/sobre/Sobre';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/cadastro' element={<Cadastro />} />
             <Route path='/home' element={<Home />} />
+            <Route path='/sobre' element={<Sobre />} />
             <Route path='/comprar' element={<Comprar />} />
             <Route path='/vender' element={<Vender />} />
             <Route path='/deletarProduto/:id' element={ <Vender />} />

@@ -107,7 +107,11 @@ export const Navbar = () => {
             <Link to='/comprar'>
                 <h4 >FEED DE PRODUTOS</h4>
             </Link>
-            <h4 >SOBRE</h4>
+
+            <Link to='/sobre'>
+                <h4 >SOBRE</h4>
+            </Link>
+            
         </div>
         <div className='header-user'>
             <Tooltip title='Carrinho' TransitionComponent={Zoom}>
