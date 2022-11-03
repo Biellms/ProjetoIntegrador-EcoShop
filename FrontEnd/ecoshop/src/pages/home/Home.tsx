@@ -8,6 +8,8 @@ import { TokenState } from '../../store/tokens/tokensReduce';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import './Media.css';
+// import { useCartContext } from "../../context/useCartContext";
+// import { TextApi } from "../text/text";
 
 export const Home = () => {
 
@@ -16,6 +18,8 @@ export const Home = () => {
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
+
+    // const { loggedIn, setLoggedIn } = useCartContext()
 
     useEffect(() => {
         if (token == "") {
@@ -58,6 +62,12 @@ export const Home = () => {
                         <Link to='/vender'>
                             <Button variant="contained" className="button-vender">VENDER</Button>
                         </Link>
+                            {/* <Button variant="contained" className="button-vender" onClick={() => setLoggedIn(!loggedIn)}>
+                                Context API
+                            </Button>
+                            {!loggedIn && 
+                                <TextApi/>   
+                            } */}
                     </div>
                 </div>
                 <Borda />
