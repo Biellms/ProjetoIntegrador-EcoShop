@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Button } from '@mui/material';
 import './ListaProduto.css'
 import Produto from '../../../models/Produto';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReduce';
 import { useNavigate } from 'react-router-dom';
-import { busca } from '../../../service/Service';
+import { busca, post } from '../../../service/Service';
+import { CartContext } from '../../../context/CartContext';
+import { toast } from 'react-toastify';
 
 export const ListaProduto = () => {
 
     const [produto, setProduto] = useState<Produto[]>([])
+    const { addProdutoCarrinho, carrinho } = useContext(CartContext)
+    // const [ amount, setAmount] = useState(0)
 
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
@@ -27,7 +31,17 @@ export const ListaProduto = () => {
 
     useEffect(() => {
         if (token == '') {
-            alert('Você precisa estar logado')
+
+            toast.error('Usuário precisa estar logado!', {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            });
 
             navigate('/login')
         }
@@ -38,6 +52,16 @@ export const ListaProduto = () => {
         getProduto()
 
     }, [produto.length])
+
+    // useEffect(() => {
+
+    //     if(amount > 0) {
+    //         const insideCarrinho = carrinho.some((item => item.nomeProduto ===  produto.nomeProduto))
+    //         if(!insideCarrinho) {
+    //             setAmount(0)
+    //         }
+    //     }
+    // }, [carrinho])
 
     return (
         <>
@@ -62,7 +86,11 @@ export const ListaProduto = () => {
                                 </p>
                             </div>
                             <div className='div-button-valor'>
-                                <Button variant='outlined'>Add to card</Button>
+                                <Button variant='outlined' onClick={() => {
+                                    addProdutoCarrinho(post)
+                                }}>
+                                    Add to card
+                                </Button>
                                 <span className='card-valor'>$ {post.preco}</span>
                             </div>
                         </div>

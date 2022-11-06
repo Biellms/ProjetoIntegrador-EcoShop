@@ -1,6 +1,5 @@
-import { ListaProduto } from '../listaproduto/ListaProduto';
+import { ListaProduto } from '../../components/produtos/listaproduto/ListaProduto';
 import './Comprar.css'
-// import './MediaComprar.css'
 
 export const Comprar = () => {
     return(

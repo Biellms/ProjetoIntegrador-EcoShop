@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import User from '../../../models/User';
 import Produto from '../../../models/Produto';
 import { busca, buscaId, post, put } from '../../../service/Service';
+import { toast } from 'react-toastify';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -32,7 +33,7 @@ export const PostProdutoResp = () => {
     const [open, setOpen] = useState(false);
     const { id } = useParams<{ id: string }>();
     const [categorias, setCategorias] = useState<Categoria[]>([])
-    
+
     const idUser = useSelector<TokenState, TokenState["ids"]>(
         (state) => state.ids
     )
@@ -51,7 +52,16 @@ export const PostProdutoResp = () => {
 
     useEffect(() => {
         if (token == "") {
-            alert("Você precisa estar logado!")
+            toast.error('Você precisa estar logado!', {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            });
 
             navigate("/login")
         }
@@ -127,7 +137,16 @@ export const PostProdutoResp = () => {
                 }
             })
 
-            alert('Produto atualizado com sucesso')
+            toast.success('Produto atualizado com sucesso!', {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            });
         } else {
             post(`/produtos`, produto, setProduto, {
                 headers: {
@@ -135,66 +154,73 @@ export const PostProdutoResp = () => {
                 }
             })
 
-            alert('Produto cadastrado com sucesso')
+            toast.success('Produto cadastrado com sucesso!', {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            });
         }
         navigate('/Vender')
     }
 
     return (
-        <div className='container-post'>
-            <Paper elevation={12} className='post-card'>
-                <div className='post-card-logo'>
-                    <h3>
-                        <span className='ecoshop-header-eco'>ECO</span>
-                        <span className='ecoshop-header-shop'>SHOP</span>
-                        <img src="./img/logoEcoshop.png" alt="" />
-                    </h3>
-                </div>
-                <div className='post-card-info'>
-                    <h3>Preencha os campos</h3>
-                </div>
-                <form onSubmit={onSubmit} className='post-card-form'>
-                    <div className='post-card-form-input'>
-                        <CssTextField id='nomeProduto' label='Nome do Produto' variant='outlined' name='nomeProduto' fullWidth
+        <Paper elevation={12} className='post-card'>
+            <div className='post-card-logo'>
+                <h3>
+                    <span className='ecoshop-header-eco'>ECO</span>
+                    <span className='ecoshop-header-shop'>SHOP</span>
+                    <img src="./img/logoEcoshop.png" alt="" />
+                </h3>
+            </div>
+            <div className='post-card-info'>
+                <h3>Preencha os campos</h3>
+            </div>
+            <form onSubmit={onSubmit} className='post-card-form'>
+                <div className='post-card-form-input'>
+                    <CssTextField id='nomeProduto' label='Nome do Produto' variant='outlined' name='nomeProduto' fullWidth
                         value={produto.nomeProduto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)}
-                        />
-                        <CssTextField id='descricao' label='Descrição do Produto' variant='outlined' name='descricao' fullWidth
+                    />
+                    <CssTextField id='descricao' label='Descrição do Produto' variant='outlined' name='descricao' fullWidth
                         value={produto.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)}
-                        />
-                        <CssTextField id='preco' label='Preço' variant='outlined' name='preco' fullWidth
+                    />
+                    <CssTextField id='preco' label='Preço' variant='outlined' name='preco' fullWidth
                         value={produto.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)}
-                        />
-                        <CssTextField id='imagem' label='URL da Imagem' variant='outlined' name='imagem' fullWidth
+                    />
+                    <CssTextField id='imagem' label='URL da Imagem' variant='outlined' name='imagem' fullWidth
                         value={produto.imagem} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)}
-                        />
-                        <FormControl variant="standard" fullWidth>
-                            <InputLabel id="input-categoria-label">Categoria</InputLabel>
-                            <Select
-                                labelId="input-categoria-label"
-                                id="input-categoria"
-                                onChange={(e) => buscaId(`/categorias/${e.target.value}`, setCategoria, {
-                                    headers: {
-                                        'Authorization': token
-                                    }
-                                })}>
-                                    {
-                                        categorias.map(categoria => (
-                                            <MenuItem value={categoria.id}>{categoria.nomeCategoria}</MenuItem>
-                                        ))
-                                    }
-                            </Select>
-                        </FormControl>
-                    </div>
-                    <div className='post-card-form-button'>
-                        <Button className='button-post' type='submit' variant="contained">
-                            Confirmar
-                        </Button>
-                        <Button variant="outlined" onClick={handleClose}>
-                            Cancelar
-                        </Button>
-                    </div>
-                </form>
-            </Paper>
-        </div>
+                    />
+                    <FormControl variant="standard" fullWidth>
+                        <InputLabel id="input-categoria-label">Categoria</InputLabel>
+                        <Select
+                            labelId="input-categoria-label"
+                            id="input-categoria"
+                            onChange={(e) => buscaId(`/categorias/${e.target.value}`, setCategoria, {
+                                headers: {
+                                    'Authorization': token
+                                }
+                            })}>
+                            {
+                                categorias.map(categoria => (
+                                    <MenuItem value={categoria.id}>{categoria.nomeCategoria}</MenuItem>
+                                ))
+                            }
+                        </Select>
+                    </FormControl>
+                </div>
+                <div className='post-card-form-button'>
+                    <Button className='button-post' type='submit' variant="contained">
+                        Confirmar
+                    </Button>
+                    <Button variant="outlined" onClick={handleClose}>
+                        Cancelar
+                    </Button>
+                </div>
+            </form>
+        </Paper>
     );
 }

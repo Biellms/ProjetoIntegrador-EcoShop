@@ -8,8 +8,7 @@ import { TokenState } from '../../store/tokens/tokensReduce';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import './Media.css';
-// import { useCartContext } from "../../context/useCartContext";
-// import { TextApi } from "../text/text";
+import { toast } from 'react-toastify';
 
 export const Home = () => {
 
@@ -19,12 +18,20 @@ export const Home = () => {
         (state) => state.tokens
     );
 
-    // const { loggedIn, setLoggedIn } = useCartContext()
-
     useEffect(() => {
         if (token == "") {
             
-            alert('Você precisa estar logado!')
+            toast.error('Usuário precisa estar logado!', {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            });
+
             navigate('/login')
         }
     }, [token])
@@ -62,12 +69,6 @@ export const Home = () => {
                         <Link to='/vender'>
                             <Button variant="contained" className="button-vender">VENDER</Button>
                         </Link>
-                            {/* <Button variant="contained" className="button-vender" onClick={() => setLoggedIn(!loggedIn)}>
-                                Context API
-                            </Button>
-                            {!loggedIn && 
-                                <TextApi/>   
-                            } */}
                     </div>
                 </div>
                 <Borda />

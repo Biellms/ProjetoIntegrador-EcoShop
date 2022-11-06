@@ -1,18 +1,106 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, ReactNode } from "react";
+import { Cart as ProdutoCarrinho, CartApi } from '../types/types'
+import { toast } from 'react-toastify';
 
-interface CartProviderProps{
-  children: React.ReactNode
+const defaultValue = {
+    carrinho: [],
+    addProdutoCarrinho: () => { },
+    removeProdutoCarrinho: () => { },
+    deleteProdutoCarrinho: () => { },
+    clearAllCarrinho: () => { }
 }
 
-export const CartContext = createContext({loggedIn: false, setLoggedIn: (loggedIn: boolean) => {}});
+interface CarrinhoProps {
+    carrinho: ProdutoCarrinho[],
+    addProdutoCarrinho: (cart: CartApi) => void,
+    removeProdutoCarrinho: (cart: CartApi) => void,
+    deleteProdutoCarrinho: (cart: ProdutoCarrinho) => void,
+    clearAllCarrinho: () => void
+}
+
+export const CartContext = createContext<CarrinhoProps>(defaultValue)
+
+interface CartProviderProps {
+    children: ReactNode
+}
 
 export const CartProvider = ({ children }: CartProviderProps) => {
 
-  const [loggedIn, setLoggedIn] = useState(false);
+    const [carrinho, setCarrinho] = useState<ProdutoCarrinho[]>([])
 
-  return (
-    <CartContext.Provider value={{ loggedIn, setLoggedIn }}>
-      {children}
-    </CartContext.Provider>
-  );
+    const addProdutoCarrinho = (cart: Omit<ProdutoCarrinho, 'amount'>) => {
+        const NOT_FOUND = -1
+        const cartIndex = carrinho.findIndex((item) => cart.nomeProduto === item.nomeProduto)
+
+        toast.success(cart.nomeProduto + ' adicionado ao carrinho', {
+            position: 'top-center',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: 'colored',
+            progress: undefined,
+        });
+
+        if (cartIndex === NOT_FOUND) {
+
+            const newCarrinho = {
+                ...cart,
+                amount: 1
+            }
+            setCarrinho((carts) => [newCarrinho, ...carts])
+        } else {
+            const carrinhoCopy = [...carrinho]
+            setCarrinho(carrinhoCopy)
+        }
+    }
+
+    const removeProdutoCarrinho = (cart: Omit<ProdutoCarrinho, 'amount'>) => {
+        const cartIndex = carrinho.findIndex((item) => item.nomeProduto === cart.nomeProduto)
+        const carrinhoCopy = [...carrinho]
+
+        toast.info(cart.nomeProduto + ' removido do carrinho', {
+            position: 'top-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: 'colored',
+            progress: undefined,
+        });
+
+        if (carrinhoCopy[cartIndex].amount === 1) {
+            const newCarrinho = carrinhoCopy.filter((item) => item.nomeProduto !== cart.nomeProduto)
+            setCarrinho(newCarrinho)
+        } else {
+            carrinhoCopy[cartIndex].amount -= 1
+            setCarrinho(carrinhoCopy)
+        }
+    }
+
+    const deleteProdutoCarrinho = (cart: ProdutoCarrinho) => {
+        const newCarrinho = carrinho.filter((item) => item.nomeProduto !== cart.nomeProduto)
+        setCarrinho(newCarrinho)
+    }
+
+    const clearAllCarrinho = () => {
+        setCarrinho([])
+    }
+
+    return (
+        <CartContext.Provider value={
+            {
+                carrinho,
+                addProdutoCarrinho,
+                removeProdutoCarrinho,
+                deleteProdutoCarrinho,
+                clearAllCarrinho
+            }
+        }
+        >
+            {children}
+        </CartContext.Provider>
+    );
 };

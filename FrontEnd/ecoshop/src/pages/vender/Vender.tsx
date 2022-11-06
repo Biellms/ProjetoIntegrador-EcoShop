@@ -1,6 +1,6 @@
-import { ModalPostProduto } from '../modalpostproduto/ModalPostProduto';
+import { ModalPostProduto } from '../../components/produtos/modalpostproduto/ModalPostProduto';
 import './Vender.css'
-import { ListaUserProduto } from '../listauserproduto/ListaUserProduto';
+import { ListaUserProduto } from '../../components/produtos/listauserproduto/ListaUserProduto';
 
 
 export const Vender = () => {

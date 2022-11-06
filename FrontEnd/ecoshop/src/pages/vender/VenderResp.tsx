@@ -1,5 +1,5 @@
-import { ListaUserProdutoResp } from '../listauserproduto/ListaUserProdutoResp';
-import { ModalPostProdutoResp } from '../modalpostproduto/ModalPostProdutoResp';
+import { ListaUserProdutoResp } from '../../components/produtos/listauserproduto/ListaUserProdutoResp';
+import { ModalPostProdutoResp } from '../../components/produtos/modalpostproduto/ModalPostProdutoResp';
 import './Vender.css'
 
 export const VenderResp = () => {

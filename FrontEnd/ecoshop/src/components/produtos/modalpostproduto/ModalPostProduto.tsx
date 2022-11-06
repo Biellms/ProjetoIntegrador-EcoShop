@@ -9,7 +9,7 @@ export const ModalPostProduto = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    return(
+    return (
         <>
             <Button onClick={handleOpen} variant="contained" className="button-vender">CADASTRAR</Button>
             <Modal
@@ -18,7 +18,9 @@ export const ModalPostProduto = () => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <PostProduto/>
+                <div className='container-post'>
+                    <PostProduto />
+                </div>
             </Modal>
         </>
     );

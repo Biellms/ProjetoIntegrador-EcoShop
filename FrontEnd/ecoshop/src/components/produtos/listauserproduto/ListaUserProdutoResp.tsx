@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { busca } from '../../../service/Service';
 import { Link } from 'react-router-dom';
 import { DeleteProdutoResp } from '../deleteproduto/DeleteProdutoResp';
+import { toast } from 'react-toastify';
 
 export const ListaUserProdutoResp = () => {
 
@@ -33,7 +34,17 @@ export const ListaUserProdutoResp = () => {
 
     useEffect(() => {
         if (token == '') {
-            alert('Você precisa estar logado')
+            
+            toast.error('Você precisa estar logado!', {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+              });
 
             navigate('/login')
         }
@@ -79,8 +90,10 @@ export const ListaUserProdutoResp = () => {
                                 </p>
                             </div>
                             <div className='div-button-valor-vender'>
+                                <Link to={`/editar/${post.id}`} className='link-decorator'>
                                     <Button variant='contained'>Editar</Button>
-                                <Link to={`/apiProdutoResp/${post.id}`} className='link-decorator'>
+                                </Link>
+                                <Link to={`/venderResp/${post.id}`} className='link-decorator'>
                                     <DeleteProdutoResp />
                                 </Link>
                             </div>

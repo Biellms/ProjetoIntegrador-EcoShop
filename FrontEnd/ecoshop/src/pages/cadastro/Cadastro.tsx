@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { cadastroUsuario } from '../../service/Service';
 import User from '../../models/User';
+import { toast } from 'react-toastify';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -61,10 +62,28 @@ export const Cadastro = () => {
         if (confirmarSenha == user.senha) {
             await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
             
-            alert('usuario cadastrado')
+            toast.success('Usuário cadastrado com sucesso!', {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            });
             navigate('/home')
         } else {
-            alert('Verifique os dados')
+            toast.error('Dados inconsistentes. Favor verificar as informações de cadastro!', {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            });
         }
     }
 

@@ -6,8 +6,7 @@ import UserLogin from '../../models/UserLogin';
 import { login } from '../../service/Service';
 import { useDispatch } from 'react-redux';
 import { addId, addName, addToken } from '../../store/tokens/actions';
-// import { TokenState } from '../../store/tokens/tokensReduce';
-// import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -70,9 +69,27 @@ export const Login = () => {
         try {
             await login("/usuarios/logar", userLogin, setRespUserLogin)
 
-            alert('Usuário Logado com sucesso!')
+            toast.success('Usuário logado com sucesso!', {
+                position: 'top-center',
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            });
         } catch (error) {
-            alert('Dados inconsistêntes, por favor tente novamente!' + error)
+            toast.error('Dados inconsistentes. Favor verificar as informações de login!', {
+                position: 'top-center',
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            });
         }
     }
 
