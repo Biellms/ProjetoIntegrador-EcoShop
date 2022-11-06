@@ -1,4 +1,5 @@
 import { ListaProduto } from '../../components/produtos/listaproduto/ListaProduto';
+import { SearchBar } from '../../components/styles/SearchBar';
 import './Comprar.css'
 
 export const Comprar = () => {
@@ -8,6 +9,7 @@ export const Comprar = () => {
                 <h3 className='aside-h3'>
                     COMPRAR
                 </h3>
+                <SearchBar/>
             </div>
             <div className='comprar-main'>
                 <ListaProduto />

@@ -12,8 +12,7 @@ import { toast } from 'react-toastify';
 export const ListaProduto = () => {
 
     const [produto, setProduto] = useState<Produto[]>([])
-    const { addProdutoCarrinho, carrinho } = useContext(CartContext)
-    // const [ amount, setAmount] = useState(0)
+    const { addProdutoCarrinho } = useContext(CartContext)
 
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens

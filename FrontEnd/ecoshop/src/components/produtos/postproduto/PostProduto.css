@@ -59,10 +59,10 @@
     background: #569854e0 !important;
 }
 
-.MuiFormLabel-root.Mui-focused {
+.post-card .MuiFormLabel-root.Mui-focused {
     color: #97C160 !important;
 }
 
-.MuiInput-underline:after {
+.post-card .MuiInput-underline:after {
     border-bottom: 2px solid #97C160 !important;
 }

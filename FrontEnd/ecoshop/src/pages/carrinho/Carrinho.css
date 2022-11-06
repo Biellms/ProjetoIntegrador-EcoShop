@@ -1,7 +1,36 @@
 .container-carrinho {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    align-items: flex-start;
+    flex-direction: row;
     min-height: 100vh;
+    width: 100%;
+    padding-top: 14vh;
+    padding-bottom: 30px;
+    padding-right: 40px;
+    padding-left: 40px;
+    gap: 20px;
+    background-color: whitesmoke;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 426px) {
+
+    .container-carrinho {
+        padding-right: 20px;
+        padding-left: 20px;
+        flex-direction: column-reverse ;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 425px){
+
+    .container-carrinho {
+        padding-right: 10px;
+        padding-left: 10px;
+        flex-direction: column-reverse ;
+        justify-content: flex-end;
+        align-items: center;
+    }
 }

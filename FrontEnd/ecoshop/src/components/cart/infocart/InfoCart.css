@@ -1,0 +1,37 @@
+.container-infocart {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    max-height: 400px;
+    width: 400px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .4);
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+.infocart-info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.infocart-payment {
+    padding-bottom: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .container-infocart {
+        max-width: 750px;
+        width: 100%;
+    }
+
+    .infocart-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}
