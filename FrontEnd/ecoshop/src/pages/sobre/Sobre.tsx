@@ -5,7 +5,8 @@ import './Sobre.css';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 345,
+        maxWidth: 300,
+        maxHeight: 300
     },
 });
 
@@ -52,125 +53,82 @@ export const Sobre = () => {
                         </li>
                     </ul>
                 </div>
-        
-            <div className="subtitulo">
-                <h2>Nossos valores:</h2>
-            </div>
 
-        <div className="cards">
-        <Card className={classes.root}>
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            alt="Contemplative Reptile"
-                            height="140"
-                            image="/img/alvo.png"
-                            title="Contemplative Reptile"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                            Missão
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                            Incentivar consumidores e parceiros ao consumo e produção conscientes.
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Share
-                        </Button>
-                        <Button size="small" color="primary">
-                            Learn More
-                        </Button>
-                    </CardActions>
-                </Card>
+                <div className="subtitulo">
+                    <h2>Nossos valores:</h2>
+                </div>
 
-                <Card className={classes.root}>
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            alt="Contemplative Reptile"
-                            height="140"
-                            image="/static/images/cards/contemplative-reptile.jpg"
-                            title="Contemplative Reptile"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                            Valores
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                            Sustentabilidade, transparência, qualidade, eficiência, ética e diversidade.
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Share
-                        </Button>
-                        <Button size="small" color="primary">
-                            Learn More
-                        </Button>
-                    </CardActions>
-                </Card>
+                <div className="cards">
+                    <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia className="img-missao"
+                                component="img"
+                                height="200"
+                            />
+                            <CardContent>
+                                <Typography className='texto-card-centro' gutterBottom variant="h5" component="h2">
+                                    Missão
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    Incentivar consumidores e parceiros ao consumo e produção conscientes.
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                    </Card>
 
-                <Card className={classes.root}>
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            alt="Contemplative Reptile"
-                            height="140"
-                            image="/static/images/cards/contemplative-reptile.jpg"
-                            title="Contemplative Reptile"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                            Visão
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                            Mudar o mundo através da conscientização e a importância sobre o consumo.
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Share
-                        </Button>
-                        <Button size="small" color="primary">
-                            Learn More
-                        </Button>
-                    </CardActions>
-                </Card>
+                    <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia className="img-valor"
+                                component="img"
+                                height="200"
+                            />
+                            <CardContent>
+                                <Typography className='texto-card-centro' gutterBottom variant="h5" component="h2">
+                                    Valores
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    Sustentabilidade, transparência, qualidade, eficiência, ética e diversidade.
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                    </Card>
 
-                <Card className={classes.root}>
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            alt="Contemplative Reptile"
-                            height="140"
-                            image="/static/images/cards/contemplative-reptile.jpg"
-                            title="Contemplative Reptile"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                            Impacto Ambiental
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                            Visamos reduzir substancialmente a geração de resíduos incentivando a prevenção, redução, reciclagem e reuso.
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Share
-                        </Button>
-                        <Button size="small" color="primary">
-                            Learn More
-                        </Button>
-                    </CardActions>
-                </Card>
-        </div>
-               
+                    <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia className="img-visao"
+                                component="img"
+                                height="200"
+                              
+                            />
+                            <CardContent>
+                                <Typography className='texto-card-centro' gutterBottom variant="h5" component="h2">
+                                    Visão
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    Mudar o mundo através da conscientização e a importância sobre o consumo.
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                    </Card>
+
+                    <Card className={classes.root}>
+                        <CardActionArea>
+                            <CardMedia className="img-protecao"
+                                component="img"
+                                height="200"
+                            />
+                            <CardContent>
+                                <Typography className='texto-card-centro' gutterBottom variant="h5" component="h2">
+                                    Impacto Ambiental
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    Visamos reduzir substancialmente a geração de resíduos incentivando a prevenção, redução, reciclagem e reuso.
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                    </Card>
+                </div>
+
             </section>
         </>
     );

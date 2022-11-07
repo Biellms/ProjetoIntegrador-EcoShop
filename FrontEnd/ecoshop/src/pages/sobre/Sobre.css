@@ -66,10 +66,30 @@
     color: #292729;
 }
 
-.fundo-sessao{
+.img-missao{
+    background-image: url(../../img/alvo.png);
+}
+
+.img-valor{
+    background-image: url(../../img/valor.png);
+}
+
+.img-visao{
+    background-image: url(../../img/visao-estrategica.png);
+}
+
+.img-protecao{
+    background-image: url(../../img/protecao-ambiental.png);
+}
+
+.texto-card-centro{
+    text-align: center;
+}
+
+/* .fundo-sessao{
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(204,252,189,1) 37%, rgba(201,236,180,1) 71%, rgba(158,214,143,1) 100%);
-}
+} */
 
 .objetivos h1 {
     
