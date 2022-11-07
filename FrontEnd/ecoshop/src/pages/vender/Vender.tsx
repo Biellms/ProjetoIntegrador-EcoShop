@@ -2,7 +2,6 @@ import { ModalPostProduto } from '../../components/produtos/modalpostproduto/Mod
 import './Vender.css'
 import { ListaUserProduto } from '../../components/produtos/listauserproduto/ListaUserProduto';
 
-
 export const Vender = () => {
 
     return (
@@ -14,7 +13,12 @@ export const Vender = () => {
                 <ModalPostProduto />
             </div>
             <div className='vender-main'>
-                <ListaUserProduto/>
+                <div className='vender-main-modal'>
+                    <ModalPostProduto />
+                </div>
+                <div className='vender-main-lista'>
+                    <ListaUserProduto/>
+                </div>
             </div>
         </div>
     );

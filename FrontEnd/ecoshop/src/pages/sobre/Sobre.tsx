@@ -15,29 +15,15 @@ export const Sobre = () => {
 
     return (
         <>
-            <section className="section-home">
-                <div className="section-home-ecoshop">
-                    <div className="ecoshop-logo">
-                        <h1 className="ecoshop-h1">
-                            <span className="ecoshop-h1-eco"> ECO</span>
-                            <span className="ecoshop-h1-shop">SHOP</span></h1>
-                        <img src="./img/logoEcoshop.png" alt="" className="ecoshop-img" />
-                    </div>
-                    <span className="ecoshop-span">
-                        E-Commerce de Produtos Sustentáveis
-                    </span>
-                </div>
-            </section>
-
             <section className='fundo-sessao'>
-                <hr />
+                {/* <hr /> */}
 
                 <div className="objetivos">
-                    <h1>Um pouco sobre os objetivos da ecoshop</h1>
+                    <h1>EM DESENVOLVIMENTO 🖥️</h1>
                 </div>
 
 
-                <div className="lista-objetivos">
+                {/* <div className="lista-objetivos">
                     <ul>
                         <li>
                             Estimular o reuso de materia prima descartada. Incentivar por materiais
@@ -127,7 +113,7 @@ export const Sobre = () => {
                             </CardContent>
                         </CardActionArea>
                     </Card>
-                </div>
+                </div> */}
 
             </section>
         </>

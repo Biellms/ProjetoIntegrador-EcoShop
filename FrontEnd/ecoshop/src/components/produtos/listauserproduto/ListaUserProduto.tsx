@@ -9,6 +9,7 @@ import { busca } from '../../../service/Service';
 import { Link } from 'react-router-dom';
 import { DeleteProduto } from '../deleteproduto/DeleteProduto';
 import { toast } from 'react-toastify';
+import { ModalPostProduto } from '../modalpostproduto/ModalPostProduto';
 
 export const ListaUserProduto = () => {
 

@@ -6,7 +6,6 @@ const defaultValue = {
     carrinho: [],
     addProdutoCarrinho: () => { },
     removeProdutoCarrinho: () => { },
-    deleteProdutoCarrinho: () => { },
     clearAllCarrinho: () => { }
 }
 
@@ -14,7 +13,6 @@ interface CarrinhoProps {
     carrinho: ProdutoCarrinho[],
     addProdutoCarrinho: (cart: CartApi) => void,
     removeProdutoCarrinho: (cart: CartApi) => void,
-    deleteProdutoCarrinho: (cart: ProdutoCarrinho) => void,
     clearAllCarrinho: () => void
 }
 
@@ -34,7 +32,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
         toast.success(cart.nomeProduto + ' adicionado ao carrinho', {
             position: 'top-center',
-            autoClose: 3000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,
@@ -62,7 +60,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
         toast.info(cart.nomeProduto + ' removido do carrinho', {
             position: 'top-center',
-            autoClose: 2000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,
@@ -80,11 +78,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         }
     }
 
-    const deleteProdutoCarrinho = (cart: ProdutoCarrinho) => {
-        const newCarrinho = carrinho.filter((item) => item.nomeProduto !== cart.nomeProduto)
-        setCarrinho(newCarrinho)
-    }
-
     const clearAllCarrinho = () => {
         setCarrinho([])
     }
@@ -95,7 +88,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
                 carrinho,
                 addProdutoCarrinho,
                 removeProdutoCarrinho,
-                deleteProdutoCarrinho,
                 clearAllCarrinho
             }
         }

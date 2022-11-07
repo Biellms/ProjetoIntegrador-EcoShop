@@ -20,7 +20,7 @@ export const Home = () => {
 
     useEffect(() => {
         if (token == "") {
-            
+
             toast.error('Usuário precisa estar logado!', {
                 position: 'top-center',
                 autoClose: 2000,
@@ -83,11 +83,11 @@ export const Home = () => {
                             O site é voltado para pessoas que queiram contribuir para a melhoria do meio ambiente, da qual o usuário tem a liberdade de vender e comprar produtos recicláveis e sustentáveis de forma autônoma e segura.
                             <br />Nossa missão é estimular os usuários firmarem relações econômicas, sociais e ambientais de forma positiva entre áreas urbanas amenizando em partes os problemas ambientais urbanos.
                         </p>
-                        <Link to='/home'>
+                        <a href="https://brasil.un.org/pt-br/sdgs/11" target={"_blank"}>
                             <Button variant="outlined" className="button-sm">Saiba Mais</Button>
-                        </Link>
+                        </a>
                     </div>
-                    <img src="./img/LogoSessao2.png" alt="" className="ecoshop-img-sessao2" />
+                    <img src="./img/LogoSessao1.png" alt="" className="ecoshop-img-sessao2" />
                 </div>
             </section>
 
@@ -96,16 +96,16 @@ export const Home = () => {
                     <h2 className="home-h2">
                         <span className="home-span">IMPORTÂNCIA DA SUSTENTABILIDADE 🍃</span>
                     </h2>
-                <Borda />
+                    <Borda />
                 </div>
                 <div className="home-div3">
                     <img src="./img/LogoSessao2.png" alt="" className="ecoshop-img-sessao2" />
                     <div className="home-div3-box">
                         <h2 className="home-h2 padding">
                             <span className="home-span">Tópicos 📌</span>
-                            <Link to='/home'>
+                            <a href="https://www.portalsolar.com.br/sustentabilidade-o-que-e-tipos-e-sua-importancia" target={"_blank"}>
                                 <Button variant="outlined" className="button-sm">Saiba Mais</Button>
-                            </Link>
+                            </a>
                         </h2>
                         <AccordionHome />
                     </div>

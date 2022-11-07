@@ -12,7 +12,12 @@ export const VenderResp = () => {
                 <ModalPostProdutoResp />
             </div>
             <div className='vender-main'>
-                <ListaUserProdutoResp />
+                <div className='vender-main-modal'>
+                    <ModalPostProdutoResp />
+                </div>
+                <div className='vender-main-lista'>
+                    <ListaUserProdutoResp />
+                </div>
             </div>
         </div>
     );

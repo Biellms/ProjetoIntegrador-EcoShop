@@ -31,8 +31,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.vender-main-lista {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.vender-main-modal {
+    display: none;
 }
 
 @media screen and (max-width: 768px) and (min-width: 551px){
@@ -45,6 +60,11 @@
     .vender-aside {
         display: none;
     }
+
+    .vender-main-modal {
+        display: block;
+    }
+    
 }
 
 @media screen and (max-width: 550px) {
@@ -55,5 +75,9 @@
 
     .vender-aside {
         display: none;
+    }
+
+    .vender-main-modal {
+        display: block;
     }
 }

@@ -19,8 +19,9 @@
     min-height: 81vh;
     width: 100%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     flex-direction: column;
+    padding: 10px;
     gap: 20px;
     border-right: 2px solid rgba(0, 0, 0, 0.449);
 }
@@ -33,6 +34,26 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.aside-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aside-filtros {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.aside-filtros-categorias {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
 }
 
 .aside-h3 {
