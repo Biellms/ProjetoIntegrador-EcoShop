@@ -4,16 +4,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ChangeEvent, useState, useEffect } from 'react';
 import UserLogin from '../../models/UserLogin';
 import { login } from '../../service/Service';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addId, addName, addToken } from '../../store/tokens/actions';
 import { toast } from 'react-toastify';
+import { TokenState } from '../../store/tokens/tokensReduce';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
         color: '#97C160',
-    },
-    '& .MuiInput-underline:after': {
-        borderBottomColor: 'black',
     },
     '& .MuiOutlinedInput-root': {
         '&:hover fieldset': {
@@ -73,7 +71,7 @@ export const Login = () => {
             try {
                 await login("/usuarios/logar", userLogin, setRespUserLogin)
 
-                toast.success('Usuário logado com sucesso!', {
+                toast.success( 'Seja bem-vindo! ', {
                     position: 'top-center',
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -104,9 +102,9 @@ export const Login = () => {
     const validaCampos = () => {
         let msg = ''
 
-        if (userLogin.usuario === '') {
-            msg = ' O campo "Usuário" é obrigatório!'
-            toast.error(msg, {
+        if (userLogin.usuario === '' && userLogin.senha === '') {
+            msg = ' Preencha os campos'
+            toast.warn(msg, {
                 position: 'top-center',
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -115,11 +113,21 @@ export const Login = () => {
                 draggable: false,
                 progress: undefined,
             });
-        }
-
-        if (userLogin.senha === '') {
-            msg = ' O campo "Senha" é obrigatório!'
-            toast.error(msg, {
+        } else {
+            if (userLogin.usuario === '') {
+                msg = ' O campo "E-mail" é obrigatório'
+                toast.warn(msg, {
+                    position: 'top-center',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
+            } if (userLogin.senha === '') {
+                msg = ' O campo "Senha" é obrigatório'
+                toast.warn(msg, {
                 position: 'top-center',
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -127,8 +135,9 @@ export const Login = () => {
                 pauseOnHover: false,
                 draggable: false,
                 progress: undefined,
-            });
-        }
+                });
+            }
+        }        
 
         if (msg !== '') {
             return false
@@ -165,7 +174,7 @@ export const Login = () => {
                     </div>
                     <form onSubmit={onSubmit} className='login-card-form'>
                         <div className='login-card-form-input'>
-                            <CssTextField id='usuario' label='Usuário' variant='outlined' name='usuario' fullWidth
+                            <CssTextField id='usuario' label='E-mail' variant='outlined' name='usuario' fullWidth
                                 value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             />
                             <CssTextField id='senha' label='Senha' variant='outlined' name='senha' type='password' fullWidth
@@ -191,7 +200,6 @@ export const Login = () => {
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={open}
-                onClick={handleBackDropClose}
             >
                 <CircularProgress color="inherit" />
             </Backdrop>

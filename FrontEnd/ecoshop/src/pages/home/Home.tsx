@@ -55,7 +55,7 @@ export const Home = () => {
             <section className="section-home">
                 <div className="home-div">
                     <h2 className="home-h2">
-                        <span className="home-span">SEJAM BEM VINDOS, SOMOS A </span>
+                        <span className="home-span">SEJA BEM VINDO, SOMOS A </span>
                         <span className='ecoshop-header-eco'>ECO</span>
                         <span className='ecoshop-header-shop'>SHOP!</span>
                     </h2>

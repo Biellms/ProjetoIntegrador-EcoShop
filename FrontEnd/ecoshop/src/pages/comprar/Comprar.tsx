@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ListaProduto } from '../../components/produtos/listaproduto/ListaProduto';
-import { Borda } from '../../components/styles/border/Borda';
 import { SearchBar } from '../../components/styles/SearchBar';
 import Categoria from '../../models/Categoria';
 import { busca } from '../../service/Service';
