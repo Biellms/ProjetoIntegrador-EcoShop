@@ -15,6 +15,7 @@ import { Editar } from './pages/editar/Editar';
 import { Carrinho } from './pages/carrinho/Carrinho';
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { BackDrop } from './components/backdrop/BackDrop';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
             <Route path='*' element={<NotFound />} />
           </Routes>
           <Footer />
+          <BackDrop />
         </BrowserRouter>
       </Provider>
     </>

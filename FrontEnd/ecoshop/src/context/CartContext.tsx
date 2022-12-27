@@ -6,14 +6,20 @@ const defaultValue = {
     carrinho: [],
     addProdutoCarrinho: () => { },
     removeProdutoCarrinho: () => { },
-    clearAllCarrinho: () => { }
+    clearAllCarrinho: () => { },
+    open: false,
+    openBackDrop: () => { },
+    closeBackDrop: () => { }
 }
 
 interface CarrinhoProps {
     carrinho: ProdutoCarrinho[],
     addProdutoCarrinho: (cart: CartApi) => void,
     removeProdutoCarrinho: (cart: CartApi) => void,
-    clearAllCarrinho: () => void
+    clearAllCarrinho: () => void,
+    open: boolean,
+    openBackDrop: () => void,
+    closeBackDrop: () => void
 }
 
 export const CartContext = createContext<CarrinhoProps>(defaultValue)
@@ -25,6 +31,7 @@ interface CartProviderProps {
 export const CartProvider = ({ children }: CartProviderProps) => {
 
     const [carrinho, setCarrinho] = useState<ProdutoCarrinho[]>([])
+    const [open, setOpen] = useState(false)
 
     const addProdutoCarrinho = (cart: Omit<ProdutoCarrinho, 'amount'>) => {
         const NOT_FOUND = -1
@@ -82,13 +89,24 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         setCarrinho([])
     }
 
+    const openBackDrop = () => {
+        setOpen(true)
+    }
+
+    const closeBackDrop = () => {
+        setOpen(false)
+    }
+
     return (
         <CartContext.Provider value={
             {
                 carrinho,
                 addProdutoCarrinho,
                 removeProdutoCarrinho,
-                clearAllCarrinho
+                clearAllCarrinho,
+                open,
+                openBackDrop,
+                closeBackDrop
             }
         }
         >

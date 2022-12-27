@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Button } from '@mui/material';
 import './ListaProduto.css'
 import Produto from '../../../models/Produto';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReduce';
 import { useNavigate } from 'react-router-dom';
-import { busca, post } from '../../../service/Service';
+import { busca } from '../../../service/Service';
 import { CartContext } from '../../../context/CartContext';
 import { toast } from 'react-toastify';
 
@@ -51,16 +51,6 @@ export const ListaProduto = () => {
         getProduto()
 
     }, [produto.length])
-
-    // useEffect(() => {
-
-    //     if(amount > 0) {
-    //         const insideCarrinho = carrinho.some((item => item.nomeProduto ===  produto.nomeProduto))
-    //         if(!insideCarrinho) {
-    //             setAmount(0)
-    //         }
-    //     }
-    // }, [carrinho])
 
     return (
         <>

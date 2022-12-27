@@ -1,11 +1,12 @@
 import './Cadastro.css';
 import { Button, TextField, styled, Backdrop, CircularProgress, InputLabel, OutlinedInput, InputAdornment, IconButton, FormControl } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { cadastroUsuario } from '../../service/Service';
 import User from '../../models/User';
 import { toast } from 'react-toastify';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { CartContext } from '../../context/CartContext';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -59,7 +60,7 @@ export const FormCadastro = () => {
         if (userResult.id !== 0) {
             navigate('/login')
 
-            handleBackDropClose()
+            closeBackDrop()
         }
     }, [userResult])
 
@@ -105,7 +106,7 @@ export const FormCadastro = () => {
             }
         }
 
-        handleBackDropClose()
+        closeBackDrop()
     }
 
     // VALIDAR CAMPOS
@@ -171,15 +172,7 @@ export const FormCadastro = () => {
     }
 
     // BACKDROP
-    const [open, setOpen] = useState(false);
-
-    const handleBackDropClose = () => {
-        setOpen(false);
-    };
-
-    const handleBackDropToggle = () => {
-        setOpen(!open);
-    };
+    const { openBackDrop, closeBackDrop } = useContext(CartContext)
 
     // PASSWORDFIELD
     interface State {
@@ -239,18 +232,11 @@ export const FormCadastro = () => {
                 </div>
                 <div className='login-card-form-button'>
                     <Button className="button-login" variant="contained" fullWidth
-                        type='submit' onClick={handleBackDropToggle}>
+                        type='submit' onClick={openBackDrop}>
                         Cadastrar
                     </Button>
                 </div>
             </form>
-            <Backdrop
-                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                open={open}
-            >
-                <CircularProgress color="inherit" />
-            </Backdrop>
         </>
-
     );
 }
