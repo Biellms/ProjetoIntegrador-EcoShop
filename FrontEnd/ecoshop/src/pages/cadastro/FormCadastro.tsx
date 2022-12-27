@@ -1,14 +1,11 @@
-import './Login.css'
-import { FormControl, TextField, IconButton, InputAdornment, InputLabel, OutlinedInput, Button, Backdrop, CircularProgress, } from '@mui/material';
-import { ChangeEvent, useState, useEffect } from 'react';
-import UserLogin from '../../models/UserLogin';
-import { login } from '../../service/Service';
-import { useDispatch } from 'react-redux';
-import { addId, addName, addToken } from '../../store/tokens/actions';
+import './Cadastro.css';
+import { Button, TextField, styled, Backdrop, CircularProgress, InputLabel, OutlinedInput, InputAdornment, IconButton, FormControl } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { cadastroUsuario } from '../../service/Service';
+import User from '../../models/User';
 import { toast } from 'react-toastify';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import styled from '@emotion/styled';
-import { useNavigate } from 'react-router-dom';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -38,56 +35,55 @@ const CssPassWordField = styled(FormControl)({
     },
 });
 
-export const FormLogin = () => {
-    let navigate = useNavigate();
-    const dispatch = useDispatch();
+export const FormCadastro = () => {
 
-    const [userLogin, setUserLogin] = useState<UserLogin>({
+    const navigate = useNavigate();
+
+    const [confirmarSenha, setConfirmarSenha] = useState<String>('')
+
+    const [user, setUser] = useState<User>({
         id: 0,
         nome: '',
         usuario: '',
-        senha: '',
-        token: ''
+        senha: ''
     })
 
-    const [respUserLogin, setRespUserLogin] = useState<UserLogin>({
+    const [userResult, setUserResult] = useState<User>({
         id: 0,
         nome: '',
         usuario: '',
-        senha: '',
-        token: ''
+        senha: ''
     })
+
+    useEffect(() => {
+        if (userResult.id !== 0) {
+            navigate('/login')
+
+            handleBackDropClose()
+        }
+    }, [userResult])
+
+    function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>) {
+        setConfirmarSenha(e.target.value)
+    }
 
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
-
-        setUserLogin({
-            ...userLogin,
+        setUser({
+            ...user,
             [e.target.name]: e.target.value
         })
     }
 
-    useEffect(() => {
-        if (respUserLogin.token !== '') {
-            dispatch(addToken(respUserLogin.token))
-            dispatch(addId(respUserLogin.id))
-            dispatch(addName(respUserLogin.nome))
-
-            handleBackDropClose()
-
-            navigate('/home')
-        }
-    }, [respUserLogin.token])
-
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault();
+        e.preventDefault()
 
-        if (validaCampos()) {
+        if (validarCampos()) {
             try {
-                await login("/usuarios/logar", userLogin, setRespUserLogin)
+                await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
 
-                toast.success('Seja bem-vindo! ', {
+                toast.success('Usuário cadastrado com sucesso! Logue para acessar!', {
                     position: 'top-center',
-                    autoClose: 3000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -96,9 +92,9 @@ export const FormLogin = () => {
                     progress: undefined,
                 });
             } catch (error) {
-                toast.error('Dados inconsistentes. Favor verificar as informações de login!', {
+                toast.error('O e-mail informado é invalido ou já existente!', {
                     position: 'top-center',
-                    autoClose: 3000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
@@ -112,48 +108,62 @@ export const FormLogin = () => {
         handleBackDropClose()
     }
 
-    // VALIDAR CAMPOS OBRIGATORIOS
-    const validaCampos = () => {
-        let msg = ''
+    // VALIDAR CAMPOS
+    const validarCampos = () => {
+        let msg = 'Preencha os campos obrigatórios: '
+        let blankField = false
+        let invalidField = false
 
-        if (userLogin.usuario === '' && userLogin.senha === '') {
-            msg = ' Preencha os campos'
-            toast.warn(msg, {
+        if (user.nome === '') {
+            msg += ' "Nome" '
+            blankField = true
+        } if (user.usuario === '') {
+            msg += ' "E-mail" '
+            blankField = true
+        }
+
+        if (user.senha === '') {
+            msg += ' "Senha" '
+            blankField = true
+        } else if (user.senha.length < 8) {
+            invalidField = true
+            toast.warn('A senha deve possuir no minímo 8 caracteres', {
                 position: 'top-center',
-                autoClose: 3000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: false,
                 draggable: false,
                 progress: undefined,
             });
-        } else {
-            if (userLogin.usuario === '') {
-                msg = ' O campo "E-mail" é obrigatório'
-                toast.warn(msg, {
-                    position: 'top-center',
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    progress: undefined,
-                });
-            } if (userLogin.senha === '') {
-                msg = ' O campo "Senha" é obrigatório'
-                toast.warn(msg, {
-                    position: 'top-center',
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    progress: undefined,
-                });
-            }
         }
 
-        if (msg !== '') {
+        if (confirmarSenha !== user.senha) {
+            invalidField = true
+            toast.warn('Confirme a senha corretamente!', {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+            });
+        }
+
+        if (blankField) {
+            toast.warn(msg, {
+                position: 'top-center',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+            });
+        }
+
+        if (blankField || invalidField) {
             return false
         }
 
@@ -197,13 +207,14 @@ export const FormLogin = () => {
         <>
             <form onSubmit={onSubmit} className='login-card-form'>
                 <div className='login-card-form-input'>
-                    <CssTextField id='usuario' label='E-mail' variant='outlined' name='usuario' fullWidth
-                        value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-                    />
+                    <CssTextField value={user.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+                        id='nome' label='Nome' variant='outlined' name='nome' fullWidth />
+                    <CssTextField value={user.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+                        id='usuario' label='E-mail' variant='outlined' name='usuario' fullWidth />
                     <CssPassWordField >
                         <InputLabel>Senha</InputLabel>
                         <OutlinedInput id="senha" label="senha" name='senha'
-                            type={values.showPassword ? 'text' : 'password'} value={userLogin.senha}
+                            type={values.showPassword ? 'text' : 'password'} value={user.senha}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             endAdornment={
                                 <InputAdornment position="end">
@@ -218,11 +229,18 @@ export const FormLogin = () => {
                             }
                         />
                     </CssPassWordField>
+                    <CssPassWordField >
+                        <InputLabel>Confirmar Senha</InputLabel>
+                        <OutlinedInput id="senha" label="Confirmar Senha" name='senha'
+                            type={values.showPassword ? 'text' : 'password'} value={confirmarSenha}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)}
+                        />
+                    </CssPassWordField>
                 </div>
                 <div className='login-card-form-button'>
-                    <Button className='button-login' variant="contained" fullWidth
+                    <Button className="button-login" variant="contained" fullWidth
                         type='submit' onClick={handleBackDropToggle}>
-                        Sign In
+                        Cadastrar
                     </Button>
                 </div>
             </form>
@@ -233,5 +251,6 @@ export const FormLogin = () => {
                 <CircularProgress color="inherit" />
             </Backdrop>
         </>
+
     );
 }

@@ -1,5 +1,5 @@
 import './Login.css'
-import { Paper} from '@mui/material';
+import { Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { FormLogin } from './FormLogin';
 
