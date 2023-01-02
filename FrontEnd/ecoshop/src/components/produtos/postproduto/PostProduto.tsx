@@ -1,6 +1,6 @@
 import './PostProduto.css'
-import { TextField, Paper, Button, styled, InputLabel, Select, SelectChangeEvent, MenuItem, FormControl } from '@mui/material';
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import { TextField, Paper, Button, styled, InputLabel, Select, MenuItem, FormControl } from '@mui/material';
+import { useState, useEffect, ChangeEvent, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Categoria from '../../../models/Categoria';
 import { TokenState } from '../../../store/tokens/tokensReduce';
@@ -8,14 +8,13 @@ import { useSelector } from 'react-redux';
 import User from '../../../models/User';
 import Produto from '../../../models/Produto';
 import { busca, buscaId, post, put } from '../../../service/Service';
-import { toast } from 'react-toastify';
+import { CartContext } from '../../../context/CartContext';
+import { ToastSuccess } from '../../styles/toast/Toasts';
+import axios from 'axios';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
         color: '#97C160',
-    },
-    '& .MuiInput-underline:after': {
-        borderBottomColor: 'black',
     },
     '& .MuiOutlinedInput-root': {
         '&:hover fieldset': {
@@ -29,7 +28,6 @@ const CssTextField = styled(TextField)({
 
 export const PostProduto = () => {
 
-    const handleClose = () => setOpen(true);
     const [open, setOpen] = useState(false);
     const { id } = useParams<{ id: string }>();
     const [categorias, setCategorias] = useState<Categoria[]>([])
@@ -41,6 +39,8 @@ export const PostProduto = () => {
         (state) => state.tokens
     );
 
+    const handleClose = () => setOpen(true);
+    
     let navigate = useNavigate();
 
     useEffect(() => {
@@ -49,24 +49,6 @@ export const PostProduto = () => {
             navigate('/VenderResp')
         }
     }, [open])
-
-    useEffect(() => {
-        if (token == "") {
-
-            toast.error('Você precisa estar logado!', {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: 'colored',
-                progress: undefined,
-            });
-
-            navigate("/login")
-        }
-    }, [token])
 
     const [user, setUser] = useState<User>(
         {
@@ -101,15 +83,35 @@ export const PostProduto = () => {
     }, [categoria])
 
     async function getCategorias() {
-        await busca('/categorias', setCategorias, {
-            headers: { 'Authorization': token }
-        })
+        try {
+            openBackDrop()
+            busca('/categorias', setCategorias, {
+                headers: { 'Authorization': token }
+            })
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
+                }
+            }
+        }
+        closeBackDrop()
     }
 
     async function findByIdProduto(id: string) {
-        await buscaId(`produtos/${id}`, setProduto, {
-            headers: { 'Authorization': token }
-        })
+        try {
+            openBackDrop()
+            await buscaId(`produtos/${id}`, setProduto, {
+                headers: { 'Authorization': token }
+            })
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
+                }
+            }
+        }
+        closeBackDrop()
     }
 
     useEffect(() => {
@@ -126,50 +128,45 @@ export const PostProduto = () => {
             [e.target.name]: e.target.value,
             categoria: categoria
         })
-
     }
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        if (id !== undefined) {
-            put(`/produtos`, produto, setProduto, {
-                headers: {
-                    'Authorization': token
+        try {
+            openBackDrop()
+            if (id !== undefined) {
+                put(`/produtos`, produto, setProduto, {
+                    headers: {
+                        'Authorization': token
+                    }
+                })
+    
+                ToastSuccess('Produto atualizado com sucesso!')
+    
+            } else {
+                post(`/produtos`, produto, setProduto, {
+                    headers: {
+                        'Authorization': token
+                    }
+                })
+    
+                ToastSuccess('Produto cadastrado com sucesso!')
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
                 }
-            })
-
-            toast.success('Produto atualizado com sucesso!', {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: 'colored',
-                progress: undefined,
-            });
-
-        } else {
-            post(`/produtos`, produto, setProduto, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-
-            toast.success('Produto cadastrado com sucesso!', {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: 'colored',
-                progress: undefined,
-            });
+            }
         }
+
+        closeBackDrop()
         navigate('/VenderResp')
     }
+
+    // BACKDROP
+    const { openBackDrop, closeBackDrop } = useContext(CartContext)
 
     return (
         <Paper elevation={12} className='post-card'>
@@ -199,9 +196,7 @@ export const PostProduto = () => {
                     />
                     <FormControl variant="standard" fullWidth>
                         <InputLabel id="input-categoria-label">Categoria</InputLabel>
-                        <Select
-                            labelId="input-categoria-label"
-                            id="input-categoria"
+                        <Select labelId="input-categoria-label" id="input-categoria"
                             onChange={(e) => buscaId(`/categorias/${e.target.value}`, setCategoria, {
                                 headers: {
                                     'Authorization': token

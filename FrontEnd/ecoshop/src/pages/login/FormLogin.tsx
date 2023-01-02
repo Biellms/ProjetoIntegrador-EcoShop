@@ -1,15 +1,16 @@
 import './Login.css'
-import { FormControl, TextField, IconButton, InputAdornment, InputLabel, OutlinedInput, Button, Backdrop, CircularProgress, } from '@mui/material';
+import { FormControl, TextField, IconButton, InputAdornment, InputLabel, OutlinedInput, Button } from '@mui/material';
 import { ChangeEvent, useState, useEffect, useContext } from 'react';
 import UserLogin from '../../models/UserLogin';
 import { login } from '../../service/Service';
 import { useDispatch } from 'react-redux';
 import { addId, addName, addToken } from '../../store/tokens/actions';
-import { toast } from 'react-toastify';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
+import { ToastError, ToastSuccess, ToastWarn } from '../../components/styles/toast/Toasts';
+import axios from 'axios';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -86,27 +87,15 @@ export const FormLogin = () => {
             try {
                 await login("/usuarios/logar", userLogin, setRespUserLogin)
 
-                toast.success('Seja bem-vindo! ', {
-                    position: 'top-center',
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    theme: 'colored',
-                    progress: undefined,
-                });
+                ToastSuccess('Seja Bem-vindo!');
             } catch (error) {
-                toast.error('Dados inconsistentes. Favor verificar as informações de login!', {
-                    position: 'top-center',
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    theme: 'colored',
-                    progress: undefined,
-                });
+                if (axios.isAxiosError(error)) {
+                    if (!error?.response) {
+                        ToastError(error.message)
+                    } else {
+                        ToastError('Dados inconsistentes. Verifique as informações de login!')
+                    }
+                }
             }
         }
 
@@ -115,46 +104,22 @@ export const FormLogin = () => {
 
     // VALIDAR CAMPOS OBRIGATORIOS
     const validaCampos = () => {
-        let msg = ''
+        let errorField = false
 
         if (userLogin.usuario === '' && userLogin.senha === '') {
-            msg = ' Preencha os campos'
-            toast.warn(msg, {
-                position: 'top-center',
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-            });
+            errorField = true
+            ToastWarn('Preencha os campos')
         } else {
             if (userLogin.usuario === '') {
-                msg = ' O campo "E-mail" é obrigatório'
-                toast.warn(msg, {
-                    position: 'top-center',
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    progress: undefined,
-                });
+                errorField = true
+                ToastWarn('O campo "E-mail" é obrigatório')
             } if (userLogin.senha === '') {
-                msg = ' O campo "Senha" é obrigatório'
-                toast.warn(msg, {
-                    position: 'top-center',
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    progress: undefined,
-                });
+                errorField = true
+                ToastWarn('O campo "Senha" é obrigatório')
             }
         }
 
-        if (msg !== '') {
+        if (errorField) {
             return false
         }
 

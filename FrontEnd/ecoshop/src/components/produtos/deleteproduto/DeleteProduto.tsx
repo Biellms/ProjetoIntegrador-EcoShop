@@ -8,11 +8,13 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import './DeleteProduto.css'
 import { useNavigate, useParams } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Produto from '../../../models/Produto';
 import { TokenState } from '../../../store/tokens/tokensReduce';
 import { buscaId, deleteId } from '../../../service/Service';
+import { CartContext } from '../../../context/CartContext';
+import axios from 'axios';
 
 
 const Transition = React.forwardRef(function Transition(
@@ -27,8 +29,15 @@ const Transition = React.forwardRef(function Transition(
 export const DeleteProduto = () => {
 
     const [open, setOpen] = useState(false);
-
     const [deletado, setDeletado] = useState(false)
+    const [post, setPosts] = useState<Produto>()
+
+    const { id } = useParams<{ id: string }>();
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    );
+
+    let navigate = useNavigate();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -38,23 +47,6 @@ export const DeleteProduto = () => {
         setOpen(false);
         setDeletado(true)
     };
-
-    let navigate = useNavigate();
-
-    const { id } = useParams<{ id: string }>();
-    const token = useSelector<TokenState, TokenState["tokens"]>(
-        (state) => state.tokens
-    );
-    
-    const [post, setPosts] = useState<Produto>()
-
-    useEffect(() => {
-        if (token == "") {
-            
-            alert('Você precisa estar logado!')
-            navigate('/login')
-        }
-    }, [token])
 
     useEffect(() => {
         if (id !== undefined) {
@@ -69,34 +61,55 @@ export const DeleteProduto = () => {
     })
 
     async function findById(id: string) {
-        buscaId(`/produtos/${id}`, setPosts, {
-            headers: {
-                'Authorization': token
+        try {
+            openBackDrop()
+            buscaId(`/produtos/${id}`, setPosts, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
+                }
             }
-        })
+        }
+
+        closeBackDrop()
     }
 
     function sim() {
+        try {
+            openBackDrop()
+            deleteId(`/produtos/${id}`, {
+                headers: {
+                    'Authorization': token
+                }
+            });
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
+                }
+            }
+        }
+
         handleClose()
         setDeletado(true)
-        deleteId(`/produtos/${id}`, {
-            headers: {
-                'Authorization': token
-            }
-        });
+        closeBackDrop()
     }
+
+    // BACKDROP
+    const { openBackDrop, closeBackDrop } = useContext(CartContext)
 
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen}>
                 Deletar
             </Button>
-            <Dialog
-                open={open}
-                TransitionComponent={Transition}
-                keepMounted
-                onClose={handleClose}
-                aria-describedby="alert-dialog-slide-description"
+            <Dialog open={open} TransitionComponent={Transition} aria-describedby="alert-dialog-slide-description"
+                onClose={handleClose} keepMounted
             >
                 <DialogTitle>{"Deseja realmente deletar?"}</DialogTitle>
                 <DialogContent>

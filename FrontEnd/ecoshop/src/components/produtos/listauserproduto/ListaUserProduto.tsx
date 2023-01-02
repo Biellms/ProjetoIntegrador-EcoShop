@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Button } from '@mui/material';
 import './ListaUserProduto.css'
 import Produto from '../../../models/Produto';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReduce';
-import { useNavigate } from 'react-router-dom';
 import { busca } from '../../../service/Service';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { DeleteProduto } from '../deleteproduto/DeleteProduto';
-import { toast } from 'react-toastify';
-import { ModalPostProduto } from '../modalpostproduto/ModalPostProduto';
+import axios from 'axios';
+import { CartContext } from '../../../context/CartContext';
 
 export const ListaUserProduto = () => {
 
@@ -23,33 +22,26 @@ export const ListaUserProduto = () => {
         (state) => state.ids
     );
 
-    let navigate = useNavigate();
+    const navigate = useNavigate()
 
     async function getProduto() {
-        await busca('/produtos', setProduto, {
-            headers: {
-                'Authorization': token
-            }
-        })
-    }
-
-    useEffect(() => {
-        if (token == '') {
-
-            toast.error('Você precisa estar logado!', {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: 'colored',
-                progress: undefined,
-              });
-
-            navigate('/login')
+        try {
+            openBackDrop()
+            await busca('/produtos', setProduto, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
+                }
+            }  
         }
-    }, [token])
+
+        closeBackDrop()
+    }
 
     useEffect(() => {
 
@@ -62,6 +54,9 @@ export const ListaUserProduto = () => {
             return produto.indexOf(ele) === pos;
         }
     })
+
+    // BACKDROP
+    const { openBackDrop, closeBackDrop } = useContext(CartContext)
 
     return (
         <>

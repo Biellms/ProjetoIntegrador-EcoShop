@@ -4,53 +4,70 @@ import './ListaProduto.css'
 import Produto from '../../../models/Produto';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReduce';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { busca } from '../../../service/Service';
 import { CartContext } from '../../../context/CartContext';
-import { toast } from 'react-toastify';
+import axios from 'axios';
 
 export const ListaProduto = () => {
 
     const [produto, setProduto] = useState<Produto[]>([])
-    const { addProdutoCarrinho } = useContext(CartContext)
+    const { addProdutoCarrinho, openBackDrop, closeBackDrop } = useContext(CartContext)
+    const { id } = useParams<{ id: string }>();
+
+    const navigate = useNavigate()
 
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
 
-    let navigate = useNavigate();
-
     async function getProduto() {
-        await busca('/produtos', setProduto, {
-            headers: {
-                'Authorization': token
+        try {
+            openBackDrop()
+            await busca('/produtos', setProduto, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
+                }
             }
-        })
+        }
+
+        closeBackDrop()
+    }
+
+    async function getProdutoPorCategoria() {
+        try {
+            openBackDrop()
+            await busca(`/produtos/categoria/${id}`, setProduto, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
+                }
+            }
+        }
+
+        closeBackDrop()
     }
 
     useEffect(() => {
-        if (token == '') {
 
-            toast.error('Usuário precisa estar logado!', {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: 'colored',
-                progress: undefined,
-            });
-
-            navigate('/login')
+        if (id === undefined) {
+            getProduto()
+        } else {
+            getProdutoPorCategoria()
         }
-    }, [token])
 
-    useEffect(() => {
-
-        getProduto()
-
-    }, [produto.length])
+    }, [id])
 
     return (
         <>

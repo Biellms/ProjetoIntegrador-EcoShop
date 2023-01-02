@@ -10,9 +10,8 @@ import { TokenState } from '../../../store/tokens/tokensReduce';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addId, addName, addToken } from '../../../store/tokens/actions';
-import { useCartContext } from '../../../context/useCartContext';
-import { toast } from 'react-toastify';
 import { CartContext } from '../../../context/CartContext';
+import { ToastInfo } from '../../styles/toast/Toasts';
 
 export const Navbar = () => {
 
@@ -36,16 +35,7 @@ export const Navbar = () => {
         dispatch(addName(''))
         dispatch(addId(0))
         
-        toast.info('Usuário deslogado', {
-            position: 'top-center',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-            theme: 'colored',
-            progress: undefined,
-          });
+        ToastInfo('Usuário deslogado!')
 
         navigate('/login')
     }
@@ -74,7 +64,7 @@ export const Navbar = () => {
 
     let navbarComponent;
 
-    if (token != '') {
+    if (token !== '') {
         navbarComponent = <header>
             <div className='header-menu' >
                 <IconButton

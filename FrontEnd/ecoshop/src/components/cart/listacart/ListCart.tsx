@@ -1,9 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { CartContext } from '../../../context/CartContext';
-import { TokenState } from '../../../store/tokens/tokensReduce';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 import './ListCart.css'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, IconButton } from '@mui/material';
@@ -11,30 +7,6 @@ import { Button, IconButton } from '@mui/material';
 export const ListCart = () => {
 
     const { carrinho, removeProdutoCarrinho, clearAllCarrinho } = useContext(CartContext)
-
-    const token = useSelector<TokenState, TokenState["tokens"]>(
-        (state) => state.tokens
-    );
-
-    let navigate = useNavigate()
-
-    useEffect(() => {
-        if (token == '') {
-
-            toast.error('Você precisa estar logado!', {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: 'colored',
-                progress: undefined,
-            });
-
-            navigate('/login')
-        }
-    }, [token])
 
     let carrinhoVazio;
 

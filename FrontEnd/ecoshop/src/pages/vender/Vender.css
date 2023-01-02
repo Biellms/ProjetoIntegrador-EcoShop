@@ -23,6 +23,14 @@
     flex-direction: column;
     gap: 20px;
     border-right: 2px solid rgba(0, 0, 0, 0.449);
+    padding: 8px;
+}
+
+.vender-p2 {
+    font-size: 15px;
+    text-align: justify;
+    line-height: 1.5em;
+    font-family: 'Roboto', sans-serif;
 }
 
 .vender-main {

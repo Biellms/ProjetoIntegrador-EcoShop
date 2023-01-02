@@ -1,12 +1,13 @@
 import './Cadastro.css';
-import { Button, TextField, styled, Backdrop, CircularProgress, InputLabel, OutlinedInput, InputAdornment, IconButton, FormControl } from '@mui/material';
+import { Button, TextField, styled, InputLabel, OutlinedInput, InputAdornment, IconButton, FormControl } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { cadastroUsuario } from '../../service/Service';
 import User from '../../models/User';
-import { toast } from 'react-toastify';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { CartContext } from '../../context/CartContext';
+import { ToastError, ToastSuccess, ToastWarn } from '../../components/styles/toast/Toasts';
+import axios from 'axios';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -82,27 +83,15 @@ export const FormCadastro = () => {
             try {
                 await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
 
-                toast.success('Usuário cadastrado com sucesso! Logue para acessar!', {
-                    position: 'top-center',
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    theme: 'colored',
-                    progress: undefined,
-                });
+                ToastSuccess('Usuário cadastrado com sucesso! Logue para acessar!')
             } catch (error) {
-                toast.error('O e-mail informado é invalido ou já existente!', {
-                    position: 'top-center',
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    theme: 'colored',
-                    progress: undefined,
-                });
+                if (axios.isAxiosError(error)) {
+                    if (!error?.response) {
+                        ToastError(error.message)
+                    } else {
+                        ToastError('O e-mail informado é invalido ou já existente!')
+                    }
+                }
             }
         }
 
@@ -128,40 +117,16 @@ export const FormCadastro = () => {
             blankField = true
         } else if (user.senha.length < 8) {
             invalidField = true
-            toast.warn('A senha deve possuir no minímo 8 caracteres', {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-            });
+            ToastWarn('A senha deve possuir no minímo 8 caracteres!')
         }
 
         if (confirmarSenha !== user.senha) {
             invalidField = true
-            toast.warn('Confirme a senha corretamente!', {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-            });
+            ToastWarn('Confirme a senha corretamente!')
         }
 
         if (blankField) {
-            toast.warn(msg, {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-            });
+            ToastWarn(msg)
         }
 
         if (blankField || invalidField) {

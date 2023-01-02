@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Button } from '@mui/material';
 import './ListaUserProduto.css'
 import Produto from '../../../models/Produto';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReduce';
-import { useNavigate } from 'react-router-dom';
 import { busca } from '../../../service/Service';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { DeleteProdutoResp } from '../deleteproduto/DeleteProdutoResp';
-import { toast } from 'react-toastify';
+import { CartContext } from '../../../context/CartContext';
 
 export const ListaUserProdutoResp = () => {
 
     const [produto, setProduto] = useState<Produto[]>([])
+
+    const navigate = useNavigate()
 
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
@@ -22,33 +24,24 @@ export const ListaUserProdutoResp = () => {
         (state) => state.ids
     );
 
-    let navigate = useNavigate();
-
     async function getProduto() {
-        await busca('/produtos', setProduto, {
-            headers: {
-                'Authorization': token
-            }
-        })
-    }
-
-    useEffect(() => {
-        if (token == '') {
-            
-            toast.error('Você precisa estar logado!', {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: 'colored',
-                progress: undefined,
-              });
-
-            navigate('/login')
+        try {
+            openBackDrop()
+            await busca('/produtos', setProduto, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
+                }
+            }   
         }
-    }, [token])
+
+        closeBackDrop()
+    }
 
     useEffect(() => {
 
@@ -61,6 +54,9 @@ export const ListaUserProdutoResp = () => {
             return produto.indexOf(ele) === pos;
         }
     })
+
+    // BACKDROP
+    const { openBackDrop, closeBackDrop } = useContext(CartContext)
 
     return (
         <>

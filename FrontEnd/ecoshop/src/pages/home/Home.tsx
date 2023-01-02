@@ -2,13 +2,13 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { AccordionHome } from "../../components/styles/according/AccordionHome";
 import { Borda } from "../../components/styles/border/Borda";
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReduce';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import './Media.css';
-import { toast } from 'react-toastify';
+import { ToastError } from "../../components/styles/toast/Toasts";
 
 export const Home = () => {
 
@@ -19,19 +19,8 @@ export const Home = () => {
     );
 
     useEffect(() => {
-        if (token == "") {
-
-            toast.error('Usuário precisa estar logado!', {
-                position: 'top-center',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: 'colored',
-                progress: undefined,
-            });
-
+        if (token === "") {
+            ToastError('Usuário precisa estar logado!')
             navigate('/login')
         }
     }, [token])
@@ -63,7 +52,7 @@ export const Home = () => {
                         Onde, além de comprar, você também poderá vender seus produtos ecológios e sustentáveis!
                     </p>
                     <div className="home-box-button">
-                        <Link to='/comprar'>
+                        <Link to={'/comprar'}>
                             <Button variant="contained" className="button-comprar">COMPRAR</Button>
                         </Link>
                         <Link to='/vender'>
