@@ -5,7 +5,7 @@ import Produto from '../../../models/Produto';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReduce';
 import { busca } from '../../../service/Service';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { DeleteProduto } from '../deleteproduto/DeleteProduto';
 import axios from 'axios';
 import { CartContext } from '../../../context/CartContext';
@@ -13,7 +13,7 @@ import { CartContext } from '../../../context/CartContext';
 export const ListaUserProduto = () => {
 
     const [produto, setProduto] = useState<Produto[]>([])
-
+    
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );

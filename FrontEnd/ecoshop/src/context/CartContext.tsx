@@ -1,4 +1,4 @@
-import React, { useState, createContext, ReactNode } from "react";
+import { useState, createContext, ReactNode } from "react";
 import { Cart as ProdutoCarrinho, CartApi } from '../types/types'
 import { toast } from 'react-toastify';
 
@@ -9,7 +9,9 @@ const defaultValue = {
     clearAllCarrinho: () => { },
     open: false,
     openBackDrop: () => { },
-    closeBackDrop: () => { }
+    closeBackDrop: () => { },
+    resp: 0,
+    respValue: () => { }
 }
 
 interface CarrinhoProps {
@@ -19,7 +21,9 @@ interface CarrinhoProps {
     clearAllCarrinho: () => void,
     open: boolean,
     openBackDrop: () => void,
-    closeBackDrop: () => void
+    closeBackDrop: () => void,
+    resp: number,
+    respValue: (r: number) => void
 }
 
 export const CartContext = createContext<CarrinhoProps>(defaultValue)
@@ -30,8 +34,8 @@ interface CartProviderProps {
 
 export const CartProvider = ({ children }: CartProviderProps) => {
 
+    // CARRINHO
     const [carrinho, setCarrinho] = useState<ProdutoCarrinho[]>([])
-    const [open, setOpen] = useState(false)
 
     const addProdutoCarrinho = (cart: Omit<ProdutoCarrinho, 'amount'>) => {
         const NOT_FOUND = -1
@@ -89,12 +93,22 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         setCarrinho([])
     }
 
+    // BACKDROP
+    const [open, setOpen] = useState(false)
+
     const openBackDrop = () => {
         setOpen(true)
     }
 
     const closeBackDrop = () => {
         setOpen(false)
+    }
+
+    // REQUISICAO
+    const [resp, setResp] = useState(0)
+
+    const respValue = (r: number) => {
+        setResp(r)
     }
 
     return (
@@ -106,7 +120,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
                 clearAllCarrinho,
                 open,
                 openBackDrop,
-                closeBackDrop
+                closeBackDrop,
+                resp,
+                respValue
             }
         }
         >

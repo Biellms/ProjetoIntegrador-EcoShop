@@ -17,6 +17,7 @@ export const Navbar = () => {
 
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    
     const { carrinho, clearAllCarrinho } = useContext(CartContext)
 
     const token = useSelector<TokenState, TokenState["tokens"]>(

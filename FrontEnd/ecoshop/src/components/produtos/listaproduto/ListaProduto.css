@@ -48,12 +48,12 @@
 .card-nome-produto {
     font-weight: bold;
     color: #484848;
+    font-family: 'Roboto', sans-serif;
 }
 
 .card-categoria {
     font-size: 15px;
     color: #569854;
-    /* font-weight: bold; */
 }
 
 .card-body p {
