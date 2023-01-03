@@ -49,12 +49,6 @@ export const ListaCategoria = () => {
                     </Link>
                 ))
             }
-            <hr/>
-            <Link to={`/comprar`}>
-                <span className='aside-filtros-span'>
-                    Remover filtros
-                </span>
-            </Link>
         </>
     );
 }

@@ -59,7 +59,6 @@
 .aside-filtros-span {
     text-decoration: none;
     color: black;
-    
 }
 
 .aside-filtros-span:hover {
@@ -68,6 +67,13 @@
 
 .aside-h3 {
     font-family: 'Roboto', sans-serif;
+}
+
+.aside-remover-filtros {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 @media screen and (max-width: 768px) and (min-width: 551px){

@@ -1,5 +1,7 @@
+import { Button } from '@mui/material';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { ListaCategoria } from '../../components/categorias/listacategoria/ListaCategoria';
 import { ListaProduto } from '../../components/produtos/listaproduto/ListaProduto';
@@ -38,6 +40,11 @@ export const Comprar = () => {
                     <div className='aside-filtros-categorias'>
                         <ListaCategoria />
                     </div>
+                </div>
+                <div className="aside-remover-filtros">
+                    <Link to={`/comprar`}>
+                        <Button variant='outlined'>Remover filtro</Button>
+                    </Link>
                 </div>
             </div>
             <div className='comprar-main'>
