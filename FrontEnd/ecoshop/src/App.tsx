@@ -34,7 +34,7 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/sobre' element={<Sobre />} />
             <Route path='/comprar' element={<Comprar />} />
-            <Route path='/comprar/:id' element={<Comprar />} />
+            <Route path='/comprar/:id/filtro/:id2' element={<Comprar />} />
             <Route path='/vender' element={<Vender />} />
             <Route path='/vender/:id' element={ <Vender />} />
             <Route path='/venderResp' element={<VenderResp />} />

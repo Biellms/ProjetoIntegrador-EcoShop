@@ -8,13 +8,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { busca } from '../../../service/Service';
 import { CartContext } from '../../../context/CartContext';
 import axios from 'axios';
-import { NetworkError } from '../../../pages/error/networkerror/NetworkError';
 
 export const ListaProduto = () => {
 
     const [produto, setProduto] = useState<Produto[]>([])
     const { addProdutoCarrinho, openBackDrop, closeBackDrop, resp, respValue } = useContext(CartContext)
-    const { id } = useParams<{ id: string }>();
+    const { id, id2 } = useParams<{ id: string, id2: string }>();
 
     const navigate = useNavigate()
 
@@ -38,6 +37,7 @@ export const ListaProduto = () => {
             }
         }
 
+        respValue(0)
         closeBackDrop()
     }
 
@@ -58,6 +58,7 @@ export const ListaProduto = () => {
             }
         }
 
+        respValue(0)
         closeBackDrop()
     }
 
@@ -81,17 +82,38 @@ export const ListaProduto = () => {
         closeBackDrop()
     }
 
-    useEffect(() => {
+    async function getProdutoEntrePreco() {
+        try {
+            openBackDrop()
+            await busca(`/produtos/preco_inicial/${id}/preco_final/${id2}`, setProduto, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
+                }
+            }
+        }
 
+        respValue(0)
+        closeBackDrop()
+    }
+
+    useEffect(() => {
         if (id === undefined) {
             getProduto()
         } else if (resp === 1) {
             getProdutoPorNome()
+        } else if (resp === 2) {
+            getProdutoEntrePreco()
         } else {
             getProdutoPorCategoria()
         }
 
-    }, [id])
+    }, [id, id2])
 
     let listagem
 

@@ -22,21 +22,23 @@ const CssSearchField = styled(FormControl)({
 export const SearchBar = () => {
 
     const [search, setSearch] = useState('')
-
     const { respValue } = useContext(CartContext)
-
     const navigate = useNavigate()
 
-    function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+    const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        navigate(`/comprar/${search}`)
+        if (search !== '') {
+            navigate(`/comprar/${search}/filtro/&`)
+        } else {
+            navigate(`/comprar/?/filtro/&`)
+        }
+
         respValue(1)
         setSearch('')
     }
 
-    function updatedModel(e: ChangeEvent<HTMLInputElement>) {
-
+    const updatedModel = (e: ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
     }
 

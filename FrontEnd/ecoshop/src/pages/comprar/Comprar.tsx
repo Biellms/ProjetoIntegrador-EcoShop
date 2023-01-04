@@ -1,11 +1,11 @@
 import { Button } from '@mui/material';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ListaCategoria } from '../../components/categorias/listacategoria/ListaCategoria';
 import { ListaProduto } from '../../components/produtos/listaproduto/ListaProduto';
-import { SearchBar } from '../../components/styles/SearchBar';
+import { SearchBar } from '../../components/searchbar/SearchBar';
+import { SliderBar } from '../../components/slider/SliderBar';
 import { TokenState } from '../../store/tokens/tokensReduce';
 import './Comprar.css'
 
@@ -27,18 +27,23 @@ export const Comprar = () => {
     return (
         <div className='container-comprar'>
             <div className='comprar-aside'>
-                <div className='aside-titulo'>
-                    <h3 className='aside-h3'>
-                        ADICIONE AO CARRINHO
-                    </h3>
-                </div>
-                <SearchBar />
                 <div className='aside-filtros'>
-                    <h3 className='aside-h3'>
+                    <SearchBar />
+                </div>
+                <div className='aside-filtros'>
+                    <h4 className='aside-h'>
                         Filtrar por categorias
-                    </h3>
+                    </h4>
                     <div className='aside-filtros-categorias'>
                         <ListaCategoria />
+                    </div>
+                </div>
+                <div className='aside-filtros'>
+                    <h4 className='aside-h'>
+                        Filtrar entre dois preços
+                    </h4>
+                    <div className='aside-filtros-precos'>
+                        <SliderBar />
                     </div>
                 </div>
                 <div className="aside-remover-filtros">
