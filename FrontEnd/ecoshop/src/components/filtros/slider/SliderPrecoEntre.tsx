@@ -2,9 +2,17 @@ import { useContext, useState } from 'react';
 import Slider from '@mui/material/Slider';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { CartContext } from '../../context/CartContext';
+import { CartContext } from '../../../context/CartContext';
+import styled from '@emotion/styled';
 
-export const SliderBar = () => {
+const PrettoSlider = styled(Slider)({
+    color: '#97C160',
+    '& .MuiSlider-valueLabel': {
+      backgroundColor: '#97C160',
+    },
+  });
+
+export const SliderPrecoEntre = () => {
 
     const [value, setValue] = useState<number[]>([0, 200]);
     const navigate = useNavigate()
@@ -24,17 +32,23 @@ export const SliderBar = () => {
         respValue(2)
     }
 
+    function valuetext(value: number) {
+        return `R$${value}`;
+    }
+
     return (
         <>
-            <Slider
+            <PrettoSlider
                 min={0}
                 max={200}
                 value={value}
                 onChange={handleChange}
                 size='small'
                 valueLabelDisplay="auto"
+                getAriaValueText={valuetext}
+                valueLabelFormat={valuetext}
             />
-            <Button variant='outlined' onClick={onSubmit}>
+            <Button size='small' variant='outlined' className="button-sm" onClick={onSubmit}>
                 aplicar
             </Button>
         </>
