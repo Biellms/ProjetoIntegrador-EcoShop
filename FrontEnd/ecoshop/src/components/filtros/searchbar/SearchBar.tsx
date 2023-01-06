@@ -32,7 +32,7 @@ export const SearchBar = () => {
         if (search !== '') {
             navigate(`/comprar/${search}/filtro/&`)
         } else {
-            navigate(`/comprar/?/filtro/&`)
+            navigate(`/comprar`)
         }
 
         respValue(1)
@@ -80,7 +80,7 @@ export const SearchPrecoMin = () => {
             navigate(`/comprar/?/filtro/&`)
         }
 
-        respValue(1)
+        respValue(3)
         setSearch('')
     }
 
@@ -125,7 +125,7 @@ export const SearchPrecoMax = () => {
             navigate(`/comprar/?/filtro/&`)
         }
 
-        respValue(1)
+        respValue(4)
         setSearch('')
     }
 

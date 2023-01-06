@@ -14,7 +14,7 @@ const PrettoSlider = styled(Slider)({
 
 export const SliderPrecoEntre = () => {
 
-    const [value, setValue] = useState<number[]>([0, 200]);
+    const [value, setValue] = useState<number[]>([0, 150]);
     const navigate = useNavigate()
     const { respValue } = useContext(CartContext)
 
@@ -33,19 +33,18 @@ export const SliderPrecoEntre = () => {
     }
 
     function valuetext(value: number) {
-        return `R$${value}`;
+        return `$ ${value}`;
     }
 
     return (
         <>
             <PrettoSlider
                 min={0}
-                max={200}
+                max={150}
                 value={value}
                 onChange={handleChange}
                 size='small'
                 valueLabelDisplay="auto"
-                getAriaValueText={valuetext}
                 valueLabelFormat={valuetext}
             />
             <Button size='small' variant='outlined' className="button-sm" onClick={onSubmit}>

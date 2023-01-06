@@ -102,6 +102,46 @@ export const ListaProduto = () => {
         closeBackDrop()
     }
 
+    async function getProdutoPrecoMin() {
+        try {
+            openBackDrop()
+            await busca(`/produtos/preco_maior/${id}`, setProduto, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
+                }
+            }
+        }
+
+        respValue(0)
+        closeBackDrop()
+    }
+
+    async function getProdutoPrecoMax() {
+        try {
+            openBackDrop()
+            await busca(`/produtos/preco_menor/${id}`, setProduto, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                if (!error?.response) {
+                    navigate('/error')
+                }
+            }
+        }
+
+        respValue(0)
+        closeBackDrop()
+    }
+
     useEffect(() => {
         if (id === undefined) {
             getProduto()
@@ -109,6 +149,10 @@ export const ListaProduto = () => {
             getProdutoPorNome()
         } else if (resp === 2) {
             getProdutoEntrePreco()
+        } else if (resp === 3) {
+            getProdutoPrecoMin()
+        } else if (resp === 4) {
+            getProdutoPrecoMax()
         } else {
             getProdutoPorCategoria()
         }
