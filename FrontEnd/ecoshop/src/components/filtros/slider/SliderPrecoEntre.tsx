@@ -1,9 +1,9 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Slider from '@mui/material/Slider';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { CartContext } from '../../../context/CartContext';
 import styled from '@emotion/styled';
+import { UtilContext } from '../../../context/utilcontext/UtilContext';
 
 const PrettoSlider = styled(Slider)({
     color: '#97C160',
@@ -16,7 +16,7 @@ export const SliderPrecoEntre = () => {
 
     const [value, setValue] = useState<number[]>([0, 150]);
     const navigate = useNavigate()
-    const { respValue } = useContext(CartContext)
+    const { respApiValue } = useContext(UtilContext)
 
     const handleChange = (e: Event, newValue: number | number[]) => {
         e.preventDefault()
@@ -29,7 +29,7 @@ export const SliderPrecoEntre = () => {
         const id2 = value[1].toString()
 
         navigate(`/comprar/${id}/filtro/${id2}`)
-        respValue(2)
+        respApiValue(2)
     }
 
     function valuetext(value: number) {

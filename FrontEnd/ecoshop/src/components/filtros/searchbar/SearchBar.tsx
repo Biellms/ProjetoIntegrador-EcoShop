@@ -1,9 +1,9 @@
-import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
+import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import { ChangeEvent, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartContext } from '../../../context/CartContext';
 import SearchIcon from '@mui/icons-material/Search';
 import styled from '@emotion/styled';
+import { UtilContext } from '../../../context/utilcontext/UtilContext';
 
 const CssSearchField = styled(FormControl)({
     '& label.Mui-focused': {
@@ -23,7 +23,7 @@ const CssSearchField = styled(FormControl)({
 export const SearchBar = () => {
 
     const [search, setSearch] = useState('')
-    const { respValue } = useContext(CartContext)
+    const { respApiValue } = useContext(UtilContext)
     const navigate = useNavigate()
 
     const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
@@ -35,7 +35,7 @@ export const SearchBar = () => {
             navigate(`/comprar`)
         }
 
-        respValue(1)
+        respApiValue(1)
         setSearch('')
     }
 
@@ -68,7 +68,7 @@ export const SearchBar = () => {
 export const SearchPrecoMin = () => {
 
     const [search, setSearch] = useState('')
-    const { respValue } = useContext(CartContext)
+    const { respApiValue } = useContext(UtilContext)
     const navigate = useNavigate()
 
     const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
@@ -80,7 +80,7 @@ export const SearchPrecoMin = () => {
             navigate(`/comprar/?/filtro/&`)
         }
 
-        respValue(3)
+        respApiValue(3)
         setSearch('')
     }
 
@@ -113,7 +113,7 @@ export const SearchPrecoMin = () => {
 export const SearchPrecoMax = () => {
 
     const [search, setSearch] = useState('')
-    const { respValue } = useContext(CartContext)
+    const { respApiValue } = useContext(UtilContext)
     const navigate = useNavigate()
 
     const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
@@ -125,7 +125,7 @@ export const SearchPrecoMax = () => {
             navigate(`/comprar/?/filtro/&`)
         }
 
-        respValue(4)
+        respApiValue(4)
         setSearch('')
     }
 

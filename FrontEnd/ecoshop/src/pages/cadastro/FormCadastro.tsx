@@ -5,9 +5,9 @@ import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { cadastroUsuario } from '../../service/Service';
 import User from '../../models/User';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { CartContext } from '../../context/CartContext';
 import { ToastError, ToastSuccess, ToastWarn } from '../../components/styles/toast/Toasts';
 import axios from 'axios';
+import { UtilContext } from '../../context/utilcontext/UtilContext';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -137,7 +137,7 @@ export const FormCadastro = () => {
     }
 
     // BACKDROP
-    const { openBackDrop, closeBackDrop } = useContext(CartContext)
+    const { openBackDrop, closeBackDrop } = useContext(UtilContext)
 
     // PASSWORDFIELD
     interface State {

@@ -1,10 +1,5 @@
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide } from '@mui/material';
+
 import { TransitionProps } from '@mui/material/transitions';
 import './DeleteProduto.css'
 import { useNavigate, useParams } from 'react-router-dom';
@@ -13,9 +8,10 @@ import { useSelector } from 'react-redux';
 import Produto from '../../../models/Produto';
 import { TokenState } from '../../../store/tokens/tokensReduce';
 import { buscaId, deleteId } from '../../../service/Service';
-import { CartContext } from '../../../context/CartContext';
 import axios from 'axios';
-
+import { UtilContext } from '../../../context/utilcontext/UtilContext';
+import { ToastError, ToastInfo } from '../../styles/toast/Toasts';
+import { Link } from 'react-router-dom';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -29,9 +25,8 @@ const Transition = React.forwardRef(function Transition(
 export const DeleteProduto = () => {
 
     const [open, setOpen] = useState(false);
-    const [deletado, setDeletado] = useState(false)
     const [post, setPosts] = useState<Produto>()
-
+    const { respApiValue, openBackDrop, closeBackDrop } = useContext(UtilContext)
     const { id } = useParams<{ id: string }>();
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
@@ -39,26 +34,21 @@ export const DeleteProduto = () => {
 
     let navigate = useNavigate();
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+    const handleClickOpen = () => setOpen(true)
 
-    const handleClose = () => {
-        setOpen(false);
-        setDeletado(true)
-    };
+    const handleClose = () => setOpen(false)
+
+    useEffect(() => {
+        if (!open) {
+            navigate('/vender')
+        }
+    }, [open])
 
     useEffect(() => {
         if (id !== undefined) {
             findById(id)
         }
     }, [id])
-
-    useEffect(() => {
-        if(deletado) {
-            navigate('/venderResp')
-        }
-    })
 
     async function findById(id: string) {
         try {
@@ -79,7 +69,7 @@ export const DeleteProduto = () => {
         closeBackDrop()
     }
 
-    function sim() {
+    function onSubmit() {
         try {
             openBackDrop()
             deleteId(`/produtos/${id}`, {
@@ -87,39 +77,38 @@ export const DeleteProduto = () => {
                     'Authorization': token
                 }
             });
+
+            ToastInfo(post?.nomeProduto + ' deletado com sucesso!')
+            respApiValue(1)
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 if (!error?.response) {
                     navigate('/error')
                 }
+
+                ToastError(error.message)
             }
         }
 
         handleClose()
-        setDeletado(true)
         closeBackDrop()
     }
-
-    // BACKDROP
-    const { openBackDrop, closeBackDrop } = useContext(CartContext)
 
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen}>
                 Deletar
             </Button>
-            <Dialog open={open} TransitionComponent={Transition} aria-describedby="alert-dialog-slide-description"
-                onClose={handleClose} keepMounted
-            >
+            <Dialog open={open} TransitionComponent={Transition} onClose={handleClose} keepMounted >
                 <DialogTitle>{"Deseja realmente deletar?"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                        Produto: {post?.nomeProduto}<br/>
+                        Produto: {post?.nomeProduto}<br />
                         Categoria: {post?.categoria?.nomeCategoria}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions className='button-deletar'>
-                    <Button variant='contained' onClick={sim}>Confirmar</Button>
+                    <Button variant='contained' onClick={onSubmit}>Confirmar</Button>
                     <Button onClick={handleClose}>Voltar</Button>
                 </DialogActions>
             </Dialog>

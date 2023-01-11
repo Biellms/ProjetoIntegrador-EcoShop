@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { AccordionHome } from "../../components/styles/according/AccordionHome";
 import { Borda } from "../../components/styles/border/Borda";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReduce';
 import { useNavigate } from 'react-router-dom';
@@ -13,15 +13,22 @@ import { ToastError } from "../../components/styles/toast/Toasts";
 export const Home = () => {
 
     let navigate = useNavigate();
+    const [tokenStatus, setTokenStatus] = useState(false)
 
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
 
     useEffect(() => {
-        if (token === "") {
+        if (tokenStatus) {
             ToastError('Usuário precisa estar logado!')
             navigate('/login')
+        }
+    }, [tokenStatus])
+
+    useEffect(() => {
+        if (token === '') {
+            setTokenStatus(true)
         }
     }, [token])
 
@@ -44,9 +51,9 @@ export const Home = () => {
             <section className="section-home">
                 <div className="home-div">
                     <h2 className="home-h2">
-                        <span className="home-span">SEJA BEM VINDO, SOMOS A </span>
-                        <span className='ecoshop-header-eco'>ECO</span>
-                        <span className='ecoshop-header-shop'>SHOP!</span>
+                        <span className="home-span">Seja Bem-Vindo, somos a </span>
+                        <span className='ecoshop-header-eco'>Eco</span>
+                        <span className='ecoshop-header-shop'>Shop!</span>
                     </h2>
                     <p className="home-p"> O e-commerce sustentável mais descolado e moderno que você já viu!
                         Onde, além de comprar, você também poderá vender seus produtos ecológios e sustentáveis!

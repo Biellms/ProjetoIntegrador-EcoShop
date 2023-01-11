@@ -1,29 +1,19 @@
 import { useState, createContext, ReactNode } from "react";
-import { Cart as ProdutoCarrinho, CartApi } from '../types/types'
-import { toast } from 'react-toastify';
+import { Cart as ProdutoCarrinho, CartApi } from '../../types/types'
+import { ToastInfo, ToastSuccess } from "../../components/styles/toast/Toasts";
 
 const defaultValue = {
     carrinho: [],
     addProdutoCarrinho: () => { },
     removeProdutoCarrinho: () => { },
-    clearAllCarrinho: () => { },
-    open: false,
-    openBackDrop: () => { },
-    closeBackDrop: () => { },
-    resp: 0,
-    respValue: () => { }
+    clearAllCarrinho: () => { }
 }
 
 interface CarrinhoProps {
     carrinho: ProdutoCarrinho[],
     addProdutoCarrinho: (cart: CartApi) => void,
     removeProdutoCarrinho: (cart: CartApi) => void,
-    clearAllCarrinho: () => void,
-    open: boolean,
-    openBackDrop: () => void,
-    closeBackDrop: () => void,
-    resp: number,
-    respValue: (r: number) => void
+    clearAllCarrinho: () => void
 }
 
 export const CartContext = createContext<CarrinhoProps>(defaultValue)
@@ -34,23 +24,13 @@ interface CartProviderProps {
 
 export const CartProvider = ({ children }: CartProviderProps) => {
 
-    // CARRINHO
     const [carrinho, setCarrinho] = useState<ProdutoCarrinho[]>([])
 
     const addProdutoCarrinho = (cart: Omit<ProdutoCarrinho, 'amount'>) => {
         const NOT_FOUND = -1
         const cartIndex = carrinho.findIndex((item) => cart.nomeProduto === item.nomeProduto)
 
-        toast.success(cart.nomeProduto + ' adicionado ao carrinho', {
-            position: 'top-center',
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-            theme: 'colored',
-            progress: undefined,
-        });
+        ToastSuccess(cart.nomeProduto + ' adicionado ao carrinho')
 
         if (cartIndex === NOT_FOUND) {
 
@@ -69,16 +49,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         const cartIndex = carrinho.findIndex((item) => item.nomeProduto === cart.nomeProduto)
         const carrinhoCopy = [...carrinho]
 
-        toast.info(cart.nomeProduto + ' removido do carrinho', {
-            position: 'top-center',
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-            theme: 'colored',
-            progress: undefined,
-        });
+        ToastInfo(cart.nomeProduto + ' removido do carrinho')
 
         if (carrinhoCopy[cartIndex].amount === 1) {
             const newCarrinho = carrinhoCopy.filter((item) => item.nomeProduto !== cart.nomeProduto)
@@ -93,36 +64,13 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         setCarrinho([])
     }
 
-    // BACKDROP
-    const [open, setOpen] = useState(false)
-
-    const openBackDrop = () => {
-        setOpen(true)
-    }
-
-    const closeBackDrop = () => {
-        setOpen(false)
-    }
-
-    // REQUISICAO
-    const [resp, setResp] = useState(0)
-
-    const respValue = (r: number) => {
-        setResp(r)
-    }
-
     return (
         <CartContext.Provider value={
             {
                 carrinho,
                 addProdutoCarrinho,
                 removeProdutoCarrinho,
-                clearAllCarrinho,
-                open,
-                openBackDrop,
-                closeBackDrop,
-                resp,
-                respValue
+                clearAllCarrinho
             }
         }
         >

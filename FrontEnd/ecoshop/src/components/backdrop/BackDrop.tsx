@@ -1,15 +1,15 @@
 import { Backdrop, CircularProgress } from "@mui/material"
 import { useContext } from "react"
-import { CartContext } from "../../context/CartContext"
+import { UtilContext } from "../../context/utilcontext/UtilContext"
 
 export const BackDrop = () => {
 
-    const { open } = useContext(CartContext)
+    const { backdrop } = useContext(UtilContext)
 
     return (
         <Backdrop
             sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={open}
+            open={backdrop}
         >
             <CircularProgress color="inherit" />
         </Backdrop>

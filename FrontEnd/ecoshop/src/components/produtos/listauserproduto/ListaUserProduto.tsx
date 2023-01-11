@@ -1,19 +1,21 @@
 import { useState, useEffect, useContext } from 'react'
-import { Button } from '@mui/material';
 import './ListaUserProduto.css'
 import Produto from '../../../models/Produto';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReduce';
 import { busca } from '../../../service/Service';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { DeleteProduto } from '../deleteproduto/DeleteProduto';
 import axios from 'axios';
-import { CartContext } from '../../../context/CartContext';
+import { UtilContext } from '../../../context/utilcontext/UtilContext';
+import { ModalPostProduto } from '../modalpostproduto/ModalPostProduto';
 
 export const ListaUserProduto = () => {
 
     const [produto, setProduto] = useState<Produto[]>([])
-    
+    const { respApi, respApiValue, openBackDrop, closeBackDrop } = useContext(UtilContext)
+    const navigate = useNavigate()
+
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
@@ -21,8 +23,6 @@ export const ListaUserProduto = () => {
     const id = useSelector<TokenState, TokenState["ids"]>(
         (state) => state.ids
     );
-
-    const navigate = useNavigate()
 
     async function getProduto() {
         try {
@@ -40,23 +40,25 @@ export const ListaUserProduto = () => {
             }  
         }
 
+        respApiValue(0)
         closeBackDrop()
     }
 
     useEffect(() => {
-
         getProduto()
 
     }, [produto.length])
+
+    useEffect(() => {
+        getProduto()
+
+    }, [respApi])
 
     const listaProdutos = produto.filter(function (ele, pos) {
         if (ele.usuario?.id === id) {
             return produto.indexOf(ele) === pos;
         }
     })
-
-    // BACKDROP
-    const { openBackDrop, closeBackDrop } = useContext(CartContext)
 
     return (
         <>
@@ -86,9 +88,7 @@ export const ListaUserProduto = () => {
                                 </p>
                             </div>
                             <div className='div-button-valor-vender'>
-                                <Link to={`/editar/${post.id}`} className='link-decorator'>
-                                    <Button variant='contained'>Editar</Button>
-                                </Link>
+                                    <ModalPostProduto idProduto={post.id} textModal={'Editar'}/>
                                 <Link to={`/vender/${post.id}`} className='link-decorator'>
                                     <DeleteProduto />
                                 </Link>

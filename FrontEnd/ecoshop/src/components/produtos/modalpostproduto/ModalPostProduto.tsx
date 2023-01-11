@@ -1,25 +1,33 @@
 import './ModalPostProduto.css'
-import React, { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Button, Modal } from '@mui/material';
 import { PostProduto } from '../postproduto/PostProduto';
+import { UtilContext } from '../../../context/utilcontext/UtilContext';
 
-export const ModalPostProduto = () => {
+interface propsPostProduto {
+    idProduto: number
+    textModal: string
+}
 
+export const ModalPostProduto = (propsPostProduto: propsPostProduto) => {
+
+    const { idProduto, textModal } = propsPostProduto
+    const { modal } = useContext(UtilContext)
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    useEffect(() => {
+        handleClose()
+
+    }, [modal])
+
     return (
         <>
-            <Button onClick={handleOpen} variant="contained" className="button-vender">CADASTRAR</Button>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
+            <Button onClick={handleOpen} variant="contained" className="button-vender">{textModal}</Button>
+            <Modal open={open} onClose={handleClose}>
                 <div className='container-post'>
-                    <PostProduto />
+                    <PostProduto idProduto={idProduto}/>
                 </div>
             </Modal>
         </>

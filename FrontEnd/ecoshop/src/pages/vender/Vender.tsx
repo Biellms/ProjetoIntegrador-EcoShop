@@ -23,20 +23,22 @@ export const Vender = () => {
     return (
         <div className='container-vender'>
             <div className='vender-aside'>
-                <h3 className='aside-h3'>
-                    SEUS PRODUTOS
+                <h3 className='aside-h'>
+                    Meus Produtos
                 </h3>
                 <p className='vender-p2'>
-                    É simples e fácil, clique no botão abaixo preencha as informações de seu produto sustentável, selecione a categoria e confirme!
+                    É simples e fácil. Clique no botão abaixo preencha as informações de seu produto sustentável, selecione a categoria e confirme!
                 </p>
-                <ModalPostProduto />
+                <div>
+                    <ModalPostProduto idProduto={0} textModal={'Cadastrar'}/>
+                </div>
             </div>
             <div className='vender-main'>
                 <div className='vender-main-modal'>
-                    <ModalPostProduto />
+                    <ModalPostProduto  idProduto={0} textModal={'Cadastrar'}/>
                 </div>
                 <div className='vender-main-lista'>
-                    <ListaUserProduto/>
+                    <ListaUserProduto />
                 </div>
             </div>
         </div>

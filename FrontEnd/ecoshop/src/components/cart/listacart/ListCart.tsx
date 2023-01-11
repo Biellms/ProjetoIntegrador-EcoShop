@@ -1,8 +1,9 @@
 import { useContext } from 'react'
-import { CartContext } from '../../../context/CartContext';
+import { CartContext } from '../../../context/cartcontext/CartContext';
 import './ListCart.css'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, IconButton } from '@mui/material';
+import { ToastInfo } from '../../styles/toast/Toasts';
 
 export const ListCart = () => {
 
@@ -13,16 +14,21 @@ export const ListCart = () => {
     if (carrinho.length == 0) {
         carrinhoVazio =
             <div className='carrinho-header'>
-                <h3 className='carrinho-nome'>CARRINHO VAZIO </h3>
+                <h3 className='carrinho-nome'>Carrinho vazio</h3>
             </div>
+    }
+
+    const clearCart = () => {
+        clearAllCarrinho()
+        ToastInfo('Carrinho esvaziado')
     }
 
     return (
         <>
             <div className='container-list-cart'>
                 <div className='carrinho-header'>
-                    <h3 className='carrinho-nome'>MEU CARRINHO</h3>
-                    <Button onClick={() => clearAllCarrinho()} variant='outlined'>
+                    <h3 className='carrinho-nome'>Meu carrinho</h3>
+                    <Button onClick={clearCart} variant='outlined'>
                         Esvaziar carrinho
                     </Button>
                 </div>

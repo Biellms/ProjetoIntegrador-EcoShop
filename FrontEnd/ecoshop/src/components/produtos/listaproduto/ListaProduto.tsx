@@ -6,13 +6,15 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReduce';
 import { useNavigate, useParams } from 'react-router-dom';
 import { busca } from '../../../service/Service';
-import { CartContext } from '../../../context/CartContext';
+import { CartContext } from '../../../context/cartcontext/CartContext';
+import { UtilContext } from '../../../context/utilcontext/UtilContext';
 import axios from 'axios';
 
 export const ListaProduto = () => {
 
     const [produto, setProduto] = useState<Produto[]>([])
-    const { addProdutoCarrinho, openBackDrop, closeBackDrop, resp, respValue } = useContext(CartContext)
+    const { addProdutoCarrinho} = useContext(CartContext)
+    const { openBackDrop, closeBackDrop, respApi, respApiValue } = useContext(UtilContext)
     const { id, id2 } = useParams<{ id: string, id2: string }>();
 
     const navigate = useNavigate()
@@ -37,7 +39,7 @@ export const ListaProduto = () => {
             }
         }
 
-        respValue(0)
+        respApiValue(0)
         closeBackDrop()
     }
 
@@ -58,7 +60,7 @@ export const ListaProduto = () => {
             }
         }
 
-        respValue(0)
+        respApiValue(0)
         closeBackDrop()
     }
 
@@ -78,7 +80,7 @@ export const ListaProduto = () => {
             }
         }
 
-        respValue(0)
+        respApiValue(0)
         closeBackDrop()
     }
 
@@ -98,7 +100,7 @@ export const ListaProduto = () => {
             }
         }
 
-        respValue(0)
+        respApiValue(0)
         closeBackDrop()
     }
 
@@ -118,7 +120,7 @@ export const ListaProduto = () => {
             }
         }
 
-        respValue(0)
+        respApiValue(0)
         closeBackDrop()
     }
 
@@ -138,20 +140,20 @@ export const ListaProduto = () => {
             }
         }
 
-        respValue(0)
+        respApiValue(0)
         closeBackDrop()
     }
 
     useEffect(() => {
         if (id === undefined) {
             getProduto()
-        } else if (resp === 1) {
+        } else if (respApi === 1) {
             getProdutoPorNome()
-        } else if (resp === 2) {
+        } else if (respApi === 2) {
             getProdutoEntrePreco()
-        } else if (resp === 3) {
+        } else if (respApi === 3) {
             getProdutoPrecoMin()
-        } else if (resp === 4) {
+        } else if (respApi === 4) {
             getProdutoPrecoMax()
         } else {
             getProdutoPorCategoria()

@@ -10,7 +10,7 @@ import { TokenState } from '../../../store/tokens/tokensReduce';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addId, addName, addToken } from '../../../store/tokens/actions';
-import { CartContext } from '../../../context/CartContext';
+import { CartContext } from '../../../context/cartcontext/CartContext';
 import { ToastInfo } from '../../styles/toast/Toasts';
 
 export const Navbar = () => {
@@ -111,13 +111,13 @@ export const Navbar = () => {
             </div>
             <div className='header-nav'>
                 <Link to='/home'>
-                    <h4 >HOME</h4>
+                    <h4 >Home</h4>
                 </Link>
                 <Link to='/comprar'>
-                    <h4 >FEED DE PRODUTOS</h4>
+                    <h4 >Produtos</h4>
                 </Link>
                 <Link to='/sobre'>
-                    <h4 >SOBRE</h4>
+                    <h4 >Sobre</h4>
                 </Link>
             </div>
             <div className='header-user'>

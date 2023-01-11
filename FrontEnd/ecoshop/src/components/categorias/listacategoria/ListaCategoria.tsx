@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { CartContext } from '../../../context/CartContext';
+import { CartContext } from '../../../context/cartcontext/CartContext';
 import Categoria from '../../../models/Categoria';
 import { busca } from '../../../service/Service';
 import { TokenState } from '../../../store/tokens/tokensReduce';

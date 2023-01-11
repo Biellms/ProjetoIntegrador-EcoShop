@@ -9,9 +9,7 @@ import { Comprar } from './pages/comprar/Comprar';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import { Vender } from './pages/vender/Vender';
-import { VenderResp } from './pages/vender/VenderResp';
 import { Sobre } from './pages/sobre/Sobre';
-import { Editar } from './pages/editar/Editar';
 import { Carrinho } from './pages/carrinho/Carrinho';
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -37,9 +35,6 @@ function App() {
             <Route path='/comprar/:id/filtro/:id2' element={<Comprar />} />
             <Route path='/vender' element={<Vender />} />
             <Route path='/vender/:id' element={ <Vender />} />
-            <Route path='/venderResp' element={<VenderResp />} />
-            <Route path='/venderResp/:id' element={ <VenderResp />} />
-            <Route path='/editar/:id' element={ <Editar /> } />
             <Route path='/carrinho' element={ <Carrinho /> } />
             <Route path='/error' element={<NetworkError />} />
             <Route path='*' element={<NotFound />} />

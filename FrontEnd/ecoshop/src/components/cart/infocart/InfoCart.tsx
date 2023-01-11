@@ -1,6 +1,6 @@
 import { Button, IconButton } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import { CartContext } from '../../../context/CartContext';
+import { CartContext } from '../../../context/cartcontext/CartContext';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import './InfoCart.css'
 import { FormatCurrency } from '../../../utils/FormatCurrency';
