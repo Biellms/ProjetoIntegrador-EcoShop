@@ -40,7 +40,7 @@ export const Vender = () => {
                         Meus Produtos
                     </h3>
                     <p className='vender-p2'>
-                        É simples e fácil. Clique no botão abaixo preencha as informações de seu produto sustentável, selecione a categoria e confirme!
+                        É simples e fácil. Clique no botão abaixo 'Cadastrar', preencha as informações de seu produto ecológico, selecione a categoria sustentável e confirme!
                     </p>
                     <ModalPostProduto  idProduto={0} textModal={'Cadastrar'}/>
                     <div className='vender-borda'>

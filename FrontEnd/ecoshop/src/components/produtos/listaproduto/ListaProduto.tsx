@@ -161,6 +161,14 @@ export const ListaProduto = () => {
 
     }, [id, id2])
 
+    const imagem = (img: string) => {
+        if (img === '') {
+            return '../img/ProdutoNA.png'
+        } else {
+            return img
+        }
+    }
+
     let listagem
 
     if (produto.length === 0) {
@@ -175,7 +183,7 @@ export const ListaProduto = () => {
             produto.map(post => (
                 <div className='card'>
                     <div className='card-img'>
-                        <img src={post.imagem} alt="" />
+                        <img src={imagem(post.imagem)} alt="" />                     
                     </div>
                     <div className='card-body'>
                         <div className='card-body-info'>

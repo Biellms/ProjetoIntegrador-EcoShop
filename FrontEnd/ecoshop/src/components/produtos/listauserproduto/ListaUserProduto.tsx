@@ -54,6 +54,14 @@ export const ListaUserProduto = () => {
 
     }, [respApi])
 
+    const imagem = (img: string) => {
+        if (img === '') {
+            return '../img/ProdutoNA.png'
+        } else {
+            return img
+        }
+    }
+
     const listaProdutos = produto.filter(function (ele, pos) {
         if (ele.usuario?.id === id) {
             return produto.indexOf(ele) === pos;
@@ -66,7 +74,7 @@ export const ListaUserProduto = () => {
                 listaProdutos.map(post => (
                     <div className='card'>
                         <div className='card-img'>
-                            <img src={post.imagem} alt="" />
+                            <img src={imagem(post.imagem)} alt="" />
                         </div>
                         <div className='card-body'>
                             <div className='card-body-info'>
