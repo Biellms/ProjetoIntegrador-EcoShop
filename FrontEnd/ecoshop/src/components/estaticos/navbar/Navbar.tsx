@@ -68,21 +68,12 @@ export const Navbar = () => {
     if (token !== '') {
         navbarComponent = <header>
             <div className='header-menu' >
-                <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={handleMenuNav}
-                    color="default"
-                >
+                <IconButton size="large" onClick={handleMenuNav} >
                     <MenuIcon fontSize='large' />
                 </IconButton>
                 <Menu
-                    id="menu-appbar"
                     anchorEl={anchorElNav}
                     anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-                    keepMounted
                     transformOrigin={{ vertical: "top", horizontal: "left" }}
                     open={Boolean(anchorElNav)}
                     onClose={handleCloseNav}
@@ -91,7 +82,7 @@ export const Navbar = () => {
                         <MenuItem onClick={handleCloseNav} className='menu-item-text'>Home</MenuItem>
                     </Link>
                     <Link to='/comprar'>
-                        <MenuItem onClick={handleCloseNav} className='menu-item-text'>Feed de Produtos</MenuItem>
+                        <MenuItem onClick={handleCloseNav} className='menu-item-text'>Produtos</MenuItem>
                     </Link>
                     <Link to='/carrinho'>
                         <MenuItem onClick={handleCloseNav} className='menu-item-text'>Carrinho</MenuItem>
@@ -123,34 +114,19 @@ export const Navbar = () => {
             <div className='header-user'>
                 <Tooltip title='Carrinho' TransitionComponent={Zoom}>
                     <Link to='/carrinho'>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            color="default"
-                        >
+                        <IconButton size="large" >
                             <Badge badgeContent={carrinho.length} color='success'>
                                 <ShoppingCartIcon fontSize='large' />
                             </Badge>
                         </IconButton>
                     </Link>
                 </Tooltip>
-                <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={handleMenuUser}
-                    color="default"
-                >
+                <IconButton size="large" onClick={handleMenuUser} >
                     <AccountCircle fontSize='large' />
                 </IconButton>
                 <Menu
-                    id="menu-appbar"
                     anchorEl={anchorEl}
                     anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                    keepMounted
                     transformOrigin={{ vertical: "top", horizontal: "right" }}
                     open={Boolean(anchorEl)}
                     onClose={handleCloseUser}
