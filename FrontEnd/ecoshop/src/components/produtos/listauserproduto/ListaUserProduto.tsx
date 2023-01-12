@@ -4,7 +4,7 @@ import Produto from '../../../models/Produto';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReduce';
 import { busca } from '../../../service/Service';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { DeleteProduto } from '../deleteproduto/DeleteProduto';
 import axios from 'axios';
 import { UtilContext } from '../../../context/utilcontext/UtilContext';
@@ -89,9 +89,7 @@ export const ListaUserProduto = () => {
                             </div>
                             <div className='div-button-valor-vender'>
                                     <ModalPostProduto idProduto={post.id} textModal={'Editar'}/>
-                                <Link to={`/vender/${post.id}`} className='link-decorator'>
-                                    <DeleteProduto />
-                                </Link>
+                                    <DeleteProduto idProduto={post.id} />
                             </div>
                         </div>
                     </div>

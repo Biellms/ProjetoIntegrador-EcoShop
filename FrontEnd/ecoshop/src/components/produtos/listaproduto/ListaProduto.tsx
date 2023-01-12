@@ -192,9 +192,8 @@ export const ListaProduto = () => {
                             </p>
                         </div>
                         <div className='div-button-valor'>
-                            <Button variant='outlined' onClick={() => {
-                                addProdutoCarrinho(post)
-                            }}>
+                            <Button variant='outlined' size='small'
+                                onClick={() => { addProdutoCarrinho(post) }}>
                                 Add to card
                             </Button>
                             <span className='card-valor'>$ {post.preco}</span>

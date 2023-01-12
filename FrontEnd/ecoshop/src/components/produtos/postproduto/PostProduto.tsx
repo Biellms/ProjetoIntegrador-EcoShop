@@ -196,14 +196,12 @@ export const PostProduto = (propsPostProduto: propsPostProduto) => {
                     </FormControl>
                 </div>
                 <div className='post-card-form-button'>
-                    <Button className='button-post' type='submit' variant="contained">
+                    <Button className='button-post' type='submit' variant="contained" size='small'>
                         Confirmar
                     </Button>
-                    <Link to='/vender'>
-                        <Button variant="outlined" onClick={() => modalValue()}>
-                            Cancelar
-                        </Button>
-                    </Link>
+                    <Button variant="outlined" size='small' onClick={() => modalValue()}>
+                        Cancelar
+                    </Button>
                 </div>
             </form>
         </Paper>

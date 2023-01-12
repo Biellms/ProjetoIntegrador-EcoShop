@@ -26,18 +26,17 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path='/' element={<Login />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/cadastro' element={<Cadastro />} />
-            <Route path='/home' element={<Home />} />
-            <Route path='/sobre' element={<Sobre />} />
-            <Route path='/comprar' element={<Comprar />} />
-            <Route path='/comprar/:id/filtro/:id2' element={<Comprar />} />
-            <Route path='/vender' element={<Vender />} />
-            <Route path='/vender/:id' element={ <Vender />} />
+            <Route path='/' element={ <Login />} />
+            <Route path='/login' element={ <Login />} />
+            <Route path='/cadastro' element={ <Cadastro />} />
+            <Route path='/home' element={ <Home />} />
+            <Route path='/sobre' element={ <Sobre />} />
+            <Route path='/comprar' element={ <Comprar />} />
+            <Route path='/comprar/:id/filtro/:id2' element={ <Comprar />} />
+            <Route path='/vender' element={ <Vender />} />
             <Route path='/carrinho' element={ <Carrinho /> } />
-            <Route path='/error' element={<NetworkError />} />
-            <Route path='*' element={<NotFound />} />
+            <Route path='/error' element={ <NetworkError />} />
+            <Route path='*' element={ <NotFound />} />
           </Routes>
           <Footer />
           <BackDrop />

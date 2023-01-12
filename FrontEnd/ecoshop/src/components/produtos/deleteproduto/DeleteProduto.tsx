@@ -1,9 +1,8 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide } from '@mui/material';
-
 import { TransitionProps } from '@mui/material/transitions';
 import './DeleteProduto.css'
 import { useNavigate, useParams } from 'react-router-dom';
-import React, { useContext, useEffect, useState } from 'react';
+import { forwardRef, ReactElement, Ref, useContext, useEffect, useState,  } from 'react';
 import { useSelector } from 'react-redux';
 import Produto from '../../../models/Produto';
 import { TokenState } from '../../../store/tokens/tokensReduce';
@@ -11,23 +10,27 @@ import { buscaId, deleteId } from '../../../service/Service';
 import axios from 'axios';
 import { UtilContext } from '../../../context/utilcontext/UtilContext';
 import { ToastError, ToastInfo } from '../../styles/toast/Toasts';
-import { Link } from 'react-router-dom';
 
-const Transition = React.forwardRef(function Transition(
+const Transition = forwardRef(function Transition(
     props: TransitionProps & {
-        children: React.ReactElement<any, any>;
+        children: ReactElement<any, any>;
     },
-    ref: React.Ref<unknown>,
+    ref: Ref<unknown>,
 ) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export const DeleteProduto = () => {
+interface propsDeleteProduto {
+    idProduto: number
+}
+
+export const DeleteProduto = (propsDeleteProduto: propsDeleteProduto) => {
 
     const [open, setOpen] = useState(false);
     const [post, setPosts] = useState<Produto>()
     const { respApiValue, openBackDrop, closeBackDrop } = useContext(UtilContext)
-    const { id } = useParams<{ id: string }>();
+    const { idProduto } = propsDeleteProduto
+
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
@@ -45,12 +48,12 @@ export const DeleteProduto = () => {
     }, [open])
 
     useEffect(() => {
-        if (id !== undefined) {
-            findById(id)
+        if (idProduto !== 0) {
+            findById(idProduto)
         }
-    }, [id])
+    }, [idProduto])
 
-    async function findById(id: string) {
+    async function findById(id: number) {
         try {
             openBackDrop()
             buscaId(`/produtos/${id}`, setPosts, {
@@ -72,7 +75,7 @@ export const DeleteProduto = () => {
     function onSubmit() {
         try {
             openBackDrop()
-            deleteId(`/produtos/${id}`, {
+            deleteId(`/produtos/${idProduto}`, {
                 headers: {
                     'Authorization': token
                 }
@@ -96,7 +99,7 @@ export const DeleteProduto = () => {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
+            <Button variant="outlined" size='small' onClick={handleClickOpen}>
                 Deletar
             </Button>
             <Dialog open={open} TransitionComponent={Transition} onClose={handleClose} keepMounted >
@@ -108,8 +111,8 @@ export const DeleteProduto = () => {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions className='button-deletar'>
-                    <Button variant='contained' onClick={onSubmit}>Confirmar</Button>
-                    <Button onClick={handleClose}>Voltar</Button>
+                    <Button variant='contained' size='small' onClick={onSubmit}>Confirmar</Button>
+                    <Button variant='outlined' size='small' onClick={handleClose}>Voltar</Button>
                 </DialogActions>
             </Dialog>
         </div>

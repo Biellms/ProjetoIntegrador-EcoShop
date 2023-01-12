@@ -24,7 +24,9 @@ export const ModalPostProduto = (propsPostProduto: propsPostProduto) => {
 
     return (
         <>
-            <Button onClick={handleOpen} variant="contained" className="button-vender">{textModal}</Button>
+            <Button onClick={handleOpen} variant="contained" className="button-vender" size='small'>
+                {textModal}
+            </Button>
             <Modal open={open} onClose={handleClose}>
                 <div className='container-post'>
                     <PostProduto idProduto={idProduto}/>
