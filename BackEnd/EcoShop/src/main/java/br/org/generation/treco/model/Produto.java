@@ -16,12 +16,12 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto incremento
 	private long id;
 	
-	@NotNull(message = "O atributo Nome Produto é obrigatório!")
-	@Size(max = 255, message = "O Nome da Produto deve conter no mínimo 10 caracteres e no máximo 255!")
+	@NotBlank(message = "O atributo Nome Produto é obrigatório!")
+	@Size(max = 255, message = "O Nome da Produto deve conter no máximo 255!")
 	private String nomeProduto;
 	
-	@NotNull(message = "O atributo descricao é obrigatório!")
-	@Size(min = 5, max = 255, message = "A descrição deve conter no mínimo 10 caracteres e no máximo 255!")
+	@NotBlank(message = "O atributo descricao é obrigatório!")
+	@Size(max = 255, message = "A descrição deve conter no máximo 255!")
 	private String descricao;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING) // Formatar Preço

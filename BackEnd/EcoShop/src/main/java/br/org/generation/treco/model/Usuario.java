@@ -18,18 +18,19 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto incremento
 	private long id;
 	
-	@NotNull(message = "O atributo Nome Completo é obrigatório!")
-	@Size(min = 10, max = 255, message = "O Nome da completo deve conter no mínimo 10 caracteres e no máximo 255!")
+	@NotBlank
+	@NotNull(message = "O atributo Nome é obrigatório!")
+	@Size(max = 55, message = "O Nome deve conter no máximo 55 caracteres!")
 	private String nome;
 	
 	@ApiModelProperty(example = "email@email.com.br")
 	@Email(message = "O atributo Usuário deve ser um email válido!")
 	@NotNull(message = "O atributo Usuário é obrigatório!")
-	@Size(max = 255, message = "O Usuário deve conter no mínimo 10 caracteres e no máximo 255!")
+	@Size(max = 70, message = "O Usuário deve conter no máximo 70 caracteres!")
 	private String usuario;
 	
 	@NotNull(message = "O atributo senha é obrigatório!")
-	@Size(min = 5, max = 255, message = "O usuário deve conter no mínimo 10 caracteres e no máximo 255!")
+	@Size(min = 8, message = "O usuário deve conter no mínimo 8 caracteres!")
 	private String senha;
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL) // Um usuario para muitos produtos

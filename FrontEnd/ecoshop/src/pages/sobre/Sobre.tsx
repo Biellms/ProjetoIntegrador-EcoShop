@@ -20,7 +20,7 @@ export const Sobre = () => {
 
     return (
         <>
-            <section className='fundo-sessao'>
+            <section className='sobre-container'>
 
                 <div className="objetivos">
                     <h1>EM DESENVOLVIMENTO 🖥️</h1>

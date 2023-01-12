@@ -14,19 +14,16 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 	//SELECT * FROM tb_produto WHERE nomeProduto LIKE "%?%";
 	public List <Produto> findAllByNomeProdutoContainingIgnoreCase(String produto);
 	
-	/*
-	public List <Produto> findByNomeProdutoAndImagem(String nomeProduto, String imagem);
-	public List <Produto> findByNomeProdutoOrImagem(String nomeProduto, String imagem);
-	*/
-	
 	//SELECT * FROM tb_produto WHERE preco > ?;
 	public List <Produto> findByPrecoGreaterThanOrderByPreco(BigDecimal preco);
 	
 	//SELECT * FROM tb_produto WHERE preco < ?;
 	public List <Produto> findByPrecoLessThanOrderByPrecoDesc(BigDecimal preco);
 	
-	// SELECT * FROM tb_produto WHERE preco BETWEEN ? AND ?;
 	@Query(value = "select * from tb_produto where preco between :inicio and :fim", nativeQuery = true)
 	public List <Produto> buscarProdutoEntre(@Param("inicio") BigDecimal inicio, @Param("fim") BigDecimal fim);
+
+	@Query(value = "SELECT * FROM tb_produto WHERE categoria_id = :id", nativeQuery = true)
+    public List <Produto> buscarProdutoPorCategoria(@Param("id") Long id);
 
 }

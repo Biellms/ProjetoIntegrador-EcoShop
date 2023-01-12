@@ -25,7 +25,7 @@ public class SwaggerConfig {
 
 	public static ApiInfo metadata() {
 		
-		return new ApiInfoBuilder().title("API - TrECO").description("Projeto API Spring - TrECO")
+		return new ApiInfoBuilder().title("API - EcoShop").description("Projeto API Spring - EcoShop")
 				.version("1.0.0").license("Apache License Version 2.0").licenseUrl("https://github.com/Biellms")
 				.contact(contact()).build();
 	}
