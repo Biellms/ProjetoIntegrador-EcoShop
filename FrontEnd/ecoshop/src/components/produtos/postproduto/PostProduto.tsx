@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import User from '../../../models/User';
 import Produto from '../../../models/Produto';
 import { busca, buscaId, post, put } from '../../../service/Service';
-import { ToastError, ToastSuccess } from '../../styles/toast/Toasts';
+import { ToastError, ToastSuccess, ToastWarn } from '../../styles/toast/Toasts';
 import axios from 'axios';
 import { UtilContext } from '../../../context/utilcontext/UtilContext';
 import { Link } from 'react-router-dom';
@@ -126,36 +126,67 @@ export const PostProduto = (propsPostProduto: propsPostProduto) => {
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        try {
-            openBackDrop()
-            modalValue()
+        if (validaCampos()) {
+            try {
+                openBackDrop()
+                modalValue()
 
-            if (idProduto === 0) {
-                await post(`/produtos`, produto, setProduto, {
-                    headers: { 'Authorization': token }
-                })
+                if (idProduto === 0) {
+                    await post(`/produtos`, produto, setProduto, {
+                        headers: { 'Authorization': token }
+                    })
 
-                respApiValue(1)
-                ToastSuccess('Produto cadastrado com sucesso!')
-            } else {
-                await put(`/produtos`, produto, setProduto, {
-                    headers: { 'Authorization': token }
-                })
+                    respApiValue(1)
+                    ToastSuccess('Produto cadastrado com sucesso!')
+                } else {
+                    await put(`/produtos`, produto, setProduto, {
+                        headers: { 'Authorization': token }
+                    })
 
-                respApiValue(1)
-                ToastSuccess('Produto Atualizado com sucesso!')
-            }
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                if (!error?.response) {
-                    navigate('/error')
+                    respApiValue(1)
+                    ToastSuccess('Produto Atualizado com sucesso!')
                 }
+            } catch (error) {
+                if (axios.isAxiosError(error)) {
+                    if (!error?.response) {
+                        navigate('/error')
+                    }
 
-                ToastError(error.message)
+                    ToastError(error.message)
+                }
             }
         }
 
         closeBackDrop()
+    }
+
+    // VALIDAR CAMPOS
+    const validaCampos = () => {
+        let msg = 'Preencha o campo: '
+        let blankField = false
+
+        if (produto.nomeProduto === '') {
+            blankField = true
+            msg += ' "Nome do Produto" '
+        }
+        if (produto.descricao === '') {
+            blankField = true
+            msg += ' "Descrição do Produto" ' }
+        if (produto.categoria?.id === 0) {
+            blankField = true
+            msg += ' "Categoria" '
+        }
+        if (produto.preco < 1) {
+            blankField = true
+            ToastWarn('O preço deve ser maior que 0')
+        }
+
+        if (blankField) {
+            ToastWarn(msg)
+            return false   
+        }
+
+        return true
     }
 
     return (
