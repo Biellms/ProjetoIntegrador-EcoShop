@@ -9,11 +9,11 @@
 		<version>2.5.6</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.org.generation</groupId>
-	<artifactId>treco</artifactId>
+	<groupId>com.ecoshop</groupId>
+	<artifactId>ecoshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>treco</name>
-	<description>Ecommerce TrECO</description>
+	<name>ecoshop</name>
+	<description>E-commerce EcoShop</description>
 	<properties>
 		<java.version>16</java.version>
 	</properties>

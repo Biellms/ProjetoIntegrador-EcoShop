@@ -37,7 +37,7 @@ export const ListaUserProduto = () => {
                 if (!error?.response) {
                     navigate('/error')
                 }
-            }  
+            }
         }
 
         respApiValue(0)
@@ -68,41 +68,53 @@ export const ListaUserProduto = () => {
         }
     })
 
-    return (
-        <>
-            {
-                listaProdutos.map(post => (
-                    <div className='card'>
-                        <div className='card-img'>
-                            <img src={imagem(post.imagem)} alt="" />
-                        </div>
-                        <div className='card-body'>
-                            <div className='card-body-info'>
-                                <div className='card-body-info-vender'>
-                                    <span className='card-nome-produto'>
-                                        {post.nomeProduto}
-                                    </span>
-                                    <span className='card-nome-produto'>
-                                        $ {post.preco}
-                                    </span>
-                                </div>
-                                <span className='card-categoria text-color-verde-escuro'>
-                                    {post.categoria?.nomeCategoria}
+    let listagem
+
+    if (listaProdutos.length === 0) {
+        listagem =
+            <h2>
+                <span className="card-nome-produto">
+                    Nenhum produto cadastrado!
+                </span>
+            </h2>
+    } else {
+        listagem =
+            listaProdutos.map(post => (
+                <div className='card'>
+                    <div className='card-img'>
+                        <img src={imagem(post.imagem)} alt="" />
+                    </div>
+                    <div className='card-body'>
+                        <div className='card-body-info'>
+                            <div className='card-body-info-vender'>
+                                <span className='card-nome-produto'>
+                                    {post.nomeProduto}
                                 </span>
-                                <p className='card-p'>
-                                    Vendedor: {post.usuario?.nome}
-                                    <br /><br />
-                                    {post.descricao}
-                                </p>
+                                <span className='card-nome-produto'>
+                                    $ {post.preco}
+                                </span>
                             </div>
-                            <div className='div-button-valor-vender'>
-                                    <ModalPostProduto idProduto={post.id} textModal={'Editar'}/>
-                                    <DeleteProduto idProduto={post.id} />
-                            </div>
+                            <span className='card-categoria text-color-verde-escuro'>
+                                {post.categoria?.nomeCategoria}
+                            </span>
+                            <p className='card-p'>
+                                Vendedor: {post.usuario?.nome}
+                                <br /><br />
+                                {post.descricao}
+                            </p>
+                        </div>
+                        <div className='div-button-valor-vender'>
+                            <ModalPostProduto idProduto={post.id} textModal={'Editar'} />
+                            <DeleteProduto idProduto={post.id} />
                         </div>
                     </div>
-                ))
-            }
+                </div>
+            ))
+    }
+
+    return (
+        <>
+            {listagem}
         </>
     );
 }
