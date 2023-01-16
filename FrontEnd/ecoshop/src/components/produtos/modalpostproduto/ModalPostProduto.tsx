@@ -3,13 +3,9 @@ import { useState, useContext, useEffect } from 'react';
 import { Button, Modal } from '@mui/material';
 import { PostProduto } from '../postproduto/PostProduto';
 import { UtilContext } from '../../../context/utilcontext/UtilContext';
+import { propsModalPostProduto } from '../../../models/Props';
 
-interface propsPostProduto {
-    idProduto: number
-    textModal: string
-}
-
-export const ModalPostProduto = (propsPostProduto: propsPostProduto) => {
+export const ModalPostProduto = (propsPostProduto: propsModalPostProduto) => {
 
     const { idProduto, textModal } = propsPostProduto
     const { modal } = useContext(UtilContext)

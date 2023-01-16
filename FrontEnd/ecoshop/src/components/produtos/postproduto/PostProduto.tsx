@@ -11,6 +11,7 @@ import { busca, buscaId, post, put } from '../../../service/Service';
 import { ToastError, ToastSuccess, ToastWarn } from '../../styles/toast/Toasts';
 import axios from 'axios';
 import { UtilContext } from '../../../context/utilcontext/UtilContext';
+import { propsPostProduto } from '../../../models/Props';
 
 const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -26,10 +27,6 @@ const CssTextField = styled(TextField)({
         },
     },
 });
-
-interface propsPostProduto {
-    idProduto: number
-}
 
 export const PostProduto = (propsPostProduto: propsPostProduto) => {
 

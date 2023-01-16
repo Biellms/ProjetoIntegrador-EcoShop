@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
-import './DeleteProduto.css'
-import { useNavigate, useParams } from 'react-router-dom';
+import './DeleteProduto.css';
+import { useNavigate } from 'react-router-dom';
 import { forwardRef, ReactElement, Ref, useContext, useEffect, useState,  } from 'react';
 import { useSelector } from 'react-redux';
 import Produto from '../../../models/Produto';
@@ -10,6 +10,7 @@ import { buscaId, deleteId } from '../../../service/Service';
 import axios from 'axios';
 import { UtilContext } from '../../../context/utilcontext/UtilContext';
 import { ToastError, ToastInfo } from '../../styles/toast/Toasts';
+import { propsPostProduto } from '../../../models/Props';
 
 const Transition = forwardRef(function Transition(
     props: TransitionProps & {
@@ -20,11 +21,7 @@ const Transition = forwardRef(function Transition(
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-interface propsDeleteProduto {
-    idProduto: number
-}
-
-export const DeleteProduto = (propsDeleteProduto: propsDeleteProduto) => {
+export const DeleteProduto = (propsDeleteProduto: propsPostProduto) => {
 
     const [open, setOpen] = useState(false);
     const [post, setPosts] = useState<Produto>()

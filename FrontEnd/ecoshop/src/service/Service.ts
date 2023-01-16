@@ -1,12 +1,12 @@
 import axios from "axios";
 
-// export const api = axios.create({
-//     baseURL: 'https://trecostore.herokuapp.com'
-// })
-
 export const api = axios.create({
-    baseURL: 'http://localhost:8080'
+    baseURL: 'https://ecoshop.up.railway.app'
 })
+
+// export const api = axios.create({
+//     baseURL: 'http://localhost:8080'
+// })
 
 export const cadastroUsuario = async(url: any, dados: any, setDado: any) => { 
     const resposta = await api.post(url,dados)
