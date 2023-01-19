@@ -37,26 +37,11 @@
 
 <div align="left">
 
-  <h4>
-    <b>
-      <a href="https://github.com/Biellms/ProjetoIntegrador-EcoShop/tree/main/BackEnd/ecoshop" target="_blank"><p target="_blank">• Back-end ♨️
-      </a>
-    </b>
-  </h4>
+  **[• Back-end ♨️](https://github.com/Biellms/ProjetoIntegrador-EcoShop/tree/main/BackEnd/ecoshop)**
 
-  <h4>
-    <b>
-      <a href="https://github.com/Biellms/ProjetoIntegrador-EcoShop/tree/main/FrontEnd/ecoshop" target="_blank"><p target="_blank">• Front-end ⚛️
-      </a>
-    </b>
-  </h4>
+  **[• Front-end ⚛️](https://github.com/Biellms/ProjetoIntegrador-EcoShop/tree/main/FrontEnd/ecoshop)**
 
-  <h4>
-    <b>
-      <a href="https://github.com/Biellms/ProjetoIntegrador-EcoShop/blob/main/Documentacao/EcoShop%20Artigo.pdf" target="_blank"><p target="_blank">• Artigo 📝
-      </a>
-    </b>
-  </h4>
+  **[• Artigo 📝](https://github.com/Biellms/ProjetoIntegrador-EcoShop/blob/main/Documentacao/EcoShop%20Artigo.pdf)** 
 
 </div>
 
