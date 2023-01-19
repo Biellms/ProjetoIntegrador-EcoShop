@@ -57,13 +57,13 @@
 
 <div align="justify">
 
-  Para a codificação do software foram utilizadas as IDE’s (Ambiente de Desenvolvimento Integrado) Visual Studio Code e Spring Tool Suite. E para o versionamento de código o Git e GitHub. 
+  Para a codificação do software foram utilizadas as IDE’s (Ambiente de Desenvolvimento Integrado) Visual Studio Code e Spring Tool Suite. E para o versionamento de código o `Git e GitHub`. 
   
-  No desenvolvimento do back-end e a API REST foram utilizados a linguagem de programação JAVA, juntamente com o Spring Framework e MySQL. Para testes das requisições o Postman.
+  No desenvolvimento do back-end e a API REST foram utilizados a linguagem de programação `JAVA`, juntamente com o `Spring Framework` e `MySQL`. Para testes das requisições o `Postman`.
 
-  No desenvolvimento do front-end e da consumação da API, foram utilizados a biblioteca React com template em Typescript, juntamente com o Material-UI.
+  No desenvolvimento do front-end e da consumação da API, foram utilizados a biblioteca `React` com template em `Typescript`, juntamente com o `Material-UI`.
 
-  O deploy do front-end foi hospedado na plataforma gratuita Vercel e o deploy do back-end na plataforma Railway.
+  O deploy do front-end foi hospedado na plataforma gratuita `Vercel` e o deploy do back-end na plataforma `Railway`.
 
 </div>
 
