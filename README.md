@@ -27,6 +27,8 @@
 
 </div>
 
+<br>
+
 #
 
 <div align="center">
@@ -57,9 +59,11 @@
 
   Para a codificação do software foram utilizadas as IDE’s (Ambiente de Desenvolvimento Integrado) Visual Studio Code e Spring Tool Suite. E para o versionamento de código o Git e GitHub. 
   
-  No desenvolvimento do back-end e a API REST foram utilizados a linguagem de programação JAVA, juntamente com o Spring Framework e MySQL. 
+  No desenvolvimento do back-end e a API REST foram utilizados a linguagem de programação JAVA, juntamente com o Spring Framework e MySQL. Para testes das requisições o Postman.
 
   No desenvolvimento do front-end e da consumação da API, foram utilizados a biblioteca React com template em Typescript, juntamente com o Material-UI.
+
+  O deploy do front-end foi hospedado na plataforma gratuita Vercel e o deploy do back-end na plataforma Railway.
 
 </div>
 
@@ -71,9 +75,9 @@
 
 </div>
 
-#
-
 <br>
+
+#
 
 <div align="left">
 
@@ -88,3 +92,13 @@
 - Samuel Pereira | <a href="https://www.linkedin.com/in/samuelpereirabrandao/" target="_blank"><img src="https://img.shields.io/badge/-Linkedin-blue" target="_blank"></a> | <a href="https://github.com/SamuelPereiraBrandao" target="_blank"><img src="https://img.shields.io/badge/-Github-gray" target="_blank"></a>
 
 - Jorge Lucas | <a href="https://www.linkedin.com/in/jorge-lucas-8a6160181/" target="_blank"><img src="https://img.shields.io/badge/-Linkedin-blue" target="_blank"></a> | <a href="jorgelucastanan@gmail.com" target="_blank"><img src="https://img.shields.io/badge/-Email-gray" target="_blank"></a>
+
+<br>
+
+#
+
+<div align="center">
+
+***[© 2023 Gabriel Mendes Sousa](https://github.com/Biellms/ProjetoIntegrador-EcoShop/blob/main/LICENSE)***
+
+</div>
