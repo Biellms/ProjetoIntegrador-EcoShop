@@ -13,30 +13,15 @@ for now this project uses the following dependencies:
 
 ## Running the application
 
-You can run this application from your favorite IDE or by running the following command:
+You can run this application from your favorite IDE or by running the following command: 
 
 ```bash
 ./mvnw spring-boot:run
-```
-
-## Building for Production 
-
-If you want to build an artifact that can be used in production you have 2 options. This application uses `JAR` as the packaging type. This means that you can run the following command to create something that is ready to be used in production.
-
-```bash
-./mvnw clean package
-```
-
-If you would like to create a Docker Image which can be used on a variety of platforms you can run the following command: 
-
-```bash
-./mvnw spring-boot:build-image
-```
-
+``` 
 ### Local Development
 
-When working on this application locally you will need Docker Desktop installed. To start an instance of PostgreSQL run the Docker
-Compose file located in the root of the project. 
+When working on this application locally you will need MySQL installed. Runs the app in the development mode.
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 ### Railway
 
