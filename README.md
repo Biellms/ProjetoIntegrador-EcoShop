@@ -1,15 +1,62 @@
 <div align="center">
   
-  ![Badge](https://img.shields.io/badge/STATUS-EM%20DESENVOLVIMENTO-yellow?style=for-the-badge)
-  
+  ![Badge](https://img.shields.io/badge/STATUS-EM%20PRODUÇÃO-blue?style=for-the-badge)
+
 </div>
 
 <div align = "center">
-  <hr>
-  <h3>
-  <b>Projeto Integrador </b></h3>
 
-  <p>Projeto Integrador desenvolvido no 5º Semestre da faculdade de Análise e Desenvolvimento de Sistemas pela FAM (Centro Universitário das Américas).
+  <img width="1000px" src="./Documentacao/ECOSHOP.png"/>
+
+<div>
+
+<br>
+
+<div align = "center">
+
+  <h3><b>EcoShop</b></h3>
+
+  <p>Projeto Integrador desenvolvido no 5º Semestre da faculdade de Análise e Desenvolvimento de Sistemas na FAM - Centro Universitário das Américas.
   </p>
   
-  </div>
+</div>
+
+#
+
+<div align="center">
+
+  <h3><b>Resumo</b></h3>
+
+</div>
+
+<div align="justify">
+  O artigo apresenta o desenvolvimento de uma aplicação e-commerce (comércio eletrônico) multiplataforma, na qual a problemática apresentada são os problemas ambientais urbanos causados pelo uso excessivo e má reciclagem de produtos prejudiciais ao meio ambiente. O usuário poderá comprar e vender produtos sustentáveis, com o objetivo de comercializar itens, objetos, peças e até mesmo serviços dentro das comunidades que necessitam de assentamento humano e ações sustentáveis, para apoiar em relações econômicas, sociais e ambientais positivas entre áreas urbanas.
+</div>
+
+<br>
+
+<div align="left">
+
+  <h4>
+    <b>
+      <a href="https://github.com/Biellms/ProjetoIntegrador-Padafood/tree/main/Padafood" target="_blank"><p target="_blank">• Back-end ♨️
+      </a>
+    </b>
+  </h4>
+
+  <h4>
+    <b>
+      <a href="https://github.com/Biellms/ProjetoIntegrador-Padafood/tree/main/Padafood" target="_blank"><p target="_blank">• Front-end ⚛️
+      </a>
+    </b>
+  </h4>
+
+  <h4>
+    <b>
+      <a href="./Documentacao/EcoShop.pdf" target="_blank"><p target="_blank">• Artigo 📝
+      </a>
+    </b>
+  </h4>
+
+</div>
+
