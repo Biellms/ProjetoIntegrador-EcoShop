@@ -1,7 +1,6 @@
 ## About the Application 
 
-This is a simple web application that exposes a REST API. This application uses Maven as the build tool and the current 
-LTS version of Java, 16. I hope to add more functionality to this application in the future but 
+This application uses Maven as the build tool and the current LTS version of Java, 16. I hope to add more functionality to this application in the future but 
 for now this project uses the following dependencies:
 
 - Spring Web
@@ -22,8 +21,7 @@ You can run this application from your favorite IDE or by running the following 
 
 ## Building for Production 
 
-If you want to build an artifact that can be used in production you have 2 options. This application uses `JAR` as the 
-packaging type. This means that you can run the following command to create something that is ready to be used in production.
+If you want to build an artifact that can be used in production you have 2 options. This application uses `JAR` as the packaging type. This means that you can run the following command to create something that is ready to be used in production.
 
 ```bash
 ./mvnw clean package

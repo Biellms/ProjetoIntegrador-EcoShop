@@ -39,21 +39,21 @@
 
   <h4>
     <b>
-      <a href="https://github.com/Biellms/ProjetoIntegrador-Padafood/tree/main/Padafood" target="_blank"><p target="_blank">• Back-end ♨️
+      <a href="https://github.com/Biellms/ProjetoIntegrador-EcoShop/tree/main/BackEnd/ecoshop" target="_blank"><p target="_blank">• Back-end ♨️
       </a>
     </b>
   </h4>
 
   <h4>
     <b>
-      <a href="https://github.com/Biellms/ProjetoIntegrador-Padafood/tree/main/Padafood" target="_blank"><p target="_blank">• Front-end ⚛️
+      <a href="https://github.com/Biellms/ProjetoIntegrador-EcoShop/tree/main/FrontEnd/ecoshop" target="_blank"><p target="_blank">• Front-end ⚛️
       </a>
     </b>
   </h4>
 
   <h4>
     <b>
-      <a href="./Documentacao/EcoShop.pdf" target="_blank"><p target="_blank">• Artigo 📝
+      <a href="https://github.com/Biellms/ProjetoIntegrador-EcoShop/blob/main/Documentacao/EcoShop%20Artigo.pdf" target="_blank"><p target="_blank">• Artigo 📝
       </a>
     </b>
   </h4>
