@@ -57,7 +57,7 @@
 
 <div align="justify">
 
-  Para a codificação do software foram utilizadas as IDE’s (Ambiente de Desenvolvimento Integrado) Visual Studio Code e Spring Tool Suite. E para o versionamento de código o `Git e GitHub`. 
+  Para a codificação do software foram utilizadas as IDE’s (Ambiente de Desenvolvimento Integrado) `Visual Studio Code` e `Spring Tool Suite`. E para o versionamento de código o `Git e GitHub`. 
   
   No desenvolvimento do back-end e a API REST foram utilizados a linguagem de programação `JAVA`, juntamente com o `Spring Framework` e `MySQL`. Para testes das requisições o `Postman`.
 
@@ -72,6 +72,24 @@
   **[• Back-end ♨️](https://github.com/Biellms/ProjetoIntegrador-EcoShop/tree/main/BackEnd/ecoshop)**
 
   **[• Front-end ⚛️](https://github.com/Biellms/ProjetoIntegrador-EcoShop/tree/main/FrontEnd/ecoshop)**
+
+</div>
+
+<br>
+
+<div align="center">
+
+  <h3><b>Implementações futuras</b></h3>
+
+</div>
+
+<div align="justify">
+
+  Como implementações futuras, será desenvolvido outras funcionalidades para a EcoShop dando-a capacidade de torná-la um site viável e possível como por exemplo a integração das entidades "Carrinho", "Método de pagamento” e "Entrega" em nosso back-end, para gerir da melhor forma possível o funcionamento do e-commerce e transformá-lo em uma aplicação de sucesso. E até mesmo utilizar APIs já existentes no mercado.
+
+  Além disso, será fundamental desenvolver uma área da qual o usuário poderá gerir suas vendas, onde ficará acessível todos os seus produtos vendidos para ter uma noção de como estão indo as coisas e até mesmo ver reclamações e avaliações. E o mesmo serve para os usuários que estão apenas comprando, desenvolvendo uma área para acompanhar seus pedidos. 
+  
+  Algo importante também é visar a verificação dos produtos cadastrados pelo usuário, para não ocorrer casos de produtos cadastrados totalmente fora da ideologia sustentável.
 
 </div>
 
