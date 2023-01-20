@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Roboto:wght@300;400&display=swap');
 
 footer {
-    min-height: 30vh;
+    min-height: 35vh;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-direction: column;
     flex-wrap: wrap;
     background: rgb(224, 251, 185);
@@ -77,6 +78,8 @@ footer {
 }
 
 .footer-ecoshop3 {
-    padding-bottom: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.250);
+    padding-top: 20px;
+    padding-bottom: 40px;
+    width: 80%;
 }
-
